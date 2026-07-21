@@ -7,8 +7,8 @@ Turn the approved dark v2 prototype into a data-driven, product-agnostic spatial
 ## Architecture
 
 1. Keep the public site static and dependency-light: semantic HTML, CSS, and browser JavaScript.
-2. Store all publishable product copy and stable layout coordinates in a sanitized `data/products.json` manifest.
-3. Copy only approved assets into per-product folders under `assets/products/`; convert large PNG editorial cards to visually equivalent WebP files for delivery.
+2. Store all publishable product copy and stable layout coordinates in a sanitized `public/data/products.json` manifest.
+3. Copy only approved assets into per-product folders under `public/assets/products/`; convert large PNG editorial cards to visually equivalent WebP files for delivery.
 4. Render one DOM bubble per product inside a transformable world. Keep the header, intro copy, view controls, and help text outside that transform.
 5. Apply pan and zoom as a single world transform with pointer-centered wheel zoom, two-pointer pinch zoom, drag-to-pan, bounds-aware fit, and deterministic reset.
 6. Generate first-level category nodes and second-level detail nodes only for the active product. The active product keeps its stored coordinates; nearby bubbles may receive temporary visual de-emphasis, never permanent coordinate changes.

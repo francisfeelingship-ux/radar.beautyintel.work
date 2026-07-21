@@ -22,8 +22,8 @@ The deployable output is written to `dist/`.
 
 ## Content structure
 
-- `data/products.json` - sanitized public product manifest and stored layout coordinates.
-- `assets/products/` - reviewed, optimized public product and editorial imagery.
+- `public/data/products.json` - sanitized public product manifest and stored layout coordinates.
+- `public/assets/products/` - reviewed, optimized public product and editorial imagery.
 - `docs/asset-inventory.md` - publishable, excluded, missing, and ambiguous source assets.
 - `docs/product-mapping.json` - reproducible source-to-product mapping.
 - `docs/implementation-plan.md` - layout, interaction, responsive, and evidence-boundary plan.
