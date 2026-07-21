@@ -3,7 +3,8 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const manifest = JSON.parse(await readFile(path.join(root, 'data', 'products.json'), 'utf8'));
+const publicRoot = path.join(root, 'public');
+const manifest = JSON.parse(await readFile(path.join(publicRoot, 'data', 'products.json'), 'utf8'));
 const ids = new Set();
 const errors = [];
 
@@ -15,7 +16,7 @@ for (const product of manifest.products) {
   }
   const assets = [product.bubbleImage, ...product.editorialCards.map(card => card.image)];
   for (const asset of assets) {
-    try { await access(path.join(root, asset.replace(/^\//, ''))); }
+    try { await access(path.join(publicRoot, asset.replace(/^\//, ''))); }
     catch { errors.push(`${product.id}: missing asset ${asset}`); }
   }
 }

@@ -10,7 +10,7 @@ from PIL import Image
 
 WORKSPACE = Path(r"C:\Users\ERAZER\Desktop\Deployment\Radar Component")
 REPO = WORKSPACE / "radar.beautyintel.work"
-OUTPUT = REPO / "assets" / "products"
+OUTPUT = REPO / "public" / "assets" / "products"
 
 
 GROUPS = {

@@ -36,4 +36,4 @@ The default model is `deepseek-v4-pro`. Override it only when required:
 $env:DEEPSEEK_MODEL = "deepseek-v4-flash"
 ```
 
-Generated JSON is a review artifact. It is not automatically merged into `data/products.json`.
+Generated JSON is a review artifact. It is not automatically merged into `public/data/products.json`.
