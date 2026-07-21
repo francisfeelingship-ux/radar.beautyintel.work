@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="description" content="Beauty Radar 产品云：以空间关系探索美妆产品、技术、关键成分、媒体结论与完整解读。" />
+    <meta name="theme-color" content="#07090d" />
+    <title>Beauty Radar · 产品云</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Beauty Radar 产品云首页">
+          <span>
+            <strong>BEAUTY RADAR</strong>
+            <small>PRODUCT CLOUD</small>
+          </span>
+        </a>
+
+        <label class="search" aria-label="搜索产品云">
+          <span class="search-mark" aria-hidden="true"></span>
+          <input id="searchInput" type="search" placeholder="搜索产品、品牌、技术或成分" autocomplete="off" />
+          <kbd>/</kbd>
+        </label>
+
+        <nav class="nav" aria-label="主导航">
+          <button class="nav-link is-active" type="button">产品云</button>
+          <button class="nav-link" type="button" data-static-nav>本周雷达</button>
+          <button class="nav-link" type="button" data-static-nav>关于</button>
+        </nav>
+      </header>
+
+      <main class="cloud-page">
+        <section class="cloud-intro" aria-labelledby="pageTitle">
+          <p class="eyebrow">EXPLORE THE PRODUCT LANDSCAPE</p>
+          <h1 id="pageTitle"><span>从产品进入，</span><span>沿关系继续探索。</span></h1>
+          <p>每个产品只占一个节点。点击后，技术、关键成分、媒体平台与完整解读会在它周围展开。</p>
+          <div class="legend" aria-label="产品云图例">
+            <span><i class="legend-dot product"></i>产品</span>
+            <span><i class="legend-dot relation"></i>关系入口</span>
+            <span><i class="legend-dot detail"></i>展开内容</span>
+          </div>
+          <div class="view-readout" aria-live="polite">
+            <span id="visibleCount">12</span> 个产品
+            <i></i>
+            <span id="zoomReadout">100%</span>
+          </div>
+        </section>
+
+        <section class="cloud-stage" id="cloudStage" aria-label="可平移缩放的美妆产品云">
+          <div class="stage-grid" aria-hidden="true"></div>
+          <div class="stage-ambient ambient-one" aria-hidden="true"></div>
+          <div class="stage-ambient ambient-two" aria-hidden="true"></div>
+
+          <div class="stage-meta top-left" aria-hidden="true">
+            <span>LIVE MAP</span>
+            <strong id="mapMeta">12 PRODUCTS · CURATED PUBLIC SIGNALS</strong>
+          </div>
+          <div class="stage-meta bottom-right" aria-hidden="true">
+            <span>PUBLIC VIEW</span>
+            <strong>CURATED INSIGHTS ONLY</strong>
+          </div>
+
+          <div class="world" id="cloudWorld">
+            <svg class="connection-layer" id="connectionLayer" width="2400" height="1600" viewBox="0 0 2400 1600" aria-hidden="true"></svg>
+            <div class="product-layer" id="productLayer"></div>
+            <div class="expansion-layer" id="expansionLayer" aria-live="polite"></div>
+          </div>
+
+          <div class="canvas-controls" aria-label="画布视图控制">
+            <button type="button" data-view-action="zoom-in" aria-label="放大">放大</button>
+            <button type="button" data-view-action="zoom-out" aria-label="缩小">缩小</button>
+            <button type="button" data-view-action="fit" aria-label="适合全部产品">适合全部</button>
+            <button type="button" data-view-action="reset" aria-label="重置视图">重置</button>
+          </div>
+
+          <p class="gesture-hint" id="gestureHint">滚轮缩放 · 拖动画布 · 点击产品展开</p>
+          <div class="toast" id="toast" role="status" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="lightbox" id="storyLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="storyTitle" inert>
+      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="关闭完整解读">关闭</button>
+      <div class="lightbox-panel">
+        <div class="lightbox-visual">
+          <button class="story-arrow prev" id="prevCard" type="button" aria-label="上一张">上一张</button>
+          <figure>
+            <img id="storyImage" src="" alt="" />
+            <figcaption><span id="storyCurrent">01</span> / <span id="storyTotal">01</span></figcaption>
+          </figure>
+          <button class="story-arrow next" id="nextCard" type="button" aria-label="下一张">下一张</button>
+        </div>
+        <div class="lightbox-copy">
+          <p class="eyebrow" id="storyKicker">EDITORIAL CARD</p>
+          <h2 id="storyTitle"></h2>
+          <p id="storyCaption"></p>
+          <div class="story-boundary" id="storyBoundary"></div>
+          <div class="story-dots" id="storyDots" aria-label="切换解读卡"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>

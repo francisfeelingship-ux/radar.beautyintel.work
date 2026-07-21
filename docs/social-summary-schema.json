@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://radar.beautyintel.work/schemas/beauty-radar-media-v1.json",
+  "title": "Beauty Radar public media summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "productId", "model", "media", "needsReview", "reviewNotes"],
+  "properties": {
+    "schemaVersion": {"const": "beauty-radar-media-v1"},
+    "productId": {"type": "string", "minLength": 1},
+    "model": {"type": "string", "minLength": 1},
+    "media": {
+      "type": "array",
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["platform", "signal", "topics", "doubts", "misconceptions", "scenarios", "summary"],
+        "properties": {
+          "platform": {"enum": ["YouTube", "Reddit", "X", "Bilibili", "小红书", "知乎"]},
+          "signal": {"enum": ["有限", "中等", "较强"]},
+          "topics": {"$ref": "#/$defs/shortList4"},
+          "doubts": {"$ref": "#/$defs/shortList3"},
+          "misconceptions": {"$ref": "#/$defs/shortList3"},
+          "scenarios": {"$ref": "#/$defs/shortList3"},
+          "summary": {"type": "string", "minLength": 1, "maxLength": 240}
+        }
+      }
+    },
+    "needsReview": {"type": "boolean"},
+    "reviewNotes": {"$ref": "#/$defs/reviewList"}
+  },
+  "$defs": {
+    "shortString": {"type": "string", "minLength": 1, "maxLength": 120},
+    "shortList3": {"type": "array", "maxItems": 3, "items": {"$ref": "#/$defs/shortString"}},
+    "shortList4": {"type": "array", "maxItems": 4, "items": {"$ref": "#/$defs/shortString"}},
+    "reviewList": {"type": "array", "maxItems": 8, "items": {"$ref": "#/$defs/shortString"}}
+  }
+}

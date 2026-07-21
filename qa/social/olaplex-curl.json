@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "beauty-radar-media-v1",
+  "productId": "olaplex-curl-hydrating-system",
+  "model": "deepseek-v4-pro",
+  "media": [
+    {
+      "platform": "知乎",
+      "signal": "中等",
+      "topics": [
+        "烫染修复对比",
+        "二硫键修护原理",
+        "明星代言种草"
+      ],
+      "doubts": [],
+      "misconceptions": [],
+      "scenarios": [
+        "烫染后日常修护",
+        "不同卷度定型需求"
+      ],
+      "summary": "知乎讨论聚焦OLAPLEX与卡诗、馥绿德雅的横向对比，强调其通过二硫键修复实现从内而外修护的专业性，并借助明星代言和丝芙兰渠道增强可信度。"
+    },
+    {
+      "platform": "小红书",
+      "signal": "中等",
+      "topics": [
+        "发质适配困惑",
+        "头皮不适反馈",
+        "烫卷打理痛点"
+      ],
+      "doubts": [
+        "部分用户反馈头皮发痒不适"
+      ],
+      "misconceptions": [
+        "洗发水能解决所有发质问题"
+      ],
+      "scenarios": [
+        "烫染后受损修护",
+        "不同卷度定型需求"
+      ],
+      "summary": "小红书用户关注产品适配性，存在洗发水万能认知偏差，部分反馈头皮不适；内容多围绕烫卷星人打理痛点，利用谐音梗和场景化种草。"
+    }
+  ],
+  "needsReview": false,
+  "reviewNotes": []
+}

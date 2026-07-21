@@ -1,0 +1,134 @@
+{
+  "generatedAt": "2026-07-21",
+  "workspaceRoot": "C:/Users/ERAZER/Desktop/Deployment/Radar Component",
+  "mappingPolicy": {
+    "signals": ["normalized_brand", "normalized_product_name", "filename_similarity", "directory_proximity", "radar_record_product_title", "visual_packaging_identity"],
+    "ambiguityRule": "needs_review assets are excluded from the public build"
+  },
+  "products": [
+    {
+      "id": "eucerin-oil-control-sun-protection-spf50",
+      "brand": "Eucerin",
+      "productName": "Oil Control Sun Protection SPF50+",
+      "sourceDirectory": "beauty_radar_product_cloud_v2/beauty_radar_product_cloud_v2",
+      "radarRecord": {"path": null, "status": "approved_v2_embedded_copy"},
+      "bubbleSource": "assets/product-bubble.webp",
+      "editorialCards": ["assets/card-1.webp", "assets/card-2.webp", "assets/card-3.webp", "assets/card-4.webp", "assets/card-5.webp"],
+      "excludedAssets": ["assets/product-panel.webp", "assets/cover-summer.webp"],
+      "status": "publish"
+    },
+    {
+      "id": "biossance-squalane-copper-peptide-serum",
+      "brand": "Biossance",
+      "productName": "Squalane + Copper Peptide Rapid Plumping Serum 50ml",
+      "sourceDirectory": "biossance_squalane_and_copper_peptide_rapid_plumping_serum",
+      "radarRecord": {"path": "biossance_squalane_and_copper_peptide_rapid_plumping_serum.docx", "status": "matched"},
+      "bubbleSource": "ChatGPT Image 2026年6月17日 19_38_19 (1).png",
+      "editorialCards": ["ChatGPT Image 2026年6月17日 19_38_19 (1).png", "ChatGPT Image 2026年6月17日 19_38_20 (2).png", "ChatGPT Image 2026年6月17日 19_38_20 (3).png", "ChatGPT Image 2026年6月17日 19_38_40.png"],
+      "needsReview": ["ChatGPT Image 2026年6月17日 19_38_46 (1).png", "ChatGPT Image 2026年6月17日 19_38_46 (2).png", "ChatGPT Image 2026年6月17日 19_38_47 (3).png", "ChatGPT Image 2026年6月17日 19_38_47 (4).png"],
+      "status": "publish"
+    },
+    {
+      "id": "cerave-hydrating-hyaluronic-acid-water-gel",
+      "brand": "CeraVe",
+      "productName": "Hydrating Hyaluronic Acid Water Gel 48ml",
+      "sourceDirectory": "cerave_hydrating_hyaluronic_acid_water_gel_for_plumping_hydration_with_ceramides_hyaluronic_acid_niacinamide_48ml",
+      "radarRecord": {"path": "cerave_hydrating_hyaluronic_acid_water_gel_for_plumping_hydration_with_ceramides_hyaluronic_acid_niacinamide_48ml.docx", "status": "matched"},
+      "bubbleSource": "ChatGPT Image 2026年6月7日 20_54_43 (1).png",
+      "editorialCards": ["ChatGPT Image 2026年6月7日 20_54_43 (1).png", "ChatGPT Image 2026年6月7日 20_54_44 (2).png", "ChatGPT Image 2026年6月7日 20_54_44 (3).png", "ChatGPT Image 2026年6月7日 20_54_44 (4).png", "ChatGPT Image 2026年6月7日 20_54_45 (5).png"],
+      "status": "publish"
+    },
+    {
+      "id": "dermalogica-futurecode-booster",
+      "brand": "Dermalogica",
+      "productName": "Futurecode Booster 30ml",
+      "sourceDirectory": "dermalogica_futurecode_booster_damage-correcting_longevity_serum_30ml",
+      "radarRecord": {"path": "dermalogica_futurecode_booster_damage-correcting_longevity_serum_30ml.docx", "status": "matched"},
+      "bubbleSource": "ChatGPT Image 2026年6月23日 15_58_41.png",
+      "editorialCards": ["ChatGPT Image 2026年6月23日 15_54_19 (2).png", "ChatGPT Image 2026年6月23日 15_54_21 (3).png", "ChatGPT Image 2026年6月23日 15_54_22 (4).png", "ChatGPT Image 2026年6月23日 15_54_23 (5).png", "ChatGPT Image 2026年6月23日 15_58_41.png"],
+      "status": "publish"
+    },
+    {
+      "id": "elizabeth-arden-eight-hour-ultimate-repair",
+      "brand": "Elizabeth Arden",
+      "productName": "Eight Hour Cream Ultimate Repair Moisturizer 50ml",
+      "sourceDirectory": "elizabeth_arden_eight_hour_cream_ultimate_repair_moisturizer_50ml",
+      "radarRecord": {"path": "elizabeth_arden_eight_hour_cream_ultimate_repair_moisturizer_50ml.docx", "status": "matched"},
+      "bubbleSource": "ChatGPT Image 2026年6月7日 20_30_46.png",
+      "editorialCards": ["ChatGPT Image 2026年6月7日 20_29_57 (2).png", "ChatGPT Image 2026年6月7日 20_29_57 (3).png", "ChatGPT Image 2026年6月7日 20_30_00 (6).png", "ChatGPT Image 2026年6月7日 20_30_46.png"],
+      "status": "publish"
+    },
+    {
+      "id": "estee-lauder-renutriv-ultimate-diamond-serum",
+      "brand": "Estee Lauder",
+      "productName": "Re-Nutriv Ultimate Diamond Transformative Brilliance Serum",
+      "sourceDirectory": "estée_lauder_re-nutriv_ultimate_diamond_transformative_brilliance_serum",
+      "radarRecord": {"path": "estée_lauder_re-nutriv_ultimate_diamond_transformative_brilliance_serum.docx", "status": "matched"},
+      "bubbleSource": "ChatGPT Image 2026年6月14日 17_11_08 (1).png",
+      "editorialCards": ["ChatGPT Image 2026年6月14日 17_11_08 (1).png", "ChatGPT Image 2026年6月14日 17_11_09 (2).png", "ChatGPT Image 2026年6月14日 17_11_09 (3).png", "ChatGPT Image 2026年6月14日 17_11_10 (4).png", "ChatGPT Image 2026年6月14日 17_11_10 (5).png", "ChatGPT Image 2026年6月14日 17_11_10 (6).png"],
+      "needsReview": ["f90b4e31-8157-4302-a357-4e49d92c611a.png"],
+      "status": "publish"
+    },
+    {
+      "id": "gisou-honey-gloss-collagen-drops",
+      "brand": "Gisou",
+      "productName": "Honey Gloss Collagen Drops Hair Oil 20ml",
+      "sourceDirectory": "GiSou Hair Honey",
+      "radarRecord": {"path": "gisou_honey_gloss_collagen_drops_hair_oil_20ml.docx", "status": "matched"},
+      "bubbleSource": "ChatGPT Image 2026年7月16日 17_00_00.png",
+      "editorialCards": ["ChatGPT Image 2026年7月16日 16_58_30 (2).png", "ChatGPT Image 2026年7月16日 16_58_31 (3).png", "ChatGPT Image 2026年7月16日 16_58_31 (4).png", "ChatGPT Image 2026年7月16日 16_58_32 (5).png", "ChatGPT Image 2026年7月16日 17_00_00.png"],
+      "status": "publish"
+    },
+    {
+      "id": "loreal-revitalift-filler-glass-skin-liquid-cream",
+      "brand": "L'Oreal Paris",
+      "productName": "Revitalift Filler Glass Skin Liquid Cream 50ml",
+      "sourceDirectory": "l'oréal_paris_revitalift_filler_glass_skin_liquid_cream_face_moisturiser,_50ml",
+      "radarRecord": {"path": "l'oréal_paris_revitalift_filler_glass_skin_liquid_cream_face_moisturiser,_50ml.docx", "status": "matched"},
+      "bubbleSource": "ChatGPT Image 2026年6月12日 09_27_02 (1).png",
+      "editorialCards": ["ChatGPT Image 2026年6月12日 09_27_02 (1).png", "ChatGPT Image 2026年6月12日 09_27_03 (2).png", "ChatGPT Image 2026年6月12日 09_27_03 (3).png", "ChatGPT Image 2026年6月12日 09_27_03 (4).png", "ChatGPT Image 2026年6月12日 09_27_03 (5).png"],
+      "needsReview": ["071d443f-b89c-4a07-96fb-4dcb1fa0def4.png"],
+      "status": "publish"
+    },
+    {
+      "id": "medicube-pdrn-pink-peptide-eye-serum",
+      "brand": "Medicube",
+      "productName": "PDRN Pink Peptide Eye Serum 30ml",
+      "sourceDirectory": "medicube_pdrn_pink_peptide_eye_serum_30ml",
+      "radarRecord": {"path": "medicube_pdrn_pink_peptide_eye_serum_30ml.docx", "status": "matched"},
+      "bubbleSource": "product_image.png",
+      "editorialCards": ["ChatGPT Image 2026年6月23日 18_42_56 (1).png", "ChatGPT Image 2026年6月23日 18_42_56 (2).png", "ChatGPT Image 2026年6月23日 18_42_57 (3).png", "ChatGPT Image 2026年6月23日 18_42_57 (4).png", "ChatGPT Image 2026年6月23日 18_42_57 (5).png"],
+      "status": "publish"
+    },
+    {
+      "id": "olaplex-curl-hydrating-system",
+      "brand": "Olaplex",
+      "productName": "Curl Hydrating Shampoo and Conditioner",
+      "sourceDirectory": "OLAPLEX_CURL",
+      "radarRecord": {"path": "olaplex_curl_hydrating_curl_shampoo_and_conditioner.docx", "status": "matched"},
+      "bubbleSource": "01.png",
+      "editorialCards": ["01.png", "02.png", "03.png", "04.png", "05.png"],
+      "status": "publish"
+    },
+    {
+      "id": "the-ordinary-caffeine-3-escin-1-serum",
+      "brand": "The Ordinary",
+      "productName": "Caffeine 3% + Escin 1% Energizing Face Serum 30ml",
+      "sourceDirectory": "the_ordinary_caffeine_3_escin_1_energizing_face_serum_30ml",
+      "radarRecord": {"path": "the_ordinary_caffeine_3_escin_1_energizing_face_serum_30ml.docx", "status": "matched"},
+      "bubbleSource": "ChatGPT Image 2026年6月22日 09_45_44 (1).png",
+      "editorialCards": ["ChatGPT Image 2026年6月22日 09_45_44 (1).png", "ChatGPT Image 2026年6月22日 09_45_47 (2).png", "ChatGPT Image 2026年6月22日 09_45_47 (3).png", "ChatGPT Image 2026年6月22日 09_45_48 (4).png", "ChatGPT Image 2026年6月22日 09_45_49 (5).png", "ChatGPT Image 2026年6月22日 09_45_49 (6).png"],
+      "status": "publish"
+    },
+    {
+      "id": "loccitane-almond-shower-oil",
+      "brand": "L'Occitane",
+      "productName": "Almond Shower Oil 250ml",
+      "sourceDirectory": "欧舒丹沐浴油",
+      "radarRecord": {"path": "l'occitane_almond_(amande)_shower_oil_250ml.docx", "status": "matched"},
+      "bubbleSource": "ChatGPT Image 2026年7月16日 17_33_14 (1).png",
+      "editorialCards": ["ChatGPT Image 2026年7月16日 17_26_18.png", "ChatGPT Image 2026年7月16日 17_26_30.png", "ChatGPT Image 2026年7月16日 17_26_35.png", "ChatGPT Image 2026年7月16日 17_33_14 (1).png", "ChatGPT Image 2026年7月16日 17_33_14 (2).png"],
+      "status": "publish"
+    }
+  ]
+}
