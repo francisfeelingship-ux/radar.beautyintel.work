@@ -192,6 +192,17 @@
             ...additions
           ];
 
+          const freshSugarMelt = base.products.find(product => product.id === 'fresh-sugar-melt-lip-cream-mango');
+          if (freshSugarMelt) {
+            freshSugarMelt.editorialCards = [
+              { image: '/assets/products/fresh-sugar-melt-lip-cream-mango/cards/01.svg', caption: '日常水光唇霜定位与使用场景' },
+              { image: '/assets/products/fresh-sugar-melt-lip-cream-mango/cards/02.svg', caption: '轻微干燥、偶发起皮与润泽光泽需求' },
+              { image: '/assets/products/fresh-sugar-melt-lip-cream-mango/cards/03.svg', caption: '柔润成膜、植物油与透明质酸的配方结构' },
+              { image: '/assets/products/fresh-sugar-melt-lip-cream-mango/cards/04.svg', caption: '适配人群与低优先级使用场景' },
+              { image: '/assets/products/fresh-sugar-melt-lip-cream-mango/cards/05.svg', caption: '起皮、叠加口红与最终使用结论' }
+            ];
+          }
+
           randomizeProductLayouts(base);
           window.__beautyRadarData = base;
           window.dispatchEvent(new CustomEvent('beauty-radar-data-ready', { detail: base }));
