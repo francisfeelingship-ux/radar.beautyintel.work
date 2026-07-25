@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#07090d" />
     <title>Beauty Radar · 产品云</title>
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/layout-clouds.css" />
   </head>
   <body>
     <div class="app-shell">
@@ -46,9 +47,28 @@
             <i></i>
             <span id="zoomReadout">100%</span>
           </div>
+
+          <div class="cloud-layout-panel" aria-label="产品云排列方式">
+            <div class="layout-panel-heading">
+              <span>PRODUCT CLOUD</span>
+              <strong>产品云</strong>
+            </div>
+            <div class="layout-options" role="group" aria-label="选择产品云排列方式">
+              <button class="layout-option is-active" type="button" data-cloud-layout="random" aria-pressed="true">
+                <span>随机</span><small>自由分布</small>
+              </button>
+              <button class="layout-option" type="button" data-cloud-layout="brand" aria-pressed="false">
+                <span>品牌</span><small>按品牌聚合</small>
+              </button>
+              <button class="layout-option" type="button" data-cloud-layout="category" aria-pressed="false">
+                <span>种类</span><small>按产品类型聚合</small>
+              </button>
+            </div>
+            <p class="layout-description" id="layoutDescription">每次进入页面都会生成新的随机排列。</p>
+          </div>
         </section>
 
-        <section class="cloud-stage" id="cloudStage" aria-label="可平移缩放的美妆产品云">
+        <section class="cloud-stage" id="cloudStage" aria-label="可平移缩放的美妆产品云" data-cloud-layout="random">
           <div class="stage-grid" aria-hidden="true"></div>
           <div class="stage-ambient ambient-one" aria-hidden="true"></div>
           <div class="stage-ambient ambient-two" aria-hidden="true"></div>
@@ -63,6 +83,7 @@
           </div>
 
           <div class="world" id="cloudWorld">
+            <div class="cluster-layer" id="clusterLayer" aria-hidden="true"></div>
             <svg class="connection-layer" id="connectionLayer" width="2400" height="1600" viewBox="0 0 2400 1600" aria-hidden="true"></svg>
             <div class="product-layer" id="productLayer"></div>
             <div class="expansion-layer" id="expansionLayer" aria-live="polite"></div>
@@ -105,6 +126,47 @@
     <script>
       (() => {
         const nativeFetch = window.fetch.bind(window);
+
+        function shuffle(values) {
+          const result = [...values];
+          for (let index = result.length - 1; index > 0; index -= 1) {
+            const next = Math.floor(Math.random() * (index + 1));
+            [result[index], result[next]] = [result[next], result[index]];
+          }
+          return result;
+        }
+
+        function randomizeProductLayouts(data) {
+          const products = Array.isArray(data.products) ? data.products : [];
+          const width = data.world?.width || 2400;
+          const height = data.world?.height || 1600;
+          const marginX = 220;
+          const marginY = 190;
+          const columns = Math.max(1, Math.ceil(Math.sqrt(products.length * width / height)));
+          const rows = Math.max(1, Math.ceil(products.length / columns));
+          const gapX = columns === 1 ? 0 : (width - marginX * 2) / (columns - 1);
+          const gapY = rows === 1 ? 0 : (height - marginY * 2) / (rows - 1);
+          const jitterX = Math.min(105, gapX * .24);
+          const jitterY = Math.min(90, gapY * .22);
+          const slots = [];
+
+          for (let row = 0; row < rows; row += 1) {
+            for (let column = 0; column < columns; column += 1) {
+              slots.push({
+                x: Math.min(width - 150, Math.max(150, marginX + column * gapX + (Math.random() - .5) * jitterX * 2)),
+                y: Math.min(height - 150, Math.max(150, marginY + row * gapY + (Math.random() - .5) * jitterY * 2))
+              });
+            }
+          }
+
+          const randomizedSlots = shuffle(slots).slice(0, products.length);
+          products.forEach((product, index) => {
+            product.layout = product.layout || { size: 1 };
+            product.layout.x = randomizedSlots[index].x;
+            product.layout.y = randomizedSlots[index].y;
+          });
+        }
+
         window.fetch = async (input, init) => {
           const requestUrl = typeof input === 'string' ? input : input?.url || '';
           const pathname = new URL(requestUrl, window.location.href).pathname;
@@ -129,13 +191,21 @@
             ...(base.products || []).filter(product => !additionIds.has(product.id)),
             ...additions
           ];
-          return new Response(JSON.stringify(base), {
+
+          randomizeProductLayouts(base);
+          window.__beautyRadarData = base;
+          window.dispatchEvent(new CustomEvent('beauty-radar-data-ready', { detail: base }));
+
+          return {
+            ok: true,
             status: 200,
-            headers: { 'Content-Type': 'application/json; charset=utf-8' }
-          });
+            json: async () => base,
+            text: async () => JSON.stringify(base)
+          };
         };
       })();
     </script>
     <script type="module" src="/src/app.js"></script>
+    <script type="module" src="/src/layout-clouds.js"></script>
   </body>
 </html>
