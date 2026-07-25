@@ -4,16 +4,22 @@ import path from 'node:path';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const publicRoot = path.join(root, 'public');
-const base = JSON.parse(await readFile(path.join(publicRoot, 'data', 'products.json'), 'utf8'));
-let overlay = { products: [] };
-try {
-  overlay = JSON.parse(await readFile(path.join(publicRoot, 'data', 'products-overlay.json'), 'utf8'));
-} catch {}
-const overlayProducts = Array.isArray(overlay.products) ? overlay.products : [];
-const overlayIds = new Set(overlayProducts.map(product => product.id));
+const load = async name => {
+  try { return JSON.parse(await readFile(path.join(publicRoot, 'data', name), 'utf8')); }
+  catch { return { products: [] }; }
+};
+
+const base = await load('products.json');
+const overlay = await load('products-overlay.json');
+const batch = await load('products-batch.json');
+const additions = [
+  ...(Array.isArray(overlay.products) ? overlay.products : []),
+  ...(Array.isArray(batch.products) ? batch.products : [])
+];
+const additionIds = new Set(additions.map(product => product.id));
 const manifest = {
   ...base,
-  products: [...(base.products || []).filter(product => !overlayIds.has(product.id)), ...overlayProducts]
+  products: [...(base.products || []).filter(product => !additionIds.has(product.id)), ...additions]
 };
 const ids = new Set();
 const errors = [];
