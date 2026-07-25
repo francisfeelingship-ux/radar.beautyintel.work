@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1440" viewBox="0 0 1080 1440">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07101F"/><stop offset=".55" stop-color="#101B32"/><stop offset="1" stop-color="#253454"/></linearGradient>
+    <radialGradient id="glow" cx="58%" cy="46%" r="58%"><stop offset="0" stop-color="#C9D8FF" stop-opacity=".30"/><stop offset=".55" stop-color="#89A7F1" stop-opacity=".08"/><stop offset="1" stop-color="#07101F" stop-opacity="0"/></radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="30" stdDeviation="28" flood-color="#000" flood-opacity=".5"/></filter>
+  </defs>
+  <rect width="1080" height="1440" fill="url(#bg)"/>
+  <circle cx="620" cy="650" r="510" fill="url(#glow)"/>
+  <path d="M78 120 C330 46 758 58 1012 198" fill="none" stroke="#BACBFF" stroke-width="1.5" stroke-opacity=".2"/>
+  <g font-family="'Inter','Noto Sans SC','Microsoft YaHei','PingFang SC',Arial,sans-serif">
+    <text x="76" y="90" font-size="22" font-weight="650" fill="#AFC4FF" letter-spacing="3">BEAUTY RADAR · MILKY TONER</text>
+    <text x="76" y="158" font-size="34" font-weight="650" fill="#EEF3FF">LANEIGE</text>
+    <text x="76" y="235" font-size="73" font-weight="720" fill="#F7FAFF"><tspan x="76">Cream Skin</tspan><tspan x="76" dy="86">Cerapeptide</tspan></text>
+    <text x="76" y="434" font-size="28" font-weight="600" fill="#A8B6D7">TONER + MOISTURISER · 170ML</text>
+  </g>
+  <g filter="url(#shadow)"><image x="410" y="370" width="560" height="560" href="/assets/products/laneige-cream-skin/bubble.svg"/></g>
+  <rect x="72" y="1065" width="936" height="250" rx="36" fill="#0B1427" stroke="#9CB7FF" stroke-width="1.4" opacity=".94"/>
+  <g font-family="'Inter','Noto Sans SC','Microsoft YaHei','PingFang SC',Arial,sans-serif">
+    <text x="110" y="1127" font-size="24" font-weight="700" fill="#AFC4FF" letter-spacing="2">核心问题</text>
+    <text x="110" y="1192" font-size="38" font-weight="620" fill="#F4F7FF"><tspan x="110">它是一瓶化妆水，</tspan><tspan x="110" dy="54">还是一瓶足够轻的乳液？</tspan></text>
+    <text x="110" y="1295" font-size="25" font-weight="500" fill="#BFC9DF">答案取决于你要的是补水、柔润，还是省掉后续面霜。</text>
+    <text x="76" y="1382" font-size="18" font-weight="600" fill="#7E8AA8" letter-spacing="2">BEAUTYINTEL · PRODUCT SIGNAL CARD</text>
+  </g>
+</svg>
