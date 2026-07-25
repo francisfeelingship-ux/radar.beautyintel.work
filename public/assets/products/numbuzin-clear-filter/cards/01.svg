@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" height="1440" viewBox="0 0 1080 1440">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06120E"/><stop offset="0.55" stop-color="#0B1C16"/><stop offset="1" stop-color="#102820"/></linearGradient>
+  <radialGradient id="glow" cx="50%" cy="44%" r="58%"><stop offset="0" stop-color="#61E7B1" stop-opacity=".30"/><stop offset=".55" stop-color="#2AB887" stop-opacity=".08"/><stop offset="1" stop-color="#06120E" stop-opacity="0"/></radialGradient>
+  <linearGradient id="mint" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B7FFE2"/><stop offset="1" stop-color="#50D7A6"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="28" stdDeviation="24" flood-color="#000" flood-opacity=".55"/></filter>
+  <filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="26"/></filter>
+</defs>
+<rect width="1080" height="1440" fill="url(#bg)"/>
+<circle cx="540" cy="560" r="475" fill="url(#glow)"/>
+<path d="M86 123 C330 38 746 62 1008 197" fill="none" stroke="#7EF3C4" stroke-width="1.5" stroke-opacity=".20"/>
+<path d="M59 1294 C360 1370 758 1363 1021 1262" fill="none" stroke="#7EF3C4" stroke-width="1.5" stroke-opacity=".16"/>
+<text x="76" y="90" font-family="'Inter','Noto Sans SC','Microsoft YaHei','PingFang SC',Arial,sans-serif" font-size="22" font-weight="650" fill="#77EFC0" text-anchor="start" letter-spacing="3">BEAUTY RADAR · SUNSCREEN</text>
+<text x="76" y="154" font-family="'Inter','Noto Sans SC','Microsoft YaHei','PingFang SC',Arial,sans-serif" font-size="34" font-weight="650" fill="#EEF7F1">Numbuzin</text>
+<text x="76" y="222" font-family="'Inter','Noto Sans SC','Microsoft YaHei','PingFang SC',Arial,sans-serif" font-size="78" font-weight="720" fill="#F2FFF9"><tspan x="76" dy="0">No.1 Clear Filter</tspan><tspan x="76" dy="87.36">Sun Essence</tspan></text>
+<text x="76" y="405" font-family="'Inter','Noto Sans SC','Microsoft YaHei','PingFang SC',Arial,sans-serif" font-size="28" font-weight="600" fill="#A7CFBE" letter-spacing="1">SPF50+  PA++++  ·  50ml</text>
+<ellipse cx="660" cy="1080" rx="230" ry="56" fill="#000" opacity=".28" filter="url(#soft)"/>
+<g transform="translate(486 355) scale(1.2681 1.1194)">
+  <defs>
+    <linearGradient id="ptube" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b9eee0"/><stop offset="0.22" stop-color="#e8fff7"/><stop offset="0.52" stop-color="#c9f4e9"/><stop offset="0.82" stop-color="#9ddfce"/><stop offset="1" stop-color="#74c7b4"/></linearGradient>
+    <linearGradient id="pcap" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#86cfbd"/><stop offset="0.35" stop-color="#d7fff2"/><stop offset="1" stop-color="#62b7a2"/></linearGradient>
+    <linearGradient id="pshine" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".88"/><stop offset=".55" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <filter id="pshadow" x="-40%" y="-20%" width="180%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#07261c" flood-opacity=".38"/></filter>
+  </defs>
+  <g filter="url(#pshadow)">
+    <path d="M40 58 Q42 32 70 26 H206 Q234 32 236 58 L222 570 Q221 600 195 618 H81 Q55 600 54 570 Z" fill="url(#ptube)" stroke="#65bda8" stroke-width="3"/>
+    <rect x="62" y="25" width="152" height="24" rx="8" fill="#96dbc9" stroke="#66b8a5" stroke-width="2"/>
+    <g opacity=".72" stroke="#5fae9d" stroke-width="2"><path d="M70 30v14M82 30v14M94 30v14M106 30v14M118 30v14M130 30v14M142 30v14M154 30v14M166 30v14M178 30v14M190 30v14M202 30v14"/></g>
+    <path d="M74 82 C102 53 148 48 197 68 C151 82 115 173 94 376 C83 484 86 554 93 606 H78 C60 591 59 574 59 548 L70 92 Z" fill="url(#pshine)" opacity=".55"/>
+    <rect x="86" y="615" width="104" height="36" rx="10" fill="#80cdbc" stroke="#5eb29f" stroke-width="2"/>
+    <rect x="82" y="644" width="112" height="135" rx="16" fill="url(#pcap)" stroke="#56a995" stroke-width="3"/>
+    <path d="M96 659v105M110 655v113M124 654v116M138 654v116M152 654v116M166 655v113M180 659v105" stroke="#79bfae" stroke-width="2" opacity=".7"/>
+  </g>
+  <g font-family="Arial,Helvetica,sans-serif" fill="#158c76"><text x="86" y="130" font-size="17" font-weight="700">Clear Filter</text><text x="86" y="151" font-size="17" font-weight="700">Sun Essence</text><text x="86" y="174" font-size="15">numbuzin</text><text x="170" y="284" font-size="105" font-weight="700">1</text><text x="70" y="500" font-size="47" font-weight="700">SPF50+</text><text x="70" y="552" font-size="43" font-weight="700">PA++++</text></g>
+  <g font-family="Arial,Helvetica,sans-serif" fill="#4b9f8b" font-size="10" font-weight="600" opacity=".92"><text x="91" y="366">UVA/UVB Protection</text><text x="94" y="382">For Sensitive Skin</text><text x="96" y="398">Non-comedogenic</text><text x="103" y="414">Fragrance Free</text></g>
+</g>
+<rect x="72" y="1155" width="936" height="176" rx="34" fill="#081914" stroke="#6DE9B7" stroke-width="1.5" opacity=".92"/>
+<text x="110" y="1212" font-family="'Inter','Noto Sans SC','Microsoft YaHei','PingFang SC',Arial,sans-serif" font-size="22" font-weight="700" fill="#6DE9B7" letter-spacing="2">核心判断</text>
+<text x="110" y="1268" font-family="'Inter','Noto Sans SC','Microsoft YaHei','PingFang SC',Arial,sans-serif" font-size="31" font-weight="500" fill="#EAF8F1"><tspan x="110" dy="0">五重有机防晒剂是防护主轴；</tspan><tspan x="110" dy="44.95">舒缓保湿是配方加分项，不是直接临床证明。</tspan></text>
+<text x="76" y="1382" font-family="'Inter','Noto Sans SC','Microsoft YaHei','PingFang SC',Arial,sans-serif" font-size="18" font-weight="600" fill="#739889" letter-spacing="2">BEAUTYINTEL · PRODUCT SIGNAL CARD</text>
+</svg>

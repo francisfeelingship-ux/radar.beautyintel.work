@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "products": [
+    {
+      "id": "numbuzin-no1-clear-filter-sun-essence",
+      "slug": "numbuzin-no1-clear-filter-sun-essence",
+      "brand": "Numbuzin",
+      "name": "No.1 Clear Filter Sun Essence SPF50+ PA++++ 50ml",
+      "shortName": "Numbuzin 1号防晒",
+      "category": "防晒",
+      "positioning": "舒缓保湿型日常高倍防晒",
+      "bubbleImage": "/assets/products/numbuzin-clear-filter/bubble.svg",
+      "bubbleFocal": "50% 52%",
+      "summary": "以五重有机防晒剂为防护主轴，叠加甘草根水、积雪草、鱼腥草与多形态透明质酸；社媒对“轻薄”与“厚重”存在明显分歧。",
+      "technologies": [
+        {
+          "label": "五重有机防晒剂组合",
+          "summary": "乙基己基三嗪酮、DHHB、Tinosorb S、Mexoryl SX 与 Polysilicone-15 共同构成 SPF50+ PA++++ 的广谱防护主轴。"
+        },
+        {
+          "label": "舒缓植萃水相",
+          "summary": "甘草根水、积雪草与鱼腥草构成配方中的舒缓护理线索。"
+        },
+        {
+          "label": "多形态透明质酸网络",
+          "summary": "多种透明质酸衍生物与保湿剂共同支持日常补水肤感。"
+        }
+      ],
+      "keyIngredients": [
+        {"label": "五重有机防晒剂", "role": "广谱光防护主轴"},
+        {"label": "甘草根水", "role": "舒缓与抗氧化线索"},
+        {"label": "积雪草 + 鱼腥草", "role": "敏感与泛红护理线索"},
+        {"label": "多形态透明质酸", "role": "保湿支持"},
+        {"label": "烟酰胺", "role": "综合肤质护理线索"}
+      ],
+      "media": [
+        {
+          "platform": "YouTube",
+          "signal": "较强",
+          "topics": ["水感精华质地", "无明显白膜", "妆前服帖与日常使用"],
+          "doubts": ["是否搓泥", "是否熏眼", "足量使用后是否仍轻薄"],
+          "misconceptions": ["轻薄肤感不等于所有肤质都无刺激"],
+          "scenarios": ["日常通勤", "妆前防晒"],
+          "summary": "海外创作者多强调轻薄、水感与无白膜，但仍反复出现搓泥、熏眼和足量使用后的肤感问题。"
+        },
+        {
+          "platform": "小红书",
+          "signal": "中等",
+          "topics": ["成膜速度", "后续跟妆", "日常与室内防晒"],
+          "doubts": ["部分用户认为膏体偏厚", "敏感脸颊上脸可能有短暂刺激"],
+          "misconceptions": ["不能仅凭“敏感肌适用”标签跳过局部耐受测试"],
+          "scenarios": ["通勤", "室内", "偏干状态下使用"],
+          "summary": "国内反馈明显分化：有人认为像乳液、成膜快，也有人觉得偏厚，更适合偏干状态。"
+        }
+      ],
+      "editorialCards": [
+        {"image": "/assets/products/numbuzin-clear-filter/cards/01.svg", "caption": "产品封面与核心判断"},
+        {"image": "/assets/products/numbuzin-clear-filter/cards/02.svg", "caption": "五重防晒剂与舒缓保湿线"},
+        {"image": "/assets/products/numbuzin-clear-filter/cards/03.svg", "caption": "社媒肤感分歧"},
+        {"image": "/assets/products/numbuzin-clear-filter/cards/04.svg", "caption": "适用场景与耐受提醒"},
+        {"image": "/assets/products/numbuzin-clear-filter/cards/05.svg", "caption": "证据边界"}
+      ],
+      "evidenceBoundary": "当前材料主要支持配方结构与社媒体验的聚合判断；背景文献和配方相似研究不能替代该具体 SKU 的直接、独立临床证据。",
+      "audience": {
+        "bestFor": ["希望高倍防晒兼顾保湿与舒缓护理的人", "偏好无明显白膜、日常通勤与妆前使用的人"],
+        "cautions": ["油皮与干皮的肤感反馈分裂，建议先试用", "敏感肌、眼周易刺激或容易搓泥的人先做局部耐受与叠加测试"]
+      },
+      "layout": {"x": 2120, "y": 1280, "size": 0.92}
+    }
+  ]
+}

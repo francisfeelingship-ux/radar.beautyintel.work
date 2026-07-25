@@ -4,7 +4,17 @@ import path from 'node:path';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const publicRoot = path.join(root, 'public');
-const manifest = JSON.parse(await readFile(path.join(publicRoot, 'data', 'products.json'), 'utf8'));
+const base = JSON.parse(await readFile(path.join(publicRoot, 'data', 'products.json'), 'utf8'));
+let overlay = { products: [] };
+try {
+  overlay = JSON.parse(await readFile(path.join(publicRoot, 'data', 'products-overlay.json'), 'utf8'));
+} catch {}
+const overlayProducts = Array.isArray(overlay.products) ? overlay.products : [];
+const overlayIds = new Set(overlayProducts.map(product => product.id));
+const manifest = {
+  ...base,
+  products: [...(base.products || []).filter(product => !overlayIds.has(product.id)), ...overlayProducts]
+};
 const ids = new Set();
 const errors = [];
 
