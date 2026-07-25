@@ -42,7 +42,7 @@
             <span><i class="legend-dot detail"></i>展开内容</span>
           </div>
           <div class="view-readout" aria-live="polite">
-            <span id="visibleCount">14</span> 个产品
+            <span id="visibleCount">23</span> 个产品
             <i></i>
             <span id="zoomReadout">100%</span>
           </div>
@@ -55,7 +55,7 @@
 
           <div class="stage-meta top-left" aria-hidden="true">
             <span>LIVE MAP</span>
-            <strong id="mapMeta">14 PRODUCTS · CURATED PUBLIC SIGNALS</strong>
+            <strong id="mapMeta">23 PRODUCTS · CURATED PUBLIC SIGNALS</strong>
           </div>
           <div class="stage-meta bottom-right" aria-hidden="true">
             <span>PUBLIC VIEW</span>
@@ -110,19 +110,24 @@
           const pathname = new URL(requestUrl, window.location.href).pathname;
           if (pathname !== '/data/products.json') return nativeFetch(input, init);
 
-          const [baseResponse, overlayResponse] = await Promise.all([
+          const [baseResponse, overlayResponse, batchResponse] = await Promise.all([
             nativeFetch(input, init),
-            nativeFetch('/data/products-overlay.json')
+            nativeFetch('/data/products-overlay.json'),
+            nativeFetch('/data/products-batch.json')
           ]);
-          if (!baseResponse.ok || !overlayResponse.ok) return baseResponse;
+          if (!baseResponse.ok || !overlayResponse.ok || !batchResponse.ok) return baseResponse;
 
           const base = await baseResponse.json();
           const overlay = await overlayResponse.json();
-          const overlayProducts = Array.isArray(overlay.products) ? overlay.products : [];
-          const overlayIds = new Set(overlayProducts.map(product => product.id));
+          const batch = await batchResponse.json();
+          const additions = [
+            ...(Array.isArray(overlay.products) ? overlay.products : []),
+            ...(Array.isArray(batch.products) ? batch.products : [])
+          ];
+          const additionIds = new Set(additions.map(product => product.id));
           base.products = [
-            ...(base.products || []).filter(product => !overlayIds.has(product.id)),
-            ...overlayProducts
+            ...(base.products || []).filter(product => !additionIds.has(product.id)),
+            ...additions
           ];
           return new Response(JSON.stringify(base), {
             status: 200,
