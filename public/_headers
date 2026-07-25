@@ -1,0 +1,8 @@
+/
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/data/*
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/assets/products/fresh-sugar-melt-lip-cream-mango/cards/*
+  Cache-Control: no-cache, no-store, must-revalidate
