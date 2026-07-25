@@ -13,18 +13,9 @@
       "bubbleFocal": "50% 52%",
       "summary": "以五重有机防晒剂为防护主轴，叠加甘草根水、积雪草、鱼腥草与多形态透明质酸；社媒对“轻薄”与“厚重”存在明显分歧。",
       "technologies": [
-        {
-          "label": "五重有机防晒剂组合",
-          "summary": "乙基己基三嗪酮、DHHB、Tinosorb S、Mexoryl SX 与 Polysilicone-15 共同构成 SPF50+ PA++++ 的广谱防护主轴。"
-        },
-        {
-          "label": "舒缓植萃水相",
-          "summary": "甘草根水、积雪草与鱼腥草构成配方中的舒缓护理线索。"
-        },
-        {
-          "label": "多形态透明质酸网络",
-          "summary": "多种透明质酸衍生物与保湿剂共同支持日常补水肤感。"
-        }
+        {"label": "五重有机防晒剂组合", "summary": "乙基己基三嗪酮、DHHB、Tinosorb S、Mexoryl SX 与 Polysilicone-15 共同构成 SPF50+ PA++++ 的广谱防护主轴。"},
+        {"label": "舒缓植萃水相", "summary": "甘草根水、积雪草与鱼腥草构成配方中的舒缓护理线索。"},
+        {"label": "多形态透明质酸网络", "summary": "多种透明质酸衍生物与保湿剂共同支持日常补水肤感。"}
       ],
       "keyIngredients": [
         {"label": "五重有机防晒剂", "role": "广谱光防护主轴"},
@@ -34,24 +25,8 @@
         {"label": "烟酰胺", "role": "综合肤质护理线索"}
       ],
       "media": [
-        {
-          "platform": "YouTube",
-          "signal": "较强",
-          "topics": ["水感精华质地", "无明显白膜", "妆前服帖与日常使用"],
-          "doubts": ["是否搓泥", "是否熏眼", "足量使用后是否仍轻薄"],
-          "misconceptions": ["轻薄肤感不等于所有肤质都无刺激"],
-          "scenarios": ["日常通勤", "妆前防晒"],
-          "summary": "海外创作者多强调轻薄、水感与无白膜，但仍反复出现搓泥、熏眼和足量使用后的肤感问题。"
-        },
-        {
-          "platform": "小红书",
-          "signal": "中等",
-          "topics": ["成膜速度", "后续跟妆", "日常与室内防晒"],
-          "doubts": ["部分用户认为膏体偏厚", "敏感脸颊上脸可能有短暂刺激"],
-          "misconceptions": ["不能仅凭“敏感肌适用”标签跳过局部耐受测试"],
-          "scenarios": ["通勤", "室内", "偏干状态下使用"],
-          "summary": "国内反馈明显分化：有人认为像乳液、成膜快，也有人觉得偏厚，更适合偏干状态。"
-        }
+        {"platform": "YouTube", "signal": "较强", "topics": ["水感精华质地", "无明显白膜", "妆前服帖与日常使用"], "doubts": ["是否搓泥", "是否熏眼", "足量使用后是否仍轻薄"], "misconceptions": ["轻薄肤感不等于所有肤质都无刺激"], "scenarios": ["日常通勤", "妆前防晒"], "summary": "海外创作者多强调轻薄、水感与无白膜，但仍反复出现搓泥、熏眼和足量使用后的肤感问题。"},
+        {"platform": "小红书", "signal": "中等", "topics": ["成膜速度", "后续跟妆", "日常与室内防晒"], "doubts": ["部分用户认为膏体偏厚", "敏感脸颊上脸可能有短暂刺激"], "misconceptions": ["不能仅凭“敏感肌适用”标签跳过局部耐受测试"], "scenarios": ["通勤", "室内", "偏干状态下使用"], "summary": "国内反馈明显分化：有人认为像乳液、成膜快，也有人觉得偏厚，更适合偏干状态。"}
       ],
       "editorialCards": [
         {"image": "/assets/products/numbuzin-clear-filter/cards/01.svg", "caption": "产品封面与核心判断"},
@@ -61,11 +36,47 @@
         {"image": "/assets/products/numbuzin-clear-filter/cards/05.svg", "caption": "证据边界"}
       ],
       "evidenceBoundary": "当前材料主要支持配方结构与社媒体验的聚合判断；背景文献和配方相似研究不能替代该具体 SKU 的直接、独立临床证据。",
-      "audience": {
-        "bestFor": ["希望高倍防晒兼顾保湿与舒缓护理的人", "偏好无明显白膜、日常通勤与妆前使用的人"],
-        "cautions": ["油皮与干皮的肤感反馈分裂，建议先试用", "敏感肌、眼周易刺激或容易搓泥的人先做局部耐受与叠加测试"]
-      },
+      "audience": {"bestFor": ["希望高倍防晒兼顾保湿与舒缓护理的人", "偏好无明显白膜、日常通勤与妆前使用的人"], "cautions": ["油皮与干皮的肤感反馈分裂，建议先试用", "敏感肌、眼周易刺激或容易搓泥的人先做局部耐受与叠加测试"]},
       "layout": {"x": 2120, "y": 1280, "size": 0.92}
+    },
+    {
+      "id": "laneige-cream-skin-cerapeptide-toner-moisturiser",
+      "slug": "laneige-cream-skin-cerapeptide-toner-moisturiser",
+      "brand": "LANEIGE",
+      "name": "Cream Skin Cerapeptide Toner and Moisturiser 170ml",
+      "shortName": "兰芝 Cream Skin",
+      "category": "保湿化妆水",
+      "positioning": "水乳混合型轻质保湿",
+      "bubbleImage": "/assets/products/laneige-cream-skin/bubble.svg",
+      "bubbleFocal": "50% 50%",
+      "summary": "以神经酰胺 NP、乙酰基四肽-11、角鲨烷、白池花籽油与多重水相保湿剂构成水乳混合型配方；社媒同时把它视为冬季保湿水和夏夜轻乳。",
+      "technologies": [
+        {"label": "Cerapeptide 识别主线", "summary": "神经酰胺 NP 与乙酰基四肽-11 构成新版配方最明确的识别组合，但不能由名称直接推定产品级临床结果。"},
+        {"label": "水乳混合结构", "summary": "角鲨烷、白池花籽油与乳化体系让化妆水具有更接近轻乳液的柔润感。"},
+        {"label": "多重水相保湿网络", "summary": "甘油、多元醇、透明质酸和银耳提取物共同支持即时补水与延展。"}
+      ],
+      "keyIngredients": [
+        {"label": "神经酰胺 NP", "role": "屏障脂质支持线索"},
+        {"label": "乙酰基四肽-11", "role": "Cerapeptide 配方识别点"},
+        {"label": "角鲨烷", "role": "柔润脂质支持"},
+        {"label": "白池花籽油", "role": "植物油柔润线"},
+        {"label": "透明质酸 + 银耳", "role": "水相保湿支持"}
+      ],
+      "media": [
+        {"platform": "YouTube", "signal": "中等", "topics": ["新版与旧版 Cream Skin 的差异", "冬季补水", "化妆水与面霜二合一"], "doubts": ["Cerapeptide 新版是否真的优于 OG", "与 Fenty Milky Toner 等同类产品如何选择"], "misconceptions": ["配方升级不等于已经证明所有使用者都获得更强效果"], "scenarios": ["冬季保湿", "精简护肤"], "summary": "海外讨论围绕新版重配、冬季保湿和水乳二合一展开，核心仍是新旧版使用感与价值差异。"},
+        {"platform": "Reddit", "signal": "有限", "topics": ["奶皮水横向选择", "正装购买价值"], "doubts": ["痘痘肌混合皮是否适合", "同类产品太多是否值得买正装"], "misconceptions": ["奶皮水类别相似不代表肤感与负担完全相同"], "scenarios": ["购买前比较"], "summary": "讨论量有限，主要反映奶皮水竞争激烈，以及痘痘肌混合皮对柔润度和负担的顾虑。"},
+        {"platform": "小红书", "signal": "有限", "topics": ["夏季夜间补水", "干皮敏感肌的清爽感"], "doubts": ["单一体验能否代表敏感肌整体耐受"], "misconceptions": ["一条正面体验不能外推为所有敏感肌都适合"], "scenarios": ["夏季夜间", "干皮补水"], "summary": "当前国内产品级信号仅来自单条内容：干皮用户在夏季夜间使用后认为清爽、补水，证据量不足以泛化。"}
+      ],
+      "editorialCards": [
+        {"image": "/assets/products/laneige-cream-skin/cards/01.svg", "caption": "产品封面与核心问题"},
+        {"image": "/assets/products/laneige-cream-skin/cards/02.svg", "caption": "三层保湿配方结构"},
+        {"image": "/assets/products/laneige-cream-skin/cards/03.svg", "caption": "新版与旧版的重配讨论"},
+        {"image": "/assets/products/laneige-cream-skin/cards/04.svg", "caption": "冬季保湿与夏夜轻乳的社媒分歧"},
+        {"image": "/assets/products/laneige-cream-skin/cards/05.svg", "caption": "背景文献与产品证据边界"}
+      ],
+      "evidenceBoundary": "报告列出 15 篇神经酰胺、屏障、植物油、pH 与环境影响相关背景文献，但未检出该具体 SKU 的直接产品论文、明确专利或可独立核验的产品级临床主张。",
+      "audience": {"bestFor": ["偏干、缺水并希望精简水乳步骤的人", "在较干环境中偏好柔润化妆水的人"], "cautions": ["痘痘肌混合皮需根据后续叠加判断负担", "敏感肌与易闷痘人群先做局部耐受和连续使用测试"]},
+      "layout": {"x": 2200, "y": 1020, "size": 0.92}
     }
   ]
 }
