@@ -1,0 +1,179 @@
+{
+  "version": 1,
+  "mediaByProduct": {
+    "lancome-renergie-lift-multi-action-ultra-dark-circle-eye-cream": [
+      {
+        "platform": "小红书",
+        "signal": "中等",
+        "topics": ["兰蔻眼霜系列怎么选", "提拉紧致定位", "干纹与使用感"],
+        "doubts": ["塑颜在系列中相对冷门", "紧致体验是否匹配价格"],
+        "misconceptions": ["系列定位不同不等于所有肤质都会获得相同效果"],
+        "scenarios": ["购买前系列比较", "眼周松弛与干纹护理"],
+        "summary": "小红书讨论主要围绕菁纯、小黑瓶与塑颜等兰蔻眼霜的系列选择，把塑颜更多放在提拉紧致与干纹护理的位置。"
+      },
+      {
+        "platform": "知乎",
+        "signal": "中等",
+        "topics": ["与雅诗兰黛眼霜比较", "成分与价格分析", "眼霜作用边界"],
+        "doubts": ["高价是否值得", "眼霜能否处理已经形成的皱纹"],
+        "misconceptions": ["眼霜更应按肤质和需求选择，不应按年龄或把它理解为既成皱纹治疗"],
+        "scenarios": ["理性选购", "眼周抗老比较"],
+        "summary": "知乎内容更偏横向比较、成分与价值讨论，并强调按肤质和需求选择以及眼霜对既成皱纹的能力边界。"
+      }
+    ],
+    "niod-fractionated-eye-contour-concentrate": [
+      {
+        "platform": "YouTube",
+        "signal": "较强",
+        "topics": ["高价是否值得", "黑眼圈与细纹", "与 The Ordinary / Buffet 比较"],
+        "doubts": ["高价能否换来足够收益", "长期使用结果是否明显"],
+        "misconceptions": ["创作者个体前后对比不能当作产品级临床结论"],
+        "scenarios": ["购买前比较", "连续使用观察"],
+        "summary": "YouTube 信号集中在长期使用体验、黑眼圈与细纹，以及 FECC 相比 The Ordinary 等更便宜眼部产品是否值得高价。"
+      },
+      {
+        "platform": "小红书",
+        "signal": "中等",
+        "topics": ["空瓶复购", "长期使用", "与 Jan Marini 搭配"],
+        "doubts": ["高价产品长期复购是否值得", "搭配其他眼部产品后如何判断贡献"],
+        "misconceptions": ["空瓶次数和个人搭配体验不能单独证明产品疗效"],
+        "scenarios": ["长期眼周护理", "与其他眼部精华搭配"],
+        "summary": "小红书出现多次空瓶和长期使用反馈，并有与 Jan Marini 眼部产品搭配的经验型讨论。"
+      },
+      {
+        "platform": "知乎",
+        "signal": "有限",
+        "topics": ["高端眼部产品横向比较", "品牌定位", "与雅诗兰黛和兰蔻比较"],
+        "doubts": ["品牌定位是否能转化为实际使用价值"],
+        "misconceptions": ["品牌高端定位不等于效果必然优于其他眼部产品"],
+        "scenarios": ["高端眼霜选购", "品牌横向比较"],
+        "summary": "知乎更多把 NIOD 放入雅诗兰黛、兰蔻等高端眼部产品的横向比较中，也讨论其面向高知用户的品牌定位。"
+      }
+    ],
+    "clinique-daily-calm-soothing-repair-face-cream": [
+      {
+        "platform": "YouTube",
+        "signal": "中等",
+        "topics": ["红敏反应性肌肤", "舒缓面霜定位", "购买推荐"],
+        "doubts": ["单一创作者体验能否泛化", "联盟链接是否影响推荐语境"],
+        "misconceptions": ["创作者称其适合红敏肌不等于对所有敏感状态都安全"],
+        "scenarios": ["泛红与反应性肌肤日常护理"],
+        "summary": "YouTube 产品级内容主要把它放在红、敏、反应性肌肤的舒缓面霜场景中；可见内容同时包含付费联盟链接语境。"
+      },
+      {
+        "platform": "小红书",
+        "signal": "有限",
+        "topics": ["与倩碧黄油系列比较", "日常保湿", "空瓶体验"],
+        "doubts": ["与品牌内部其他保湿产品相比是否更值得"],
+        "misconceptions": ["品牌内部产品名称相近不代表配方和肤感相同"],
+        "scenarios": ["日常保湿", "购买前品牌内比较"],
+        "summary": "小红书信号偏品牌内部比较和使用体验，有用户把这款面霜与无油黄油等倩碧保湿产品放在一起评价。"
+      },
+      {
+        "platform": "Bilibili",
+        "signal": "有限",
+        "topics": ["成分添加量质疑", "肤感竞争力", "功效与价格"],
+        "doubts": ["胜肽等成分添加量是否足够", "肤感是否有竞争力"],
+        "misconceptions": ["仅凭成分表排序也不能精确反推出全部成分浓度"],
+        "scenarios": ["成分党评测", "购买前质疑"],
+        "summary": "Bilibili 的代表性内容更偏批判式成分与肤感分析，重点质疑胜肽等活性在成分表中的位置和整体产品竞争力。"
+      }
+    ],
+    "caudalie-vinoperfect-serum-suncare-set": [
+      {
+        "platform": "YouTube",
+        "signal": "中等",
+        "topics": ["精华与防晒夏日组合", "淡斑与提亮叙事", "30 天使用内容"],
+        "doubts": ["品牌内容与独立体验如何区分", "淡斑强度是否符合预期"],
+        "misconceptions": ["套装传播中的提亮主张不能自动视为独立临床证据"],
+        "scenarios": ["夏季日间程序", "晒斑与暗沉护理"],
+        "summary": "YouTube 主要把 Vinoperfect 精华与防晒作为夏季组合来传播，强调预防日晒斑、提亮与均匀肤色，也包含品牌内容和赠品评测。"
+      },
+      {
+        "platform": "Reddit",
+        "signal": "有限",
+        "topics": ["多产品程序中的爆痘排查", "与 LRP / Nuxe / CeraVe 同用", "是否重启护肤程序"],
+        "doubts": ["爆痘是否由 Vinoperfect 引起", "多产品并用时如何判断变量"],
+        "misconceptions": ["单个复杂护肤程序中的爆痘不能直接归因于某一款精华"],
+        "scenarios": ["问题肌肤排查", "复杂护肤程序"],
+        "summary": "Reddit 的产品级信号来自多产品护肤程序中的爆痘排查：用户同时使用 Caudalie、LRP、Nuxe、CeraVe 等产品，无法单独确认致因。"
+      },
+      {
+        "platform": "小红书",
+        "signal": "中等",
+        "topics": ["夏日提亮", "套装折扣与价格", "敏感肌体验"],
+        "doubts": ["优惠是否值得囤货", "敏感肌是否都能耐受"],
+        "misconceptions": ["单条“敏皮可用”体验不能外推到所有敏感肌"],
+        "scenarios": ["夏季通勤", "促销期购买", "肤色暗沉护理"],
+        "summary": "小红书讨论更偏夏日白净发光、套装价格和购买场景，也出现敏感肌正面体验；这类个体反馈不应泛化。"
+      },
+      {
+        "platform": "Bilibili",
+        "signal": "有限",
+        "topics": ["与娇韵诗和科颜氏淡斑精华比较", "配方分析", "敏感肌适配"],
+        "doubts": ["淡斑路线如何横向选择", "极敏肌是否适合"],
+        "misconceptions": ["配方横评不能替代该具体 SKU 的产品级临床证据"],
+        "scenarios": ["淡斑精华横评", "成分党选购"],
+        "summary": "Bilibili 内容偏配方师式横评，把欧缇丽与娇韵诗、科颜氏等淡斑精华放在一起讨论，并对极敏肌使用保持谨慎。"
+      },
+      {
+        "platform": "知乎",
+        "signal": "有限",
+        "topics": ["美白淡斑精华是否好用", "购买价值", "适配人群"],
+        "doubts": ["提亮体验与稳定淡斑效果如何区分"],
+        "misconceptions": ["问答中的个体体验不能代表所有肤质"],
+        "scenarios": ["购买前问答", "淡斑产品选择"],
+        "summary": "知乎信号以“欧缇丽美白精华是否好用”等购买前问答为主，更适合作为消费者疑问入口，而不是疗效定论。"
+      }
+    ],
+    "fresh-kombucha-multi-defense-sheer-uv": [
+      {
+        "platform": "小红书",
+        "signal": "中等",
+        "topics": ["干皮滋润度", "妆前兼容性", "不泛白体验"],
+        "doubts": ["油皮是否觉得油", "是否熏眼", "足量使用后的肤感"],
+        "misconceptions": ["舒适肤感不能代替防晒强度与补涂要求"],
+        "scenarios": ["日常通勤", "妆前防晒", "偏干肤质"],
+        "summary": "小红书体验信号更集中在滋润度、妆前兼容和不泛白；油皮油光与眼周刺激存在明显个体差异。"
+      },
+      {
+        "platform": "知乎",
+        "signal": "有限",
+        "topics": ["配方与防晒剂讨论", "香精信息", "产品定位边界"],
+        "doubts": ["“无香精”说法是否与成分表一致", "日常舒适是否等于长时间户外适用"],
+        "misconceptions": ["材料中的“无香精”说法与成分表列有 Parfum 存在冲突，不能直接下结论"],
+        "scenarios": ["成分核对", "购买前理性判断"],
+        "summary": "知乎侧更适合呈现配方和信息核对：现有材料中的“无香精”说法与成分表列有 Parfum 冲突，应保留为待核验信息。"
+      }
+    ],
+    "skinceuticals-p-tiox-anti-wrinkle-cream": [
+      {
+        "platform": "YouTube",
+        "signal": "中等",
+        "topics": ["wrinkle modulating 叙事", "与神经毒素注射的关系", "面霜胜肽配方"],
+        "doubts": ["Botox in a bottle 是否过度营销", "精华证据能否外推到面霜"],
+        "misconceptions": ["外用 P-TIOX 不能等同或替代专业神经毒素注射；精华内容也不能自动代表面霜"],
+        "scenarios": ["抗皱面霜", "医美项目之外的日常护理"],
+        "summary": "YouTube 围绕 neurotoxin-inspired / wrinkle-modulating 叙事最强，也有面霜开箱和配方讨论；同时大量内容其实对应 P-TIOX 精华，必须按 SKU 区分。"
+      },
+      {
+        "platform": "Reddit",
+        "signal": "有限",
+        "topics": ["P-TIOX 面霜与精华联用", "与维 C / 壬二酸叠加", "肤感是否优雅"],
+        "doubts": ["多活性程序中的叠加顺序", "面霜与精华一起用是否值得"],
+        "misconceptions": ["单个用户的叠加程序不能证明产品协同疗效"],
+        "scenarios": ["多活性早间程序", "精华与面霜联用"],
+        "summary": "Reddit 的产品级问题集中在 P-TIOX 面霜与精华如何联用，以及与维 C、壬二酸等活性成分的叠加顺序和肤感。"
+      },
+      {
+        "platform": "小红书",
+        "signal": "中等",
+        "topics": ["与肉毒注射对比", "延长医美间隔", "与修丽可其他抗老精华比较"],
+        "doubts": ["本身打肉毒时如何判断产品真实贡献", "是否比其他修丽可抗老精华更好用"],
+        "misconceptions": ["“类肉毒”是护肤传播语言，不代表注射等效"],
+        "scenarios": ["医美间隔期护理", "动态纹与顽固纹讨论"],
+        "summary": "小红书讨论明显围绕“类肉毒”定位展开，包括把它作为医美间隔期护理，以及与修丽可其他抗老精华的肤感比较。"
+      }
+    ]
+  }
+}
