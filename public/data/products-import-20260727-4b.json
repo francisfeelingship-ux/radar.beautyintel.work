@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "products": [
+    {
+      "id": "ole-henriksen-maldives-melon-chillers-pout-preserve-lip-treatment",
+      "slug": "ole-henriksen-maldives-melon-chillers-pout-preserve-lip-treatment",
+      "brand": "Ole Henriksen",
+      "name": "Maldives Melon Chillers Pout Preserve Lip Treatment 12ml",
+      "shortName": "Maldives Melon 冰感润唇",
+      "category": "唇部护理",
+      "positioning": "凉感、润泽与夜间厚敷",
+      "bubbleImage": "/assets/products/ole-henriksen-maldives-melon-chillers-pout-preserve-lip-treatment/bubble.svg",
+      "bubbleFocal": "50% 50%",
+      "summary": "这是一支偏润唇护理定位的高光泽唇部产品。配方可见两种棕榈酰肽、植物油脂与薄荷/薄荷醇凉感线索；小红书讨论更集中在即时凉感、滋润度、香味以及作为夜间唇膜厚涂的体验。",
+      "technologies": [],
+      "keyIngredients": [
+        {"label": "棕榈酰六肽-12 + 棕榈酰三肽-1", "role": "胜肽护理线索"},
+        {"label": "印度藤黄籽脂 + 非洲芒果籽脂", "role": "柔润脂质"},
+        {"label": "云莓籽油 + 向日葵籽油", "role": "植物油柔润支持"},
+        {"label": "薄荷醇 + 薄荷油", "role": "凉感体验"}
+      ],
+      "media": [
+        {"platform": "小红书", "signal": "中等", "topics": ["夜间厚涂润唇", "凉感体验", "香味与色号", "与 Summer Fridays、Rhode、兰芝等比较"], "doubts": ["甜香是否过重", "带闪色号是否容易误买", "不同竞品的滋润度差异"], "misconceptions": ["产品更接近 Lip Treatment 的护理定位，不应只按普通唇蜜理解"], "scenarios": ["日常润唇", "夜间唇膜厚涂", "夏季凉感唇部护理"], "summary": "国内用户主要把它当作润唇护理甚至夜间唇膜使用，评价集中在凉感、柔润度和香味；同时存在对甜腻香型与部分带闪色号的犹豫。"}
+      ],
+      "editorialCards": [
+        {"image": "/assets/products/ole-henriksen-maldives-melon-chillers-pout-preserve-lip-treatment/bubble.svg", "caption": "Maldives Melon Chillers 产品气泡与公开信号"}
+      ],
+      "evidenceBoundary": "当前材料未检出该 SKU 的明确产品级 claims、technology 或 patent。所列唇部屏障与保湿文献属于背景资料，不能替代该产品的直接临床验证；社媒内容属于个人体验。",
+      "audience": {"bestFor": ["喜欢高光泽润唇感和明显凉感的人", "希望把润唇产品用于夜间厚敷的人"], "cautions": ["配方含香精、薄荷油、薄荷醇及多种香料相关成分，敏感唇需留意耐受", "对甜香或明显凉感不喜欢的人可能不适合"]},
+      "layout": {"x": 420, "y": 1280, "size": 0.9}
+    },
+    {
+      "id": "osea-marine-screen-spf50-mineral-sunscreen",
+      "slug": "osea-marine-screen-spf50-mineral-sunscreen",
+      "brand": "OSEA",
+      "name": "Marine Screen SPF 50 Mineral Sunscreen",
+      "shortName": "Marine Screen SPF 50",
+      "category": "防晒",
+      "positioning": "保湿型矿物防晒",
+      "bubbleImage": "/assets/products/osea-marine-screen-spf50-mineral-sunscreen/bubble.svg",
+      "bubbleFocal": "50% 50%",
+      "summary": "公开内容把它定位为 SPF 50 矿物防晒，并强调保湿、可与底妆搭配的肤感。配方列表中可见海藻提取物、透明质酸钠、角鲨烷、泛醇与没药醇等护理成分；实际使用讨论则集中在白膜、搓泥、气味和价格。",
+      "technologies": [
+        {"label": "矿物防晒主轴", "summary": "产品与创作者内容一致把它定义为 SPF 50 矿物防晒；创作者称以氧化锌提供防护，但附件中的常规成分表未单列防晒活性成分，因此此处不进一步推断浓度或滤剂规格。"},
+        {"label": "海藻与保湿护理线", "summary": "裙带菜提取物、透明质酸钠、角鲨烷、泛醇和没药醇构成保湿舒缓型配方线索。"}
+      ],
+      "keyIngredients": [
+        {"label": "裙带菜提取物", "role": "海洋来源护理线索"},
+        {"label": "透明质酸钠", "role": "吸湿保湿"},
+        {"label": "角鲨烷", "role": "柔润支持"},
+        {"label": "泛醇 + 没药醇", "role": "舒缓护理线索"}
+      ],
+      "media": [
+        {"platform": "YouTube", "signal": "中等", "topics": ["白膜与融合度", "搓泥", "妆下表现", "保湿感", "价格"], "doubts": ["是否会搓泥", "是否有明显白膜", "42 美元价格是否值得"], "misconceptions": ["单次 wear test 不能代表所有肤质和护肤搭配下的表现"], "scenarios": ["干皮日常防晒", "妆前防晒", "矿物防晒选购比较"], "summary": "海外测评一方面称其保湿、可在妆下使用，另一方面也报告白膜、气味与首日搓泥等问题，真实体验分歧较明显。"},
+        {"platform": "小红书", "signal": "有限", "topics": ["新旧批次颜色与气味差异", "海外渠道囤货"], "doubts": ["颜色发青是否代表配方变化或产品状态异常"], "misconceptions": ["单个批次的颜色与气味差异不能直接证明整个新配方存在质量问题"], "scenarios": ["开封检查", "批次差异讨论"], "summary": "国内信号主要来自一位用户对新旧批次颜色和气味差异的质疑，更适合作为批次/渠道风险线索，而不是普遍产品结论。"}
+      ],
+      "editorialCards": [
+        {"image": "/assets/products/osea-marine-screen-spf50-mineral-sunscreen/bubble.svg", "caption": "OSEA Marine Screen 产品气泡与公开信号"}
+      ],
+      "evidenceBoundary": "附件中唯一技术匹配论文讨论的是海洋来源天然 UV 过滤物的广泛可能性，并未测试 OSEA 这支配方。社媒中的氧化锌、妆下表现、白膜和搓泥均属于创作者或用户信号，不替代产品级临床或法规资料。",
+      "audience": {"bestFor": ["偏好矿物防晒并重视保湿肤感的人", "干皮或希望防晒兼顾柔润感的人"], "cautions": ["白膜、搓泥与气味评价存在分歧，妆前搭配需要实际测试", "批次颜色或气味明显异常时应先核对官方信息与购买渠道"]},
+      "layout": {"x": 940, "y": 1320, "size": 0.9}
+    },
+    {
+      "id": "armani-luminous-silk-foundation",
+      "slug": "armani-luminous-silk-foundation",
+      "brand": "Armani",
+      "name": "Luminous Silk Foundation 30ml (Various Shades)",
+      "shortName": "Luminous Silk 粉底",
+      "category": "彩妆",
+      "positioning": "中等遮瑕、自然光泽妆效",
+      "bubbleImage": "/assets/products/armani-luminous-silk-foundation/bubble.svg",
+      "bubbleFocal": "50% 50%",
+      "summary": "2026 年的海外讨论重点不是复杂成分科技，而是经典粉底改版后的妆效与选色：创作者普遍将其描述为中等遮瑕、自然贴肤的 luminous finish，并提到色号扩展及透明瓶身更便于比色。",
+      "technologies": [],
+      "keyIngredients": [
+        {"label": "烟酰胺", "role": "新配方中的护肤型添加线索"}
+      ],
+      "media": [
+        {"platform": "YouTube", "signal": "直接产品信号", "topics": ["改版前后比较", "44 色号与选色", "中等遮瑕", "自然光泽妆效", "8 小时持妆"], "doubts": ["不同肤质是否都适配", "是否会抓干纹或干燥区域", "如何找到正确色号"], "misconceptions": ["加入烟酰胺等护肤成分不等于粉底具备独立护肤治疗效果"], "scenarios": ["日常自然底妆", "长时间 wear test", "线上选色"], "summary": "海外内容主要围绕改版、44 个色号、自然皮肤感和中等遮瑕展开；同时有创作者回顾旧版在干燥区域可能卡住，以及选色容易出错的问题。"}
+      ],
+      "editorialCards": [
+        {"image": "/assets/products/armani-luminous-silk-foundation/bubble.svg", "caption": "Armani Luminous Silk 产品气泡与公开信号"}
+      ],
+      "evidenceBoundary": "附件中的国内社媒/知乎部分主要讨论的是阿玛尼“权力粉底液”，并非 Luminous Silk，因此不作为本 SKU 的直接口碑证据。背景粉底文献也不是本产品的直接验证；本气泡仅保留附件中可对应 Luminous Silk 的海外信号。",
+      "audience": {"bestFor": ["偏好中等遮瑕、自然光泽和贴肤妆效的人", "需要较宽色号范围并重视选色的人"], "cautions": ["干燥区域是否显纹、卡粉存在个体差异", "改版前后配方和包装不同，参考旧评时应区分版本"]},
+      "layout": {"x": 1460, "y": 1260, "size": 0.91}
+    },
+    {
+      "id": "covergirl-clean-fresh-squishy-glaze-lip-butter-balm",
+      "slug": "covergirl-clean-fresh-squishy-glaze-lip-butter-balm",
+      "brand": "CoverGirl",
+      "name": "Clean Fresh Squishy Glaze Lip Butter Balm",
+      "shortName": "Squishy Glaze Lip Balm",
+      "category": "彩妆",
+      "positioning": "高光泽润唇彩妆",
+      "bubbleImage": "/assets/products/covergirl-clean-fresh-squishy-glaze-lip-butter-balm/bubble.svg",
+      "bubbleFocal": "50% 50%",
+      "summary": "这支产品更适合从质地、光泽与使用体验来理解。CoverGirl 官方视频主打“Squishy Hydration, Bouncy Shine”并宣称最长 9 小时保湿；用户内容则关注香味、涂头设计以及叠加唇线或口红时的便利性。",
+      "technologies": [],
+      "keyIngredients": [
+        {"label": "乳木果脂", "role": "柔润支持"},
+        {"label": "角鲨烷", "role": "润泽肤感"},
+        {"label": "透明质酸钠", "role": "保湿线索"}
+      ],
+      "media": [
+        {"platform": "YouTube", "signal": "中等", "topics": ["弹润光泽", "9 小时保湿主张", "香味", "涂头设计", "叠加唇线/口红"], "doubts": ["干后质地是否适合自己", "香味是否过于食物化"], "misconceptions": ["“9 小时保湿”来自品牌内容，应视为品牌主张而非独立测评结论"], "scenarios": ["单独润唇", "唇线或口红上叠加", "快速补涂"], "summary": "官方内容强调弹润光泽与最长 9 小时保湿；独立用户则更关注香味、涂头与干后质地是否舒服。"}
+      ],
+      "editorialCards": [
+        {"image": "/assets/products/covergirl-clean-fresh-squishy-glaze-lip-butter-balm/bubble.svg", "caption": "CoverGirl Squishy Glaze 产品气泡与公开信号"}
+      ],
+      "evidenceBoundary": "附件未检出该 SKU 的产品级技术、专利或论文。国内小红书部分主要对应 Clean Fresh Yummy Gloss，而不是 Squishy Glaze Lip Butter Balm，因此未直接并入本 SKU 的口碑结论；品牌 9 小时保湿属于品牌主张。",
+      "audience": {"bestFor": ["喜欢亮泽、润唇感和方便叠涂的人", "把香味与涂头体验看得比成分科技更重要的人"], "cautions": ["香精存在个体偏好与耐受差异", "对干后膜感敏感的人建议先试用质地"]},
+      "layout": {"x": 1980, "y": 1300, "size": 0.9}
+    }
+  ]
+}
