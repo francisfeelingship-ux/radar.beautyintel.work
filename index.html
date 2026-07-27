@@ -43,7 +43,7 @@
             <span><i class="legend-dot detail"></i>展开内容</span>
           </div>
           <div class="view-readout" aria-live="polite">
-            <span id="visibleCount">33</span> 个产品
+            <span id="visibleCount">37</span> 个产品
             <i></i>
             <span id="zoomReadout">100%</span>
           </div>
@@ -75,7 +75,7 @@
 
           <div class="stage-meta top-left" aria-hidden="true">
             <span>LIVE MAP</span>
-            <strong id="mapMeta">33 PRODUCTS · CURATED PUBLIC SIGNALS</strong>
+            <strong id="mapMeta">37 PRODUCTS · CURATED PUBLIC SIGNALS</strong>
           </div>
           <div class="stage-meta bottom-right" aria-hidden="true">
             <span>PUBLIC VIEW</span>
@@ -172,24 +172,27 @@
           const pathname = new URL(requestUrl, window.location.href).pathname;
           if (pathname !== '/data/products.json') return nativeFetch(input, init);
 
-          const [baseResponse, overlayResponse, batchResponse, importResponse, mediaOverridesResponse] = await Promise.all([
+          const [baseResponse, overlayResponse, batchResponse, importResponse, secondImportResponse, mediaOverridesResponse] = await Promise.all([
             nativeFetch(input, init),
             nativeFetch('/data/products-overlay.json'),
             nativeFetch('/data/products-batch.json'),
             nativeFetch('/data/products-import-20260727-4.json'),
+            nativeFetch('/data/products-import-20260727-4b.json'),
             nativeFetch('/data/media-platform-overrides.json')
           ]);
-          if (!baseResponse.ok || !overlayResponse.ok || !batchResponse.ok || !importResponse.ok || !mediaOverridesResponse.ok) return baseResponse;
+          if (!baseResponse.ok || !overlayResponse.ok || !batchResponse.ok || !importResponse.ok || !secondImportResponse.ok || !mediaOverridesResponse.ok) return baseResponse;
 
           const base = await baseResponse.json();
           const overlay = await overlayResponse.json();
           const batch = await batchResponse.json();
           const imported = await importResponse.json();
+          const importedB = await secondImportResponse.json();
           const mediaOverrides = await mediaOverridesResponse.json();
           const additions = [
             ...(Array.isArray(overlay.products) ? overlay.products : []),
             ...(Array.isArray(batch.products) ? batch.products : []),
-            ...(Array.isArray(imported.products) ? imported.products : [])
+            ...(Array.isArray(imported.products) ? imported.products : []),
+            ...(Array.isArray(importedB.products) ? importedB.products : [])
           ];
           const additionIds = new Set(additions.map(product => product.id));
           base.products = [
