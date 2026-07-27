@@ -172,16 +172,18 @@
           const pathname = new URL(requestUrl, window.location.href).pathname;
           if (pathname !== '/data/products.json') return nativeFetch(input, init);
 
-          const [baseResponse, overlayResponse, batchResponse] = await Promise.all([
+          const [baseResponse, overlayResponse, batchResponse, mediaOverridesResponse] = await Promise.all([
             nativeFetch(input, init),
             nativeFetch('/data/products-overlay.json'),
-            nativeFetch('/data/products-batch.json')
+            nativeFetch('/data/products-batch.json'),
+            nativeFetch('/data/media-platform-overrides.json')
           ]);
-          if (!baseResponse.ok || !overlayResponse.ok || !batchResponse.ok) return baseResponse;
+          if (!baseResponse.ok || !overlayResponse.ok || !batchResponse.ok || !mediaOverridesResponse.ok) return baseResponse;
 
           const base = await baseResponse.json();
           const overlay = await overlayResponse.json();
           const batch = await batchResponse.json();
+          const mediaOverrides = await mediaOverridesResponse.json();
           const additions = [
             ...(Array.isArray(overlay.products) ? overlay.products : []),
             ...(Array.isArray(batch.products) ? batch.products : [])
@@ -191,6 +193,11 @@
             ...(base.products || []).filter(product => !additionIds.has(product.id)),
             ...additions
           ];
+
+          const mediaByProduct = mediaOverrides?.mediaByProduct || {};
+          base.products.forEach(product => {
+            if (Array.isArray(mediaByProduct[product.id])) product.media = mediaByProduct[product.id];
+          });
 
           const freshSugarMelt = base.products.find(product => product.id === 'fresh-sugar-melt-lip-cream-mango');
           if (freshSugarMelt) {
