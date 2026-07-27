@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "products": [
+    {
+      "id": "clinique-daily-calm-gentle-cream-face-cleanser",
+      "slug": "clinique-daily-calm-gentle-cream-face-cleanser",
+      "brand": "Clinique",
+      "name": "Daily Calm Gentle Cream Face Cleanser",
+      "shortName": "Daily Calm 温和洁面",
+      "category": "洁面",
+      "positioning": "柔润型日常温和清洁",
+      "bubbleImage": "/assets/products/clinique-daily-calm-gentle-cream-face-cleanser/bubble.svg",
+      "bubbleFocal": "50% 50%",
+      "summary": "以甘油、角鲨烷及橄榄油、牛油果油、霍霍巴油构成柔润底座，叠加甘草酸二钾、透明质酸钠与多种植物提取物；当前资料未检出该 SKU 的明确产品级功效声明。",
+      "technologies": [
+        {"label": "柔润脂质底座", "summary": "角鲨烷与橄榄油、牛油果油、霍霍巴油共同提供清洁后的柔润肤感支持。"},
+        {"label": "保湿舒缓线", "summary": "甘油、透明质酸钠、甘草酸二钾和乙酰葡糖胺构成保湿与舒缓护理线索。"},
+        {"label": "温和清洁结构", "summary": "配方包含椰油基 PG-二甲基氯化铵磷酸酯钠、蔗糖硬脂酸酯等清洁/乳化结构，但资料没有给出产品级清洁力测试。"}
+      ],
+      "keyIngredients": [
+        {"label": "甘油", "role": "吸湿保湿"},
+        {"label": "角鲨烷 + 植物油", "role": "柔润支持"},
+        {"label": "甘草酸二钾", "role": "舒缓线索"},
+        {"label": "透明质酸钠", "role": "补水支持"},
+        {"label": "水杨酸", "role": "配方中存在；资料未提供浓度与该 SKU 的去角质主张"}
+      ],
+      "media": [
+        {"platform": "小红书/知乎", "signal": "有限且 SKU 混杂", "topics": ["干敏皮温和洁面", "清洁后是否紧绷", "洗卸合一争议"], "doubts": ["检索内容包含倩碧其他洁面产品", "不能把其他 SKU 的清洁力与洗卸体验外推到本品"], "misconceptions": ["氨基酸、皂基或洗卸合一等讨论不能在未核对具体配方时直接套用"], "scenarios": ["购买前比较", "干敏肤感讨论"], "summary": "资料中的社媒回声混有倩碧其他洁面，适合用于理解用户问题，不适合作为本 SKU 的直接体验结论。"}
+      ],
+      "editorialCards": [
+        {"image": "/assets/products/clinique-daily-calm-gentle-cream-face-cleanser/bubble.svg", "caption": "产品封面与配方信息"}
+      ],
+      "evidenceBoundary": "当前材料未检出该具体 SKU 的明确 claims、technology 或 patent；洁面与屏障背景文献不能替代产品级验证，社媒内容还存在明显 SKU 混杂。",
+      "audience": {"bestFor": ["偏好乳霜型、清洁后柔润肤感的人", "希望日常清洁兼顾保湿舒缓线索的人"], "cautions": ["配方含水杨酸但资料未提供浓度，不能据此推断去角质强度", "植物提取物及个体耐受仍需实际试用判断"]},
+      "layout": {"x": 450, "y": 1020, "size": 0.9}
+    },
+    {
+      "id": "caudalie-very-high-protection-lightweight-cream-spf50",
+      "slug": "caudalie-very-high-protection-lightweight-cream-spf50",
+      "brand": "Caudalie",
+      "name": "Very High Protection Lightweight Cream SPF50+ 40ml",
+      "shortName": "欧缇丽轻盈防晒 SPF50+",
+      "category": "防晒",
+      "positioning": "多重有机滤剂高倍防护",
+      "bubbleImage": "/assets/products/caudalie-very-high-protection-lightweight-cream-spf50/bubble.svg",
+      "bubbleFocal": "50% 50%",
+      "summary": "以 BEMT、DHHB、乙基己基三嗪酮和苯基苯并咪唑磺酸等有机滤剂构成 SPF50+ 防护主轴，辅以葡萄籽油、向日葵籽油与维生素 E；资料列出 WO2025228921A1，但未说明其与该 SKU 的具体覆盖关系。",
+      "technologies": [
+        {"label": "多重有机防晒剂组合", "summary": "BEMT、DHHB、乙基己基三嗪酮与苯基苯并咪唑磺酸共同覆盖 UVA/UVB 防护需求。"},
+        {"label": "轻质酯类乳化底座", "summary": "己二酸二丁酯、碳酸二辛酯及乳化体系支持轻盈延展与成膜。"},
+        {"label": "葡萄来源抗氧化线", "summary": "葡萄籽油、向日葵籽油与生育酚/生育酚乙酸酯构成植物油与抗氧化护理线索。"}
+      ],
+      "keyIngredients": [
+        {"label": "BEMT + DHHB", "role": "UVA/广谱防护主轴"},
+        {"label": "乙基己基三嗪酮", "role": "UVB 高效滤剂"},
+        {"label": "苯基苯并咪唑磺酸", "role": "水相 UVB 防护"},
+        {"label": "葡萄籽油", "role": "品牌葡萄来源护理线"},
+        {"label": "维生素 E", "role": "抗氧化支持"}
+      ],
+      "media": [
+        {"platform": "YouTube", "signal": "直接产品信号", "topics": ["不同肤质适配", "拥挤防晒市场中的实际使用表现"], "doubts": ["不同肤质上脸体验是否一致"], "misconceptions": ["SPF50+ 不能替代足量涂抹与及时补涂"], "scenarios": ["日常通勤", "购买前肤质匹配"], "summary": "Good Housekeeping UK 对该产品进行了直接试用讨论，核心是高倍防晒在不同肤质上的实际适配。"},
+        {"platform": "小红书/知乎", "signal": "中等但产品混杂", "topics": ["搓泥", "气味", "油润度", "质地分层"], "doubts": ["部分帖子未能确认与该精确 SKU 完全一致", "个体肤感差异较大"], "misconceptions": ["单条搓泥或油腻体验不能外推为配方普遍表现"], "scenarios": ["妆前防晒", "通勤与户外"], "summary": "国内讨论集中在搓泥、气味、油润度和分层等使用问题，但存在产品版本或 SKU 混杂，需要作为风险线索而非确定结论。"}
+      ],
+      "editorialCards": [
+        {"image": "/assets/products/caudalie-very-high-protection-lightweight-cream-spf50/bubble.svg", "caption": "产品封面与防晒体系"}
+      ],
+      "evidenceBoundary": "当前资料支持滤剂体系与配方结构判断；葡萄来源文献和防晒背景研究不能替代该 SKU 的直接临床数据。WO2025228921A1 被列出，但材料没有建立其对该产品的具体 claim 覆盖。",
+      "audience": {"bestFor": ["希望使用 SPF50+ 多重有机滤剂防晒的人", "偏好轻质乳霜型防晒并关注葡萄来源护理线的人"], "cautions": ["妆前搓泥、气味和油润度在社媒存在分歧，建议先试用", "出现异常分层或状态变化时应先核对批次和官方使用说明"]},
+      "layout": {"x": 1050, "y": 1420, "size": 0.88}
+    },
+    {
+      "id": "caudalie-vinohydra-sorbet-cream-moisturiser",
+      "slug": "caudalie-vinohydra-sorbet-cream-moisturiser",
+      "brand": "Caudalie",
+      "name": "VinoHydra Sorbet Cream Moisturiser with Hyaluronic Acid 60ml",
+      "shortName": "VinoHydra 冰淇淋霜",
+      "category": "保湿面霜",
+      "positioning": "透明质酸与葡萄来源成分保湿",
+      "bubbleImage": "/assets/products/caudalie-vinohydra-sorbet-cream-moisturiser/bubble.svg",
+      "bubbleFocal": "50% 50%",
+      "summary": "透明质酸钠、甘油与多元醇承担水相保湿，配方同时包含乙酰基四肽-15、葡萄汁/葡萄籽衍生物、洋甘菊与 β-葡聚糖衍生物；材料未检出该 SKU 的明确产品级功效声明。",
+      "technologies": [
+        {"label": "多重水相保湿网络", "summary": "甘油、丁二醇、赤藓糖醇、甘露醇与透明质酸钠共同提供吸湿补水。"},
+        {"label": "舒缓与胜肽线", "summary": "乙酰基四肽-15、洋甘菊和羧甲基 β-葡聚糖钠构成舒缓护理线索。"},
+        {"label": "葡萄来源成分叙事", "summary": "葡萄汁和棕榈酰葡萄籽提取物延续品牌葡萄来源配方特征；背景文献只能解释成分路线。"}
+      ],
+      "keyIngredients": [
+        {"label": "透明质酸钠", "role": "吸湿补水"},
+        {"label": "乙酰基四肽-15", "role": "舒缓胜肽线索"},
+        {"label": "葡萄汁 + 葡萄籽衍生物", "role": "葡萄来源护理线"},
+        {"label": "洋甘菊提取物", "role": "舒缓支持"},
+        {"label": "羧甲基 β-葡聚糖钠", "role": "保湿舒缓支持"}
+      ],
+      "media": [],
+      "editorialCards": [
+        {"image": "/assets/products/caudalie-vinohydra-sorbet-cream-moisturiser/bubble.svg", "caption": "产品封面与保湿配方结构"}
+      ],
+      "evidenceBoundary": "检出的候选文献主要讨论葡萄副产物、葡萄酚类与化妆品应用，是品牌/成分背景，不是该 VinoHydra SKU 的直接产品临床证据。配方同时含酒精与香精，耐受需个体判断。",
+      "audience": {"bestFor": ["偏好轻质乳霜并希望增加水相保湿的人", "关注透明质酸与葡萄来源成分的人"], "cautions": ["配方含酒精与香精，对其敏感者先做局部测试", "不要把葡萄来源背景研究直接解释为该 SKU 的确定抗老或修护效果"]},
+      "layout": {"x": 1450, "y": 1420, "size": 0.86}
+    },
+    {
+      "id": "gisou-honey-gloss-ceramide-therapy-hair-mask",
+      "slug": "gisou-honey-gloss-ceramide-therapy-hair-mask",
+      "brand": "Gisou",
+      "name": "Honey Gloss Ceramide Therapy Hair Mask 230ml",
+      "shortName": "蜂蜜神经酰胺发膜",
+      "category": "发膜",
+      "positioning": "神经酰胺、蜂蜜与多重柔润调理",
+      "bubbleImage": "/assets/products/gisou-honey-gloss-ceramide-therapy-hair-mask/bubble.svg",
+      "bubbleFocal": "50% 50%",
+      "summary": "神经酰胺 NP、蜂蜜/蜂胶、多形态透明质酸、泛醇、角鲨烷、乳木果脂与多种植物油构成柔润调理体系；社媒主要聚焦顺滑、光泽以及与 Fenty、OUAI 的比较。",
+      "technologies": [
+        {"label": "阳离子调理体系", "summary": "山嵛酰胺丙基二甲胺与双椰油基乙基羟乙基甲基铵甲基硫酸盐承担梳理与柔顺主轴。"},
+        {"label": "神经酰胺与脂质线", "summary": "神经酰胺 NP、角鲨烷、乳木果脂以及多种植物油共同改善毛发表层柔润与触感。"},
+        {"label": "蜂蜜与多重保湿线", "summary": "蜂蜜、蜂胶、泛醇以及多种透明质酸衍生物构成保湿与光泽护理线索。"}
+      ],
+      "keyIngredients": [
+        {"label": "神经酰胺 NP", "role": "脂质调理线索"},
+        {"label": "蜂蜜 + 蜂胶", "role": "品牌核心护理线"},
+        {"label": "多形态透明质酸", "role": "保湿支持"},
+        {"label": "泛醇 + 角鲨烷", "role": "柔润与触感支持"},
+        {"label": "乳木果脂 + 植物油", "role": "发丝柔润与光泽"}
+      ],
+      "media": [
+        {"platform": "YouTube", "signal": "中等", "topics": ["新品发膜实测", "Gisou Ceramide 系列评价", "配方师视角"], "doubts": ["热门新品是否真的值得", "部分内容有品牌赠送披露"], "misconceptions": ["柔顺和光泽改善不等于毛发内部结构被永久重建"], "scenarios": ["洗后深度调理", "干燥毛躁发质"], "summary": "海外视频既有强推荐，也有 hits & misses 和配方师评价；至少一位创作者明确披露产品由品牌赠送。"},
+        {"platform": "小红书", "signal": "中等", "topics": ["与 Fenty/OUAI 发膜比较", "顺滑与轻盈感", "香味与包装"], "doubts": ["网红产品是否只是热度", "香味喜好高度个体化"], "misconceptions": ["个人连续使用体验仍属于主观样本"], "scenarios": ["干燥毛躁发尾", "Sephora 折扣囤货"], "summary": "国内正面体验集中于易冲洗、不假滑、发尾柔顺与光泽，并出现对 Fenty 和 OUAI 的对比，但都属于用户体验证据。"},
+        {"platform": "Reddit", "signal": "有限", "topics": ["Sephora 生日礼热度", "库存可得性"], "doubts": ["高热度是否来自赠品机制"], "misconceptions": ["抢购和断货不能证明发膜功效"], "scenarios": ["热度观察"], "summary": "Reddit 信号主要反映含发膜小样的 Sephora 生日礼受欢迎和库存问题，不属于功效证据。"}
+      ],
+      "editorialCards": [
+        {"image": "/assets/products/gisou-honey-gloss-ceramide-therapy-hair-mask/bubble.svg", "caption": "产品封面与调理配方结构"}
+      ],
+      "evidenceBoundary": "当前资料未检出该发膜的直接产品论文或专利；毛发脂质、蜂蜜和植物油文献属于背景机制。配方含香精及柠檬烯、芳樟醇、己基肉桂醛、香豆素等香料过敏原。",
+      "audience": {"bestFor": ["干燥、毛躁并希望提升冲洗后柔顺与光泽的人", "偏好蜂蜜与神经酰胺护理叙事的人"], "cautions": ["细软发建议从少量开始，避免调理负担", "对香精或相关香料过敏原敏感者谨慎"]},
+      "layout": {"x": 1900, "y": 1420, "size": 0.9}
+    }
+  ]
+}
