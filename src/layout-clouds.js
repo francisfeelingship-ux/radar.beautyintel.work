@@ -132,6 +132,8 @@ function groupedLayout(key) {
   const cellHeight = (height - marginY * 2) / rows;
   const innerCellWidth = Math.max(220, cellWidth - (entries.length <= 6 ? 150 : 92));
   const innerCellHeight = Math.max(220, cellHeight - (entries.length <= 6 ? 155 : 92));
+  const spreadX = entries.length <= 6 ? 1.30 : entries.length <= 12 ? 1.22 : 1.15;
+  const spreadY = entries.length <= 6 ? 1.32 : entries.length <= 12 ? 1.22 : 1.16;
   const labels = [];
 
   entries.forEach(([label, groupProducts], groupIndex) => {
@@ -139,13 +141,23 @@ function groupedLayout(key) {
     const row = Math.floor(groupIndex / columns);
     const itemsInRow = Math.min(columns, entries.length - row * columns);
     const rowInset = (columns - itemsInRow) * cellWidth / 2;
-    const centerX = marginX + rowInset + cellWidth * (column + .5);
-    const centerY = marginY + cellHeight * (row + .5);
+    const baseCenterX = marginX + rowInset + cellWidth * (column + .5);
+    const baseCenterY = marginY + cellHeight * (row + .5);
     const offsets = groupOffsets(groupProducts.length, innerCellWidth, innerCellHeight);
     const maxOffsetX = Math.max(0, ...offsets.map(offset => Math.abs(offset.x)));
     const maxOffsetY = Math.max(0, ...offsets.map(offset => Math.abs(offset.y)));
     const cloudHalfWidth = Math.max(118, maxOffsetX + 94);
     const cloudHalfHeight = Math.max(118, maxOffsetY + 94);
+    const centerX = clamp(
+      width / 2 + (baseCenterX - width / 2) * spreadX,
+      cloudHalfWidth + 78,
+      width - cloudHalfWidth - 78
+    );
+    const centerY = clamp(
+      height / 2 + (baseCenterY - height / 2) * spreadY,
+      cloudHalfHeight + 112,
+      height - cloudHalfHeight - 82
+    );
 
     groupProducts.forEach((product, productIndex) => {
       const offset = offsets[productIndex];
