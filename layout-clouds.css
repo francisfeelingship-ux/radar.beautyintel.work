@@ -178,7 +178,7 @@
 }
 
 .product-node {
-  transform: translate(-50%, -50%) scale(var(--product-scale, 1));
+  transform: translate(calc(-50% + var(--avoid-x, 0px)), calc(-50% + var(--avoid-y, 0px))) scale(var(--product-scale, 1));
   transition:
     left .92s cubic-bezier(.2, .8, .2, 1),
     top .92s cubic-bezier(.2, .8, .2, 1),
@@ -190,7 +190,7 @@
 
 .product-node:hover,
 .product-node:focus-visible {
-  transform: translate(-50%, -50%) scale(calc(var(--product-scale, 1) * 1.045));
+  transform: translate(calc(-50% + var(--avoid-x, 0px)), calc(-50% + var(--avoid-y, 0px))) scale(calc(var(--product-scale, 1) * 1.045));
 }
 
 .cloud-stage.is-rearranging .product-node {
