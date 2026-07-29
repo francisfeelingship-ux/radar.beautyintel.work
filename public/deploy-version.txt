@@ -1,1 +1,1 @@
-beauty-radar products-20260729-47-main-production-trigger
+beauty-radar cloud-spacing-20260729-pr-deploy
