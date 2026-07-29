@@ -76,13 +76,13 @@ function randomSlots(count) {
 function groupOffsets(count, cellWidth, cellHeight) {
   if (count === 1) return [{ x: 0, y: 0 }];
   if (count === 2) {
-    const spread = Math.min(98, Math.max(84, cellWidth * .2));
+    const spread = Math.min(92, Math.max(80, cellWidth * .18));
     return [{ x: -spread, y: 10 }, { x: spread, y: -10 }];
   }
 
   const offsets = [];
   const minCell = Math.min(cellWidth, cellHeight);
-  const firstRingRadius = clamp(minCell * .23, 108, count >= 6 ? 172 : 148);
+  const firstRingRadius = clamp(minCell * .20, 102, count >= 6 ? 156 : 136);
   const firstRingCount = Math.min(count, 7);
 
   for (let index = 0; index < firstRingCount; index += 1) {
@@ -97,7 +97,7 @@ function groupOffsets(count, cellWidth, cellHeight) {
   let ring = 1;
   while (remaining > 0) {
     const ringCount = Math.min(remaining, Math.max(8, Math.round(8 + ring * 3)));
-    const radius = firstRingRadius + ring * clamp(minCell * .2, 145, 205);
+    const radius = firstRingRadius + ring * clamp(minCell * .18, 132, 180);
     for (let index = 0; index < ringCount; index += 1) {
       const angle = -Math.PI / 2 + (Math.PI * 2 * index) / ringCount + ring * .22;
       offsets.push({
@@ -126,14 +126,14 @@ function groupedLayout(key) {
   const entries = [...groups.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0], 'zh-CN'));
   const columns = Math.max(1, Math.ceil(Math.sqrt(entries.length * width / height)));
   const rows = Math.max(1, Math.ceil(entries.length / columns));
-  const marginX = entries.length <= 6 ? 300 : 210;
-  const marginY = entries.length <= 6 ? 285 : 205;
+  const marginX = entries.length <= 6 ? 210 : 120;
+  const marginY = entries.length <= 6 ? 205 : 125;
   const cellWidth = (width - marginX * 2) / columns;
   const cellHeight = (height - marginY * 2) / rows;
-  const innerCellWidth = Math.max(220, cellWidth - (entries.length <= 6 ? 150 : 92));
-  const innerCellHeight = Math.max(220, cellHeight - (entries.length <= 6 ? 155 : 92));
-  const spreadX = entries.length <= 6 ? 1.30 : entries.length <= 12 ? 1.22 : 1.15;
-  const spreadY = entries.length <= 6 ? 1.32 : entries.length <= 12 ? 1.22 : 1.16;
+  const innerCellWidth = Math.max(210, cellWidth - (entries.length <= 6 ? 190 : 140));
+  const innerCellHeight = Math.max(210, cellHeight - (entries.length <= 6 ? 190 : 135));
+  const spreadX = entries.length <= 6 ? 1.58 : entries.length <= 12 ? 1.46 : 1.34;
+  const spreadY = entries.length <= 6 ? 1.60 : entries.length <= 12 ? 1.48 : 1.36;
   const labels = [];
 
   entries.forEach(([label, groupProducts], groupIndex) => {
@@ -146,23 +146,23 @@ function groupedLayout(key) {
     const offsets = groupOffsets(groupProducts.length, innerCellWidth, innerCellHeight);
     const maxOffsetX = Math.max(0, ...offsets.map(offset => Math.abs(offset.x)));
     const maxOffsetY = Math.max(0, ...offsets.map(offset => Math.abs(offset.y)));
-    const cloudHalfWidth = Math.max(118, maxOffsetX + 94);
-    const cloudHalfHeight = Math.max(118, maxOffsetY + 94);
+    const cloudHalfWidth = Math.max(108, maxOffsetX + 88);
+    const cloudHalfHeight = Math.max(108, maxOffsetY + 88);
     const centerX = clamp(
       width / 2 + (baseCenterX - width / 2) * spreadX,
-      cloudHalfWidth + 78,
-      width - cloudHalfWidth - 78
+      cloudHalfWidth + 34,
+      width - cloudHalfWidth - 34
     );
     const centerY = clamp(
       height / 2 + (baseCenterY - height / 2) * spreadY,
-      cloudHalfHeight + 112,
-      height - cloudHalfHeight - 82
+      cloudHalfHeight + 82,
+      height - cloudHalfHeight - 46
     );
 
     groupProducts.forEach((product, productIndex) => {
       const offset = offsets[productIndex];
-      product.layout.x = clamp(centerX + offset.x, 125, width - 125);
-      product.layout.y = clamp(centerY + offset.y, 125, height - 125);
+      product.layout.x = clamp(centerX + offset.x, 105, width - 105);
+      product.layout.y = clamp(centerY + offset.y, 105, height - 105);
     });
 
     labels.push({
@@ -170,9 +170,9 @@ function groupedLayout(key) {
       count: groupProducts.length,
       x: centerX,
       centerY,
-      y: clamp(centerY - cloudHalfHeight - 66, 74, height - 74),
-      width: Math.min(cellWidth - 46, cloudHalfWidth * 2.12),
-      height: Math.min(cellHeight - 48, cloudHalfHeight * 2.08)
+      y: clamp(centerY - cloudHalfHeight - 72, 68, height - 68),
+      width: Math.min(cellWidth - 70, cloudHalfWidth * 2.02),
+      height: Math.min(cellHeight - 66, cloudHalfHeight * 2.0)
     });
   });
 
