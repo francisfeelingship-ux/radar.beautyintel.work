@@ -11,15 +11,15 @@ const resetButton = document.querySelector('[data-view-action="reset"]');
 
 const MODE_COPY = {
   random: {
-    description: '每次进入页面都会生成新的随机排列。',
+    description: '本次进入页面只生成一次自由排列；点击产品不会重新洗牌。',
     meta: 'CURATED PUBLIC SIGNALS'
   },
   brand: {
-    description: '产品按品牌形成云团，重复品牌会自然聚合。',
+    description: '产品按品牌形成彼此分开的云团，保留清晰的云间留白。',
     meta: 'GROUPED BY BRAND'
   },
   category: {
-    description: '产品按种类形成云团，便于比较同类产品。',
+    description: '产品按种类形成独立云团，方便在同类内部比较。',
     meta: 'GROUPED BY CATEGORY'
   }
 };
@@ -27,6 +27,7 @@ const MODE_COPY = {
 let radarData = null;
 let currentMode = 'random';
 let movementTimer = null;
+const layoutCache = new Map();
 
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
@@ -75,20 +76,39 @@ function randomSlots(count) {
 function groupOffsets(count, cellWidth, cellHeight) {
   if (count === 1) return [{ x: 0, y: 0 }];
   if (count === 2) {
-    const spread = Math.min(145, cellWidth * .23);
-    return [{ x: -spread, y: 12 }, { x: spread, y: -12 }];
+    const spread = Math.min(98, Math.max(84, cellWidth * .2));
+    return [{ x: -spread, y: 10 }, { x: spread, y: -10 }];
   }
 
   const offsets = [];
-  const baseRadius = Math.min(175, Math.max(105, Math.min(cellWidth, cellHeight) * .24));
-  for (let index = 0; index < count; index += 1) {
-    const ring = Math.floor(index / 7);
-    const ringIndex = index % 7;
-    const itemsInRing = Math.min(7, count - ring * 7);
-    const angle = -Math.PI / 2 + (Math.PI * 2 * ringIndex) / itemsInRing + ring * .32;
-    const radius = baseRadius + ring * Math.min(125, baseRadius * .72);
-    offsets.push({ x: Math.cos(angle) * radius, y: Math.sin(angle) * radius });
+  const minCell = Math.min(cellWidth, cellHeight);
+  const firstRingRadius = clamp(minCell * .23, 108, count >= 6 ? 172 : 148);
+  const firstRingCount = Math.min(count, 7);
+
+  for (let index = 0; index < firstRingCount; index += 1) {
+    const angle = -Math.PI / 2 + (Math.PI * 2 * index) / firstRingCount;
+    offsets.push({
+      x: Math.cos(angle) * firstRingRadius,
+      y: Math.sin(angle) * firstRingRadius
+    });
   }
+
+  let remaining = count - firstRingCount;
+  let ring = 1;
+  while (remaining > 0) {
+    const ringCount = Math.min(remaining, Math.max(8, Math.round(8 + ring * 3)));
+    const radius = firstRingRadius + ring * clamp(minCell * .2, 145, 205);
+    for (let index = 0; index < ringCount; index += 1) {
+      const angle = -Math.PI / 2 + (Math.PI * 2 * index) / ringCount + ring * .22;
+      offsets.push({
+        x: Math.cos(angle) * radius,
+        y: Math.sin(angle) * radius
+      });
+    }
+    remaining -= ringCount;
+    ring += 1;
+  }
+
   return offsets;
 }
 
@@ -106,19 +126,26 @@ function groupedLayout(key) {
   const entries = [...groups.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0], 'zh-CN'));
   const columns = Math.max(1, Math.ceil(Math.sqrt(entries.length * width / height)));
   const rows = Math.max(1, Math.ceil(entries.length / columns));
-  const marginX = entries.length <= 6 ? 260 : 180;
-  const marginY = entries.length <= 6 ? 250 : 175;
+  const marginX = entries.length <= 6 ? 300 : 210;
+  const marginY = entries.length <= 6 ? 285 : 205;
   const cellWidth = (width - marginX * 2) / columns;
   const cellHeight = (height - marginY * 2) / rows;
+  const innerCellWidth = Math.max(220, cellWidth - (entries.length <= 6 ? 150 : 92));
+  const innerCellHeight = Math.max(220, cellHeight - (entries.length <= 6 ? 155 : 92));
   const labels = [];
 
   entries.forEach(([label, groupProducts], groupIndex) => {
     const column = groupIndex % columns;
     const row = Math.floor(groupIndex / columns);
-    const centerX = marginX + cellWidth * (column + .5);
+    const itemsInRow = Math.min(columns, entries.length - row * columns);
+    const rowInset = (columns - itemsInRow) * cellWidth / 2;
+    const centerX = marginX + rowInset + cellWidth * (column + .5);
     const centerY = marginY + cellHeight * (row + .5);
-    const offsets = groupOffsets(groupProducts.length, cellWidth, cellHeight);
-    const cloudRadius = groupProducts.length === 1 ? 118 : Math.min(300, 120 + Math.ceil(Math.sqrt(groupProducts.length)) * 58);
+    const offsets = groupOffsets(groupProducts.length, innerCellWidth, innerCellHeight);
+    const maxOffsetX = Math.max(0, ...offsets.map(offset => Math.abs(offset.x)));
+    const maxOffsetY = Math.max(0, ...offsets.map(offset => Math.abs(offset.y)));
+    const cloudHalfWidth = Math.max(118, maxOffsetX + 94);
+    const cloudHalfHeight = Math.max(118, maxOffsetY + 94);
 
     groupProducts.forEach((product, productIndex) => {
       const offset = offsets[productIndex];
@@ -131,9 +158,9 @@ function groupedLayout(key) {
       count: groupProducts.length,
       x: centerX,
       centerY,
-      y: clamp(centerY - cloudRadius - 42, 42, height - 42),
-      width: Math.min(cellWidth * .9, cloudRadius * 2.15),
-      height: Math.min(cellHeight * .86, cloudRadius * 2.05)
+      y: clamp(centerY - cloudHalfHeight - 66, 74, height - 74),
+      width: Math.min(cellWidth - 46, cloudHalfWidth * 2.12),
+      height: Math.min(cellHeight - 48, cloudHalfHeight * 2.08)
     });
   });
 
@@ -179,6 +206,26 @@ function syncNodes() {
   });
 }
 
+function snapshotLayout(labels = []) {
+  return {
+    positions: getProducts().map(product => ({ id: product.id, x: product.layout.x, y: product.layout.y })),
+    labels: labels.map(label => ({ ...label }))
+  };
+}
+
+function restoreLayout(mode) {
+  const cached = layoutCache.get(mode);
+  if (!cached) return null;
+  const positions = new Map(cached.positions.map(position => [position.id, position]));
+  getProducts().forEach(product => {
+    const position = positions.get(product.id);
+    if (!position) return;
+    product.layout.x = position.x;
+    product.layout.y = position.y;
+  });
+  return cached.labels.map(label => ({ ...label }));
+}
+
 function updateControls(mode) {
   layoutButtons.forEach(button => {
     const active = button.dataset.cloudLayout === mode;
@@ -197,26 +244,37 @@ function updateMapMeta() {
 
 function applyLayout(mode, { initial = false } = {}) {
   if (!radarData || !getProducts().length) return;
-  currentMode = mode;
+  const nextMode = MODE_COPY[mode] ? mode : 'random';
   clearTimeout(movementTimer);
+
+  if (!initial && nextMode === currentMode && layoutCache.has(nextMode)) {
+    updateControls(nextMode);
+    return;
+  }
 
   if (!initial) fitButton?.click();
 
-  let labels = [];
-  if (mode === 'random') {
-    const slots = randomSlots(getProducts().length);
-    getProducts().forEach((product, index) => {
-      product.layout.x = slots[index].x;
-      product.layout.y = slots[index].y;
-    });
-  } else {
-    labels = groupedLayout(mode === 'brand' ? 'brand' : 'category');
+  currentMode = nextMode;
+  let labels = restoreLayout(nextMode);
+
+  if (!labels) {
+    labels = [];
+    if (nextMode === 'random') {
+      const slots = randomSlots(getProducts().length);
+      getProducts().forEach((product, index) => {
+        product.layout.x = slots[index].x;
+        product.layout.y = slots[index].y;
+      });
+    } else {
+      labels = groupedLayout(nextMode === 'brand' ? 'brand' : 'category');
+    }
+    layoutCache.set(nextMode, snapshotLayout(labels));
   }
 
   stage.classList.add('is-rearranging');
-  renderClusterLabels(labels, mode);
+  renderClusterLabels(labels, nextMode);
   syncNodes();
-  updateControls(mode);
+  updateControls(nextMode);
 
   movementTimer = setTimeout(() => {
     fitButton?.click();
@@ -236,10 +294,7 @@ function waitForProductNodes(callback, attempt = 0) {
 function initialize(data) {
   if (radarData) return;
   radarData = data;
-  waitForProductNodes(() => {
-    updateControls('random');
-    renderClusterLabels([], 'random');
-  });
+  waitForProductNodes(() => applyLayout('random', { initial: true }));
 }
 
 layoutButtons.forEach(button => {
