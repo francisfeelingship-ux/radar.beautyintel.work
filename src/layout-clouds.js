@@ -2,6 +2,7 @@ const stage = document.getElementById('cloudStage');
 const worldEl = document.getElementById('cloudWorld');
 const productLayer = document.getElementById('productLayer');
 const clusterLayer = document.getElementById('clusterLayer');
+const connectionLayer = document.getElementById('connectionLayer');
 const layoutButtons = [...document.querySelectorAll('[data-cloud-layout]')];
 const layoutDescription = document.getElementById('layoutDescription');
 const mapMeta = document.getElementById('mapMeta');
@@ -15,16 +16,17 @@ const MODE_COPY = {
     meta: 'CURATED PUBLIC SIGNALS'
   },
   brand: {
-    description: '产品按品牌形成彼此分开的云团，保留清晰的云间留白。',
+    description: '品牌云使用更大的可拖拽地图，不再强行把所有云塞进一个屏幕。',
     meta: 'GROUPED BY BRAND'
   },
   category: {
-    description: '产品按种类形成独立云团，方便在同类内部比较。',
+    description: '种类云使用更大的可拖拽地图，让不同类别之间保留明显空白。',
     meta: 'GROUPED BY CATEGORY'
   }
 };
 
 let radarData = null;
+let baseWorld = { width: 2400, height: 1600 };
 let currentMode = 'random';
 let movementTimer = null;
 const layoutCache = new Map();
@@ -38,7 +40,20 @@ function getProducts() {
 }
 
 function getWorldSize() {
-  return radarData?.world || { width: 2400, height: 1600 };
+  return radarData?.world || baseWorld;
+}
+
+function setWorldSize(width, height) {
+  if (!radarData?.world) return;
+  radarData.world.width = Math.round(width);
+  radarData.world.height = Math.round(height);
+  worldEl.style.width = `${radarData.world.width}px`;
+  worldEl.style.height = `${radarData.world.height}px`;
+  if (connectionLayer) {
+    connectionLayer.setAttribute('width', radarData.world.width);
+    connectionLayer.setAttribute('height', radarData.world.height);
+    connectionLayer.setAttribute('viewBox', `0 0 ${radarData.world.width} ${radarData.world.height}`);
+  }
 }
 
 function shuffled(values) {
@@ -82,7 +97,7 @@ function groupOffsets(count, cellWidth, cellHeight) {
 
   const offsets = [];
   const minCell = Math.min(cellWidth, cellHeight);
-  const firstRingRadius = clamp(minCell * .20, 102, count >= 6 ? 156 : 136);
+  const firstRingRadius = clamp(minCell * .18, 98, count >= 6 ? 150 : 132);
   const firstRingCount = Math.min(count, 7);
 
   for (let index = 0; index < firstRingCount; index += 1) {
@@ -97,7 +112,7 @@ function groupOffsets(count, cellWidth, cellHeight) {
   let ring = 1;
   while (remaining > 0) {
     const ringCount = Math.min(remaining, Math.max(8, Math.round(8 + ring * 3)));
-    const radius = firstRingRadius + ring * clamp(minCell * .18, 132, 180);
+    const radius = firstRingRadius + ring * clamp(minCell * .16, 126, 174);
     for (let index = 0; index < ringCount; index += 1) {
       const angle = -Math.PI / 2 + (Math.PI * 2 * index) / ringCount + ring * .22;
       offsets.push({
@@ -114,7 +129,6 @@ function groupOffsets(count, cellWidth, cellHeight) {
 
 function groupedLayout(key) {
   const products = getProducts();
-  const { width, height } = getWorldSize();
   const groups = new Map();
 
   products.forEach(product => {
@@ -124,16 +138,21 @@ function groupedLayout(key) {
   });
 
   const entries = [...groups.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0], 'zh-CN'));
-  const columns = Math.max(1, Math.ceil(Math.sqrt(entries.length * width / height)));
-  const rows = Math.max(1, Math.ceil(entries.length / columns));
-  const marginX = entries.length <= 6 ? 210 : 120;
-  const marginY = entries.length <= 6 ? 205 : 125;
-  const cellWidth = (width - marginX * 2) / columns;
-  const cellHeight = (height - marginY * 2) / rows;
-  const innerCellWidth = Math.max(210, cellWidth - (entries.length <= 6 ? 190 : 140));
-  const innerCellHeight = Math.max(210, cellHeight - (entries.length <= 6 ? 190 : 135));
-  const spreadX = entries.length <= 6 ? 1.58 : entries.length <= 12 ? 1.46 : 1.34;
-  const spreadY = entries.length <= 6 ? 1.60 : entries.length <= 12 ? 1.48 : 1.36;
+  const groupCount = Math.max(1, entries.length);
+  const largestGroup = Math.max(1, ...entries.map(([, groupProducts]) => groupProducts.length));
+  const columns = Math.max(1, Math.ceil(Math.sqrt(groupCount * 1.45)));
+  const rows = Math.max(1, Math.ceil(groupCount / columns));
+  const extraRings = Math.max(0, Math.ceil(largestGroup / 7) - 1);
+  const baseCellWidth = key === 'brand' ? 800 : 980;
+  const baseCellHeight = key === 'brand' ? 690 : 830;
+  const cellWidth = baseCellWidth + extraRings * 170;
+  const cellHeight = baseCellHeight + extraRings * 165;
+  const marginX = key === 'brand' ? 300 : 330;
+  const marginY = key === 'brand' ? 280 : 310;
+  const width = Math.max(baseWorld.width, columns * cellWidth + marginX * 2);
+  const height = Math.max(baseWorld.height, rows * cellHeight + marginY * 2);
+  setWorldSize(width, height);
+
   const labels = [];
 
   entries.forEach(([label, groupProducts], groupIndex) => {
@@ -141,28 +160,20 @@ function groupedLayout(key) {
     const row = Math.floor(groupIndex / columns);
     const itemsInRow = Math.min(columns, entries.length - row * columns);
     const rowInset = (columns - itemsInRow) * cellWidth / 2;
-    const baseCenterX = marginX + rowInset + cellWidth * (column + .5);
-    const baseCenterY = marginY + cellHeight * (row + .5);
+    const centerX = marginX + rowInset + cellWidth * (column + .5);
+    const centerY = marginY + cellHeight * (row + .5);
+    const innerCellWidth = Math.max(230, cellWidth * .52);
+    const innerCellHeight = Math.max(230, cellHeight * .50);
     const offsets = groupOffsets(groupProducts.length, innerCellWidth, innerCellHeight);
     const maxOffsetX = Math.max(0, ...offsets.map(offset => Math.abs(offset.x)));
     const maxOffsetY = Math.max(0, ...offsets.map(offset => Math.abs(offset.y)));
-    const cloudHalfWidth = Math.max(108, maxOffsetX + 88);
-    const cloudHalfHeight = Math.max(108, maxOffsetY + 88);
-    const centerX = clamp(
-      width / 2 + (baseCenterX - width / 2) * spreadX,
-      cloudHalfWidth + 34,
-      width - cloudHalfWidth - 34
-    );
-    const centerY = clamp(
-      height / 2 + (baseCenterY - height / 2) * spreadY,
-      cloudHalfHeight + 82,
-      height - cloudHalfHeight - 46
-    );
+    const cloudHalfWidth = Math.max(108, maxOffsetX + 92);
+    const cloudHalfHeight = Math.max(108, maxOffsetY + 92);
 
     groupProducts.forEach((product, productIndex) => {
       const offset = offsets[productIndex];
-      product.layout.x = clamp(centerX + offset.x, 105, width - 105);
-      product.layout.y = clamp(centerY + offset.y, 105, height - 105);
+      product.layout.x = centerX + offset.x;
+      product.layout.y = centerY + offset.y;
     });
 
     labels.push({
@@ -170,9 +181,9 @@ function groupedLayout(key) {
       count: groupProducts.length,
       x: centerX,
       centerY,
-      y: clamp(centerY - cloudHalfHeight - 72, 68, height - 68),
-      width: Math.min(cellWidth - 70, cloudHalfWidth * 2.02),
-      height: Math.min(cellHeight - 66, cloudHalfHeight * 2.0)
+      y: centerY - cloudHalfHeight - 82,
+      width: Math.min(cellWidth * .68, cloudHalfWidth * 2.02),
+      height: Math.min(cellHeight * .66, cloudHalfHeight * 2.0)
     });
   });
 
@@ -220,6 +231,7 @@ function syncNodes() {
 
 function snapshotLayout(labels = []) {
   return {
+    world: { ...getWorldSize() },
     positions: getProducts().map(product => ({ id: product.id, x: product.layout.x, y: product.layout.y })),
     labels: labels.map(label => ({ ...label }))
   };
@@ -228,6 +240,7 @@ function snapshotLayout(labels = []) {
 function restoreLayout(mode) {
   const cached = layoutCache.get(mode);
   if (!cached) return null;
+  if (cached.world) setWorldSize(cached.world.width, cached.world.height);
   const positions = new Map(cached.positions.map(position => [position.id, position]));
   getProducts().forEach(product => {
     const position = positions.get(product.id);
@@ -272,6 +285,7 @@ function applyLayout(mode, { initial = false } = {}) {
   if (!labels) {
     labels = [];
     if (nextMode === 'random') {
+      setWorldSize(baseWorld.width, baseWorld.height);
       const slots = randomSlots(getProducts().length);
       getProducts().forEach((product, index) => {
         product.layout.x = slots[index].x;
@@ -306,6 +320,10 @@ function waitForProductNodes(callback, attempt = 0) {
 function initialize(data) {
   if (radarData) return;
   radarData = data;
+  baseWorld = {
+    width: Number(data.world?.width) || 2400,
+    height: Number(data.world?.height) || 1600
+  };
   waitForProductNodes(() => applyLayout('random', { initial: true }));
 }
 
