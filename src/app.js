@@ -22,7 +22,7 @@ const storyDots = document.getElementById('storyDots');
 const prevCard = document.getElementById('prevCard');
 const nextCard = document.getElementById('nextCard');
 
-const MIN_SCALE = 0.35;
+const MIN_SCALE = 0.05;
 const MAX_SCALE = 2.5;
 const LEGIBLE_SCALE = 0.7;
 const CATEGORY_RADIUS = 245;
