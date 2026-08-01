@@ -1,1 +1,1 @@
-beauty-radar numbuzin-no5-image-fix-20260730-production-trigger
+beauty-radar numbuzin-no5-cache-bust-20260801-production-trigger
