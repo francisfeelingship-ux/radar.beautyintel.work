@@ -1,4 +1,5 @@
 {
+  // Force a fresh static-assets deployment after restoring the original Numbuzin No.5 image.
   "name": "radar-beautyintel-work",
   "compatibility_date": "2026-08-03",
   "assets": {
