@@ -207,25 +207,12 @@
           base.products = [
             ...(base.products || []).filter(product => !additionIds.has(product.id)),
             ...additions
-          ];
+          ].filter(product => product.id !== 'numbuzin-no5-vitamin-toner');
 
           const mediaByProduct = mediaOverrides?.mediaByProduct || {};
           base.products.forEach(product => {
             if (Array.isArray(mediaByProduct[product.id])) product.media = mediaByProduct[product.id];
           });
-
-          const numbuzinNo5 = base.products.find(product => product.id === 'numbuzin-no5-vitamin-toner');
-          if (numbuzinNo5) {
-            const versionedBubble = '/assets/products/numbuzin-no5-vitamin-toner/bubble.svg?v=20260801-1';
-            numbuzinNo5.bubbleImage = versionedBubble;
-            if (Array.isArray(numbuzinNo5.editorialCards)) {
-              numbuzinNo5.editorialCards = numbuzinNo5.editorialCards.map(card =>
-                card?.image?.includes('/assets/products/numbuzin-no5-vitamin-toner/bubble.svg')
-                  ? { ...card, image: versionedBubble }
-                  : card
-              );
-            }
-          }
 
           const freshSugarMelt = base.products.find(product => product.id === 'fresh-sugar-melt-lip-cream-mango');
           if (freshSugarMelt) {
