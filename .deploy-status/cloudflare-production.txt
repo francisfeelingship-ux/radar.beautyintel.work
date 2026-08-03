@@ -1,4 +1,4 @@
 status=failed
 detail=no Cloudflare API token or deploy hook repository secret was found
-source_sha=2aead78b380708d9f600f2f383552bd72b50e04d
-checked_at=2026-08-03T18:00:10Z
+source_sha=3ef7a85ad0e7757b022a213d86299bb771808115
+checked_at=2026-08-03T18:00:28Z
