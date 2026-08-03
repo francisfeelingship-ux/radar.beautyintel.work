@@ -1,0 +1,4 @@
+status=failed
+detail=missing repository secret CLOUDFLARE_API_TOKEN
+source_sha=cceea5215d1d3b741d644ddfd1b340bd26b92705
+checked_at=2026-08-03T10:51:55Z
