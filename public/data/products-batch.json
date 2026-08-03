@@ -13,27 +13,104 @@
       "bubbleFocal": "50% 50%",
       "summary": "以温和复合表活、植物油、褐藻与芳香精油构成身体清洁膏；社媒核心争议是高价是否值得。",
       "technologies": [
-        {"label": "温和复合清洁体系", "summary": "甜菜碱型、两性与温和阴离子表活共同承担清洁和起泡。"},
-        {"label": "油脂与海藻柔润线", "summary": "葡萄籽油、琉璃苣籽油、亚麻荠籽油与褐藻提取物强调洗后柔润。"},
-        {"label": "香氛 SPA 体验", "summary": "薰衣草、桉叶、薄荷、橙油和丁香等塑造感官体验，也带来耐受边界。"}
+        {
+          "label": "温和复合清洁体系",
+          "summary": "甜菜碱型、两性与温和阴离子表活共同承担清洁和起泡。"
+        },
+        {
+          "label": "油脂与海藻柔润线",
+          "summary": "葡萄籽油、琉璃苣籽油、亚麻荠籽油与褐藻提取物强调洗后柔润。"
+        },
+        {
+          "label": "香氛 SPA 体验",
+          "summary": "薰衣草、桉叶、薄荷、橙油和丁香等塑造感官体验，也带来耐受边界。"
+        }
       ],
       "keyIngredients": [
-        {"label": "温和复合表活", "role": "身体清洁主轴"},
-        {"label": "植物油复配", "role": "洗后柔润支持"},
-        {"label": "褐藻提取物", "role": "海洋护理线索"},
-        {"label": "多种精油与香精", "role": "SPA 香氛与潜在刺激源"}
+        {
+          "label": "温和复合表活",
+          "role": "身体清洁主轴"
+        },
+        {
+          "label": "植物油复配",
+          "role": "洗后柔润支持"
+        },
+        {
+          "label": "褐藻提取物",
+          "role": "海洋护理线索"
+        },
+        {
+          "label": "多种精油与香精",
+          "role": "SPA 香氛与潜在刺激源"
+        }
       ],
       "media": [
-        {"platform": "YouTube", "signal": "中等", "topics": ["丝滑凝胶膏质地", "洗后不紧绷", "居家 SPA 感"], "doubts": ["是否值得高价", "带货和赠品内容较多"], "misconceptions": ["洗后柔润不等于补充皮肤胶原"], "scenarios": ["干燥季节沐浴", "香氛体验"], "summary": "创作者突出丝滑、易起泡和洗后不干，但部分内容含联盟链接或品牌赠送披露。"},
-        {"platform": "Reddit", "signal": "有限", "topics": ["与其他清洁膏比较"], "doubts": ["价格偏高", "包装到手后是否少量"], "misconceptions": ["部分讨论涉及品牌其他清洁膏"], "scenarios": ["购买前比较"], "summary": "讨论集中于高价格和包装完整性，且存在产品型号混杂。"}
+        {
+          "platform": "YouTube",
+          "signal": "中等",
+          "topics": [
+            "丝滑凝胶膏质地",
+            "洗后不紧绷",
+            "居家 SPA 感"
+          ],
+          "doubts": [
+            "是否值得高价",
+            "带货和赠品内容较多"
+          ],
+          "misconceptions": [
+            "洗后柔润不等于补充皮肤胶原"
+          ],
+          "scenarios": [
+            "干燥季节沐浴",
+            "香氛体验"
+          ],
+          "summary": "创作者突出丝滑、易起泡和洗后不干，但部分内容含联盟链接或品牌赠送披露。"
+        },
+        {
+          "platform": "Reddit",
+          "signal": "有限",
+          "topics": [
+            "与其他清洁膏比较"
+          ],
+          "doubts": [
+            "价格偏高",
+            "包装到手后是否少量"
+          ],
+          "misconceptions": [
+            "部分讨论涉及品牌其他清洁膏"
+          ],
+          "scenarios": [
+            "购买前比较"
+          ],
+          "summary": "讨论集中于高价格和包装完整性，且存在产品型号混杂。"
+        }
       ],
       "editorialCards": [
-        {"image": "/assets/products/elemis-pro-collagen-body-cleansing-balm/bubble.svg", "caption": "产品封面与核心定位"},
-        {"image": "/assets/products/elemis-pro-collagen-body-cleansing-balm/cards/02.svg", "caption": "清洁、柔润与香氛的三层结构"}
+        {
+          "image": "/assets/products/elemis-pro-collagen-body-cleansing-balm/bubble.svg",
+          "caption": "产品封面与核心定位"
+        },
+        {
+          "image": "/assets/products/elemis-pro-collagen-body-cleansing-balm/cards/02.svg",
+          "caption": "清洁、柔润与香氛的三层结构"
+        }
       ],
       "evidenceBoundary": "24 篇均为清洁、屏障、油脂和海洋成分背景文献；未检出该具体 SKU 的直接产品临床、明确专利或独立功效研究。",
-      "audience": {"bestFor": ["洗后容易紧绷并重视香氛沐浴体验的人", "愿意为奢华质地付费的人"], "cautions": ["对香精、精油或薄荷醇敏感的人谨慎", "不应按抗老或补胶原产品理解"]},
-      "layout": {"x": 220, "y": 1230, "size": 0.88}
+      "audience": {
+        "bestFor": [
+          "洗后容易紧绷并重视香氛沐浴体验的人",
+          "愿意为奢华质地付费的人"
+        ],
+        "cautions": [
+          "对香精、精油或薄荷醇敏感的人谨慎",
+          "不应按抗老或补胶原产品理解"
+        ]
+      },
+      "layout": {
+        "x": 220,
+        "y": 1230,
+        "size": 0.88
+      }
     },
     {
       "id": "glow-recipe-watermelon-milk-peptide-cushion-cream",
@@ -47,27 +124,105 @@
       "bubbleFocal": "50% 50%",
       "summary": "以 10+ 肽、神经酰胺 NP、角鲨烷、依克多因和西瓜提取物构成轻质保湿面霜；新品期长期证据仍有限。",
       "technologies": [
-        {"label": "多肽复合网络", "summary": "多种乙酰化肽、棕榈酰肽、铜三肽及维 C 多肽构成高密度配方识别。"},
-        {"label": "屏障保湿底座", "summary": "神经酰胺 NP、角鲨烷、卵磷脂、植物甾醇和多元醇提供柔润支持。"},
-        {"label": "西瓜与舒缓线", "summary": "西瓜、依克多因、β-葡聚糖、尿囊素和泛醇承担舒缓与抗氧化叙事。"}
+        {
+          "label": "多肽复合网络",
+          "summary": "多种乙酰化肽、棕榈酰肽、铜三肽及维 C 多肽构成高密度配方识别。"
+        },
+        {
+          "label": "屏障保湿底座",
+          "summary": "神经酰胺 NP、角鲨烷、卵磷脂、植物甾醇和多元醇提供柔润支持。"
+        },
+        {
+          "label": "西瓜与舒缓线",
+          "summary": "西瓜、依克多因、β-葡聚糖、尿囊素和泛醇承担舒缓与抗氧化叙事。"
+        }
       ],
       "keyIngredients": [
-        {"label": "10+ 肽网络", "role": "抗老与肤质护理线索"},
-        {"label": "神经酰胺 NP", "role": "屏障脂质支持"},
-        {"label": "依克多因", "role": "舒缓与环境压力护理"},
-        {"label": "西瓜提取物", "role": "品牌核心抗氧化叙事"}
+        {
+          "label": "10+ 肽网络",
+          "role": "抗老与肤质护理线索"
+        },
+        {
+          "label": "神经酰胺 NP",
+          "role": "屏障脂质支持"
+        },
+        {
+          "label": "依克多因",
+          "role": "舒缓与环境压力护理"
+        },
+        {
+          "label": "西瓜提取物",
+          "role": "品牌核心抗氧化叙事"
+        }
       ],
       "media": [
-        {"platform": "YouTube", "signal": "中等", "topics": ["新品首印象", "肽与西瓜概念", "购买前试用"], "doubts": ["长期表现尚未形成一致结论"], "misconceptions": ["肽数量多不等于成品疗效必然更强"], "scenarios": ["夏季轻保湿", "新品尝鲜"], "summary": "海外内容以首印象和试用为主，反映新品热度而非稳定长期评价。"},
-        {"platform": "小红书/知乎", "signal": "有限", "topics": ["高颜值包材", "夏季清爽", "基础保湿"], "doubts": ["香味是否人工", "保湿效果是否平庸"], "misconceptions": ["部分内容可能对应旧版西瓜面霜"], "scenarios": ["夏季保湿"], "summary": "国内讨论存在产品版本混杂，不能全部外推到本款新品。"}
+        {
+          "platform": "YouTube",
+          "signal": "中等",
+          "topics": [
+            "新品首印象",
+            "肽与西瓜概念",
+            "购买前试用"
+          ],
+          "doubts": [
+            "长期表现尚未形成一致结论"
+          ],
+          "misconceptions": [
+            "肽数量多不等于成品疗效必然更强"
+          ],
+          "scenarios": [
+            "夏季轻保湿",
+            "新品尝鲜"
+          ],
+          "summary": "海外内容以首印象和试用为主，反映新品热度而非稳定长期评价。"
+        },
+        {
+          "platform": "小红书/知乎",
+          "signal": "有限",
+          "topics": [
+            "高颜值包材",
+            "夏季清爽",
+            "基础保湿"
+          ],
+          "doubts": [
+            "香味是否人工",
+            "保湿效果是否平庸"
+          ],
+          "misconceptions": [
+            "部分内容可能对应旧版西瓜面霜"
+          ],
+          "scenarios": [
+            "夏季保湿"
+          ],
+          "summary": "国内讨论存在产品版本混杂，不能全部外推到本款新品。"
+        }
       ],
       "editorialCards": [
-        {"image": "/assets/products/glow-recipe-watermelon-cushion-cream/bubble.svg", "caption": "产品封面与新品定位"},
-        {"image": "/assets/products/glow-recipe-watermelon-cushion-cream/cards/02.svg", "caption": "多肽、屏障与西瓜护理线"}
+        {
+          "image": "/assets/products/glow-recipe-watermelon-cushion-cream/bubble.svg",
+          "caption": "产品封面与新品定位"
+        },
+        {
+          "image": "/assets/products/glow-recipe-watermelon-cushion-cream/cards/02.svg",
+          "caption": "多肽、屏障与西瓜护理线"
+        }
       ],
       "evidenceBoundary": "25 篇为肽、屏障和保湿背景研究；未检出该具体新品的直接产品论文，国内部分内容疑似对应品牌旧款面霜。",
-      "audience": {"bestFor": ["偏好轻质无香精并希望兼顾多肽与保湿的人", "夏季或混合皮基础保湿"], "cautions": ["不要仅凭肽数量判断抗老强度", "追求明确强功效的人需要更直接的产品级证据"]},
-      "layout": {"x": 500, "y": 1410, "size": 0.86}
+      "audience": {
+        "bestFor": [
+          "偏好轻质无香精并希望兼顾多肽与保湿的人",
+          "夏季或混合皮基础保湿"
+        ],
+        "cautions": [
+          "不要仅凭肽数量判断抗老强度",
+          "追求明确强功效的人需要更直接的产品级证据"
+        ]
+      },
+      "layout": {
+        "x": 500,
+        "y": 1410,
+        "size": 0.86
+      }
     },
     {
       "id": "coach-women-cherry-parfum",
@@ -81,27 +236,101 @@
       "bubbleFocal": "50% 50%",
       "summary": "围绕樱桃、柑橘辛香、茉莉玫瑰和广藿香香草底座展开；社媒认为它避开药感和过度糖浆感。",
       "technologies": [
-        {"label": "樱桃果香开场", "summary": "樱桃印象与柑橘、粉红胡椒式辛香共同构成明亮前调。"},
-        {"label": "花香心调", "summary": "茉莉、木兰和玫瑰把果香向更知性柔和的方向过渡。"},
-        {"label": "木质甜香底座", "summary": "广藿香、香豆素、香草醛和琥珀木质分子承担留香与成熟感。"}
+        {
+          "label": "樱桃果香开场",
+          "summary": "樱桃印象与柑橘、粉红胡椒式辛香共同构成明亮前调。"
+        },
+        {
+          "label": "花香心调",
+          "summary": "茉莉、木兰和玫瑰把果香向更知性柔和的方向过渡。"
+        },
+        {
+          "label": "木质甜香底座",
+          "summary": "广藿香、香豆素、香草醛和琥珀木质分子承担留香与成熟感。"
+        }
       ],
       "keyIngredients": [
-        {"label": "樱桃香调", "role": "核心果香识别"},
-        {"label": "佛手柑与柠檬精油", "role": "柑橘明亮感"},
-        {"label": "玫瑰与茉莉香调", "role": "花香心调"},
-        {"label": "广藿香与香草醛", "role": "木质甜暖尾调"}
+        {
+          "label": "樱桃香调",
+          "role": "核心果香识别"
+        },
+        {
+          "label": "佛手柑与柠檬精油",
+          "role": "柑橘明亮感"
+        },
+        {
+          "label": "玫瑰与茉莉香调",
+          "role": "花香心调"
+        },
+        {
+          "label": "广藿香与香草醛",
+          "role": "木质甜暖尾调"
+        }
       ],
       "media": [
-        {"platform": "YouTube", "signal": "中等", "topics": ["不药感的成熟樱桃", "15–20 分钟后的香调变化", "新品是否超预期"], "doubts": ["前调樱桃是否保持", "留香是否匹配价格"], "misconceptions": ["香调表不能替代实际皮肤试香"], "scenarios": ["春夏日常", "甜美知性穿搭"], "summary": "创作者将其描述为不过甜、不过暗的平衡樱桃，但开场很快转入花木香。"},
-        {"platform": "Reddit", "signal": "有限", "topics": ["与 Lost Cherry、D&G Q、Dark Cherry 比较"], "doubts": ["更像哪支既有樱桃香"], "misconceptions": [], "scenarios": ["购买前试香"], "summary": "社区最关心相似香比较，但样本量很小。"}
+        {
+          "platform": "YouTube",
+          "signal": "中等",
+          "topics": [
+            "不药感的成熟樱桃",
+            "15–20 分钟后的香调变化",
+            "新品是否超预期"
+          ],
+          "doubts": [
+            "前调樱桃是否保持",
+            "留香是否匹配价格"
+          ],
+          "misconceptions": [
+            "香调表不能替代实际皮肤试香"
+          ],
+          "scenarios": [
+            "春夏日常",
+            "甜美知性穿搭"
+          ],
+          "summary": "创作者将其描述为不过甜、不过暗的平衡樱桃，但开场很快转入花木香。"
+        },
+        {
+          "platform": "Reddit",
+          "signal": "有限",
+          "topics": [
+            "与 Lost Cherry、D&G Q、Dark Cherry 比较"
+          ],
+          "doubts": [
+            "更像哪支既有樱桃香"
+          ],
+          "misconceptions": [],
+          "scenarios": [
+            "购买前试香"
+          ],
+          "summary": "社区最关心相似香比较，但样本量很小。"
+        }
       ],
       "editorialCards": [
-        {"image": "/assets/products/coach-cherry-parfum/bubble.svg", "caption": "产品封面与樱桃香调定位"},
-        {"image": "/assets/products/coach-cherry-parfum/cards/02.svg", "caption": "从樱桃前调到花木底座"}
+        {
+          "image": "/assets/products/coach-cherry-parfum/bubble.svg",
+          "caption": "产品封面与樱桃香调定位"
+        },
+        {
+          "image": "/assets/products/coach-cherry-parfum/cards/02.svg",
+          "caption": "从樱桃前调到花木底座"
+        }
       ],
       "evidenceBoundary": "报告没有产品论文或专利；香调判断主要来自 INCI、品牌/创作者描述与少量社媒比较。",
-      "audience": {"bestFor": ["喜欢甜美但不希望过度糖浆或药感樱桃的人", "偏好果香向花木香快速过渡的人"], "cautions": ["樱桃前调可能不会长时间保持", "含多种香料过敏原，敏感人群先试香"]},
-      "layout": {"x": 790, "y": 1430, "size": 0.84}
+      "audience": {
+        "bestFor": [
+          "喜欢甜美但不希望过度糖浆或药感樱桃的人",
+          "偏好果香向花木香快速过渡的人"
+        ],
+        "cautions": [
+          "樱桃前调可能不会长时间保持",
+          "含多种香料过敏原，敏感人群先试香"
+        ]
+      },
+      "layout": {
+        "x": 790,
+        "y": 1430,
+        "size": 0.84
+      }
     },
     {
       "id": "biodance-collagen-gel-toner-pads",
@@ -115,26 +344,86 @@
       "bubbleFocal": "50% 50%",
       "summary": "以胶原水、胶原提取物、透明质酸、半乳糖酵母和多种重组多肽构成凝胶棉片；玻璃肌是主要传播钩子。",
       "technologies": [
-        {"label": "凝胶棉片载体", "summary": "水凝胶质地带来冷感、贴敷和局部小面膜式体验。"},
-        {"label": "胶原与弹性蛋白叙事", "summary": "胶原水、胶原提取物和水解弹性蛋白主要承担表面保湿与品牌故事。"},
-        {"label": "多肽与发酵护理线", "summary": "Palmitoyl Tripeptide-5、重组寡肽/多肽与半乳糖酵母提供配方辨识度。"}
+        {
+          "label": "凝胶棉片载体",
+          "summary": "水凝胶质地带来冷感、贴敷和局部小面膜式体验。"
+        },
+        {
+          "label": "胶原与弹性蛋白叙事",
+          "summary": "胶原水、胶原提取物和水解弹性蛋白主要承担表面保湿与品牌故事。"
+        },
+        {
+          "label": "多肽与发酵护理线",
+          "summary": "Palmitoyl Tripeptide-5、重组寡肽/多肽与半乳糖酵母提供配方辨识度。"
+        }
       ],
       "keyIngredients": [
-        {"label": "胶原水与胶原提取物", "role": "保湿与品牌主线"},
-        {"label": "透明质酸", "role": "吸湿补水"},
-        {"label": "Palmitoyl Tripeptide-5", "role": "胜肽护理线索"},
-        {"label": "半乳糖酵母", "role": "发酵护理线"}
+        {
+          "label": "胶原水与胶原提取物",
+          "role": "保湿与品牌主线"
+        },
+        {
+          "label": "透明质酸",
+          "role": "吸湿补水"
+        },
+        {
+          "label": "Palmitoyl Tripeptide-5",
+          "role": "胜肽护理线索"
+        },
+        {
+          "label": "半乳糖酵母",
+          "role": "发酵护理线"
+        }
       ],
       "media": [
-        {"platform": "YouTube", "signal": "较强", "topics": ["5 分钟玻璃肌", "冷感凝胶贴片", "与 Cera-nol 棉片和品牌面膜比较"], "doubts": ["是真创新还是短期热点", "胶原故事是否过度"], "misconceptions": ["外用胶原不能简单理解为直接补进真皮"], "scenarios": ["T 区局部贴敷", "快速妆前补水"], "summary": "传播集中于玻璃肌和冷感贴敷，也出现对胶原营销与棉片质地的质疑。"}
+        {
+          "platform": "YouTube",
+          "signal": "较强",
+          "topics": [
+            "5 分钟玻璃肌",
+            "冷感凝胶贴片",
+            "与 Cera-nol 棉片和品牌面膜比较"
+          ],
+          "doubts": [
+            "是真创新还是短期热点",
+            "胶原故事是否过度"
+          ],
+          "misconceptions": [
+            "外用胶原不能简单理解为直接补进真皮"
+          ],
+          "scenarios": [
+            "T 区局部贴敷",
+            "快速妆前补水"
+          ],
+          "summary": "传播集中于玻璃肌和冷感贴敷，也出现对胶原营销与棉片质地的质疑。"
+        }
       ],
       "editorialCards": [
-        {"image": "/assets/products/biodance-collagen-gel-toner-pads/bubble.svg", "caption": "产品封面与玻璃肌叙事"},
-        {"image": "/assets/products/biodance-collagen-gel-toner-pads/cards/02.svg", "caption": "凝胶载体、胶原与多肽结构"}
+        {
+          "image": "/assets/products/biodance-collagen-gel-toner-pads/bubble.svg",
+          "caption": "产品封面与玻璃肌叙事"
+        },
+        {
+          "image": "/assets/products/biodance-collagen-gel-toner-pads/cards/02.svg",
+          "caption": "凝胶载体、胶原与多肽结构"
+        }
       ],
       "evidenceBoundary": "报告列出 2 篇技术路线候选和 21 篇背景文献，但未证实候选重组胶原或纳米胶囊技术就是该产品所用系统。",
-      "audience": {"bestFor": ["喜欢冷感贴敷和局部快速补水的人", "希望把凝胶面膜体验缩短到日常使用的人"], "cautions": ["不要把即时饱满解释为真皮胶原增加", "重视长期抗老的人应寻找直接产品临床数据"]},
-      "layout": {"x": 1080, "y": 1280, "size": 0.9}
+      "audience": {
+        "bestFor": [
+          "喜欢冷感贴敷和局部快速补水的人",
+          "希望把凝胶面膜体验缩短到日常使用的人"
+        ],
+        "cautions": [
+          "不要把即时饱满解释为真皮胶原增加",
+          "重视长期抗老的人应寻找直接产品临床数据"
+        ]
+      },
+      "layout": {
+        "x": 1080,
+        "y": 1280,
+        "size": 0.9
+      }
     },
     {
       "id": "fresh-sugar-melt-lip-cream-mango",
@@ -148,61 +437,104 @@
       "bubbleFocal": "50% 50%",
       "summary": "以聚合柔润剂、蓖麻油、霍霍巴油、葡萄籽油、透明质酸钠和色料构成果香水光唇霜。",
       "technologies": [
-        {"label": "高光泽油脂聚合体系", "summary": "柔润酯、聚合油脂和成膜蜡共同形成水光唇面。"},
-        {"label": "柔润保湿线", "summary": "蓖麻油、霍霍巴油、葡萄籽油和透明质酸钠支持润泽与干纹观感。"},
-        {"label": "芒果感官设计", "summary": "色料配合香精形成芒果主题，香味和黏度评价具有明显主观差异。"}
+        {
+          "label": "高光泽油脂聚合体系",
+          "summary": "柔润酯、聚合油脂和成膜蜡共同形成水光唇面。"
+        },
+        {
+          "label": "柔润保湿线",
+          "summary": "蓖麻油、霍霍巴油、葡萄籽油和透明质酸钠支持润泽与干纹观感。"
+        },
+        {
+          "label": "芒果感官设计",
+          "summary": "色料配合香精形成芒果主题，香味和黏度评价具有明显主观差异。"
+        }
       ],
       "keyIngredients": [
-        {"label": "蓖麻油 + 霍霍巴油", "role": "柔润油脂基底"},
-        {"label": "葡萄籽油", "role": "植物油护理"},
-        {"label": "透明质酸钠", "role": "吸湿保湿线索"},
-        {"label": "成膜聚合物", "role": "水光与持妆结构"}
+        {
+          "label": "蓖麻油 + 霍霍巴油",
+          "role": "柔润油脂基底"
+        },
+        {
+          "label": "葡萄籽油",
+          "role": "植物油护理"
+        },
+        {
+          "label": "透明质酸钠",
+          "role": "吸湿保湿线索"
+        },
+        {
+          "label": "成膜聚合物",
+          "role": "水光与持妆结构"
+        }
       ],
       "media": [
-        {"platform": "小红书/知乎", "signal": "中等", "topics": ["芒果果香", "玻璃唇妆效", "缓解干燥起皮"], "doubts": ["清润还是黏厚", "叠加口红是否移色", "吃喝后持久度"], "misconceptions": ["即时柔润不等于长期修复已被临床证明"], "scenarios": ["素颜淡妆", "随身补涂"], "summary": "正面评价集中于果香、水光和滋润，负面评价集中于黏厚、移色及持久度。"},
-        {"platform": "Reddit", "signal": "低且旁证", "topics": ["Fresh Sugar 固体润唇产品包装耐用性"], "doubts": ["品牌包装与售后"], "misconceptions": ["该投诉针对其他固体唇膏，不能归因于本款唇霜"], "scenarios": ["品牌购买风险参考"], "summary": "国际负面信号来自其他 Fresh Sugar 唇膏形态，只能作为品牌层旁证。"}
+        {
+          "platform": "小红书/知乎",
+          "signal": "中等",
+          "topics": [
+            "芒果果香",
+            "玻璃唇妆效",
+            "缓解干燥起皮"
+          ],
+          "doubts": [
+            "清润还是黏厚",
+            "叠加口红是否移色",
+            "吃喝后持久度"
+          ],
+          "misconceptions": [
+            "即时柔润不等于长期修复已被临床证明"
+          ],
+          "scenarios": [
+            "素颜淡妆",
+            "随身补涂"
+          ],
+          "summary": "正面评价集中于果香、水光和滋润，负面评价集中于黏厚、移色及持久度。"
+        },
+        {
+          "platform": "Reddit",
+          "signal": "低且旁证",
+          "topics": [
+            "Fresh Sugar 固体润唇产品包装耐用性"
+          ],
+          "doubts": [
+            "品牌包装与售后"
+          ],
+          "misconceptions": [
+            "该投诉针对其他固体唇膏，不能归因于本款唇霜"
+          ],
+          "scenarios": [
+            "品牌购买风险参考"
+          ],
+          "summary": "国际负面信号来自其他 Fresh Sugar 唇膏形态，只能作为品牌层旁证。"
+        }
       ],
       "editorialCards": [
-        {"image": "/assets/products/fresh-sugar-melt-lip-cream-mango/bubble.svg", "caption": "产品封面与芒果水光定位"},
-        {"image": "/assets/products/fresh-sugar-melt-lip-cream-mango/cards/02.svg", "caption": "油脂、成膜与果香结构"}
+        {
+          "image": "/assets/products/fresh-sugar-melt-lip-cream-mango/bubble.svg",
+          "caption": "产品封面与芒果水光定位"
+        },
+        {
+          "image": "/assets/products/fresh-sugar-melt-lip-cream-mango/cards/02.svg",
+          "caption": "油脂、成膜与果香结构"
+        }
       ],
       "evidenceBoundary": "16 篇均为唇部保湿、透明质酸和化妆品背景文献；国际包装投诉针对其他 Fresh Sugar 固体唇膏。",
-      "audience": {"bestFor": ["喜欢芒果香、水光唇面和日常柔润的人", "素颜或淡妆随手补涂场景"], "cautions": ["讨厌黏感、香精或容易移色的人先试用", "需要高持久不沾杯效果的人不应按染唇液预期"]},
-      "layout": {"x": 1370, "y": 1420, "size": 0.84}
-    },
-    {
-      "id": "numbuzin-no5-vitamin-boosting-essential-toner",
-      "slug": "numbuzin-no5-vitamin-boosting-essential-toner",
-      "brand": "Numbuzin",
-      "name": "No.5 Vitamin Boosting Essential Toner 200ml",
-      "shortName": "Numbuzin 5号维生素水",
-      "category": "提亮化妆水",
-      "positioning": "多通路提亮与修护打底",
-      "bubbleImage": "/assets/products/numbuzin-no5-vitamin-toner/bubble.svg",
-      "bubbleFocal": "50% 50%",
-      "summary": "以乙基维 C、原型维 C、烟酰胺、熊果苷、谷胱甘肽、多肽和屏障舒缓成分构成多通路提亮化妆水。",
-      "technologies": [
-        {"label": "多通路提亮组合", "summary": "乙基维 C、抗坏血酸、烟酰胺、熊果苷、谷胱甘肽和 Nonapeptide-1 形成提亮叙事。"},
-        {"label": "多肽辅助护理", "summary": "Acetyl Hexapeptide-8、Hexapeptide-9 和多种棕榈酰肽补充肤质护理。"},
-        {"label": "屏障舒缓底座", "summary": "神经酰胺 NP、泛醇、积雪草苷、没药醇和卵磷脂帮助平衡耐受。"}
-      ],
-      "keyIngredients": [
-        {"label": "乙基维 C + 原型维 C", "role": "抗氧化与提亮主线"},
-        {"label": "烟酰胺", "role": "肤色与屏障护理"},
-        {"label": "熊果苷 + 谷胱甘肽", "role": "色素与抗氧化线索"},
-        {"label": "神经酰胺 NP + 泛醇", "role": "屏障舒缓支持"}
-      ],
-      "media": [
-        {"platform": "YouTube", "signal": "较强", "topics": ["暗沉与痘印提亮", "精华水质地和叠加", "化妆水还是棉片"], "doubts": ["与同系列棉片如何选择", "折扣码和联盟链接较多"], "misconceptions": ["多成分提亮不等于对所有色沉都同样有效"], "scenarios": ["妆前打底", "痘印护理"], "summary": "内容普遍把它定位为多活性提亮水，并反复回答化妆水与棉片的选择。"},
-        {"platform": "小红书", "signal": "有限", "topics": ["数字系列按肤质选", "油皮妆前打底"], "doubts": ["脂溢性皮炎或玫瑰痤疮是否耐受"], "misconceptions": ["数字系列不需要整套购买"], "scenarios": ["按需提亮"], "summary": "国内信号强调按当下肤质选单品，并提醒敏感和炎症状态先测试耐受。"}
-      ],
-      "editorialCards": [
-        {"image": "/assets/products/numbuzin-no5-vitamin-toner/bubble.svg", "caption": "产品封面与多通路提亮定位"},
-        {"image": "/assets/products/numbuzin-no5-vitamin-toner/cards/02.svg", "caption": "维 C、烟酰胺、熊果苷与修护底座"}
-      ],
-      "evidenceBoundary": "12 篇均为维 C、烟酰胺、熊果苷和提亮机制背景文献；未检出该具体 SKU 的直接产品临床或明确专利。",
-      "audience": {"bestFor": ["暗沉、痘印和肤色不均并偏好可叠加精华水的人", "希望提亮同时保留修护线的人"], "cautions": ["多活性叠加时注意刺激", "玫瑰痤疮、脂溢性皮炎或屏障不稳时先测试"]},
-      "layout": {"x": 1710, "y": 1410, "size": 0.86}
+      "audience": {
+        "bestFor": [
+          "喜欢芒果香、水光唇面和日常柔润的人",
+          "素颜或淡妆随手补涂场景"
+        ],
+        "cautions": [
+          "讨厌黏感、香精或容易移色的人先试用",
+          "需要高持久不沾杯效果的人不应按染唇液预期"
+        ]
+      },
+      "layout": {
+        "x": 1370,
+        "y": 1420,
+        "size": 0.84
+      }
     },
     {
       "id": "numbuzin-no3-super-glowing-essence-toner",
@@ -216,27 +548,104 @@
       "bubbleFocal": "50% 50%",
       "summary": "以大规模酵母、乳酸菌、芽孢杆菌和其他发酵滤液构成高密度发酵精华水，辅以烟酰胺和保湿聚合物。",
       "technologies": [
-        {"label": "50+ 发酵成分矩阵", "summary": "多种酵母、乳酸菌、乳球菌、双歧杆菌和曲霉发酵物构成核心配方指纹。"},
-        {"label": "精华型化妆水结构", "summary": "Glycereth-26、Methyl Gluceth-20、甜菜碱和聚季铵盐-51 形成稠润肤感。"},
-        {"label": "光泽与肤质辅助线", "summary": "烟酰胺、腺苷、透明质酸和绣线菊提取物补充光泽护理。"}
+        {
+          "label": "50+ 发酵成分矩阵",
+          "summary": "多种酵母、乳酸菌、乳球菌、双歧杆菌和曲霉发酵物构成核心配方指纹。"
+        },
+        {
+          "label": "精华型化妆水结构",
+          "summary": "Glycereth-26、Methyl Gluceth-20、甜菜碱和聚季铵盐-51 形成稠润肤感。"
+        },
+        {
+          "label": "光泽与肤质辅助线",
+          "summary": "烟酰胺、腺苷、透明质酸和绣线菊提取物补充光泽护理。"
+        }
       ],
       "keyIngredients": [
-        {"label": "多种酵母发酵物", "role": "核心发酵矩阵"},
-        {"label": "乳酸菌与双歧杆菌发酵物", "role": "后生元护理线索"},
-        {"label": "烟酰胺", "role": "肤色与屏障护理"},
-        {"label": "聚季铵盐-51", "role": "保湿成膜"}
+        {
+          "label": "多种酵母发酵物",
+          "role": "核心发酵矩阵"
+        },
+        {
+          "label": "乳酸菌与双歧杆菌发酵物",
+          "role": "后生元护理线索"
+        },
+        {
+          "label": "烟酰胺",
+          "role": "肤色与屏障护理"
+        },
+        {
+          "label": "聚季铵盐-51",
+          "role": "保湿成膜"
+        }
       ],
       "media": [
-        {"platform": "YouTube", "signal": "较强", "topics": ["50 种发酵成分", "精华状质地", "光泽和肤质改善"], "doubts": ["香精是否影响耐受", "赞助和联盟链接较多"], "misconceptions": ["发酵成分数量不等于必然更有效或更温和"], "scenarios": ["干燥环境", "追求光泽肤感"], "summary": "创作者常称其为 Holy Grail，但品牌合作与联盟链接较普遍。"},
-        {"platform": "Reddit/知乎", "signal": "有限", "topics": ["初期红痒反应", "敏感肌灼热感"], "doubts": ["发酵物和香精是否适合自己"], "misconceptions": ["红痒不能简单解释为皮肤适应发酵"], "scenarios": ["逐步测试耐受"], "summary": "少量用户报告红、痒或灼热，不应把不良反应合理化为正常适应。"}
+        {
+          "platform": "YouTube",
+          "signal": "较强",
+          "topics": [
+            "50 种发酵成分",
+            "精华状质地",
+            "光泽和肤质改善"
+          ],
+          "doubts": [
+            "香精是否影响耐受",
+            "赞助和联盟链接较多"
+          ],
+          "misconceptions": [
+            "发酵成分数量不等于必然更有效或更温和"
+          ],
+          "scenarios": [
+            "干燥环境",
+            "追求光泽肤感"
+          ],
+          "summary": "创作者常称其为 Holy Grail，但品牌合作与联盟链接较普遍。"
+        },
+        {
+          "platform": "Reddit/知乎",
+          "signal": "有限",
+          "topics": [
+            "初期红痒反应",
+            "敏感肌灼热感"
+          ],
+          "doubts": [
+            "发酵物和香精是否适合自己"
+          ],
+          "misconceptions": [
+            "红痒不能简单解释为皮肤适应发酵"
+          ],
+          "scenarios": [
+            "逐步测试耐受"
+          ],
+          "summary": "少量用户报告红、痒或灼热，不应把不良反应合理化为正常适应。"
+        }
       ],
       "editorialCards": [
-        {"image": "/assets/products/numbuzin-no3-super-glowing-toner/bubble.svg", "caption": "产品封面与多发酵定位"},
-        {"image": "/assets/products/numbuzin-no3-super-glowing-toner/cards/02.svg", "caption": "发酵矩阵、精华质地与耐受边界"}
+        {
+          "image": "/assets/products/numbuzin-no3-super-glowing-toner/bubble.svg",
+          "caption": "产品封面与多发酵定位"
+        },
+        {
+          "image": "/assets/products/numbuzin-no3-super-glowing-toner/cards/02.svg",
+          "caption": "发酵矩阵、精华质地与耐受边界"
+        }
       ],
       "evidenceBoundary": "13 篇为发酵物、后生元、保湿和皮肤微生态背景文献；未检出该具体 SKU 的直接产品临床。",
-      "audience": {"bestFor": ["喜欢精华型化妆水并追求即时光泽的人", "对发酵护肤已有良好耐受的人"], "cautions": ["发酵物、香精或精油敏感者谨慎", "持续红痒或灼热应停用"]},
-      "layout": {"x": 2040, "y": 680, "size": 0.86}
+      "audience": {
+        "bestFor": [
+          "喜欢精华型化妆水并追求即时光泽的人",
+          "对发酵护肤已有良好耐受的人"
+        ],
+        "cautions": [
+          "发酵物、香精或精油敏感者谨慎",
+          "持续红痒或灼热应停用"
+        ]
+      },
+      "layout": {
+        "x": 2040,
+        "y": 680,
+        "size": 0.86
+      }
     },
     {
       "id": "paulas-choice-skin-perfecting-1-bha-gentle-gel-toner",
@@ -250,27 +659,106 @@
       "bubbleFocal": "50% 50%",
       "summary": "以 1% 水杨酸为核心，叠加蘑菇、仙人掌、海藻、多糖和柔润剂，定位于敏感或泛红人群的较温和 BHA 选择。",
       "technologies": [
-        {"label": "1% 水杨酸疏通主轴", "summary": "较低浓度脂溶性 BHA 用于角质代谢、毛孔油脂和闭口护理。"},
-        {"label": "凝胶化柔润载体", "summary": "丙烯酸聚合物、烷烃和碳酸二辛酯形成比传统水状 BHA 更柔润的凝胶结构。"},
-        {"label": "舒缓与微生态辅助线", "summary": "尿囊素、蘑菇、仙人掌、海藻、菊粉和 α-葡聚糖寡糖补充舒缓保湿。"}
+        {
+          "label": "1% 水杨酸疏通主轴",
+          "summary": "较低浓度脂溶性 BHA 用于角质代谢、毛孔油脂和闭口护理。"
+        },
+        {
+          "label": "凝胶化柔润载体",
+          "summary": "丙烯酸聚合物、烷烃和碳酸二辛酯形成比传统水状 BHA 更柔润的凝胶结构。"
+        },
+        {
+          "label": "舒缓与微生态辅助线",
+          "summary": "尿囊素、蘑菇、仙人掌、海藻、菊粉和 α-葡聚糖寡糖补充舒缓保湿。"
+        }
       ],
       "keyIngredients": [
-        {"label": "1% 水杨酸", "role": "角质与毛孔护理主轴"},
-        {"label": "尿囊素", "role": "舒缓支持"},
-        {"label": "蘑菇、仙人掌与海藻", "role": "保湿抗氧化线"},
-        {"label": "菊粉 + α-葡聚糖寡糖", "role": "微生态护理线索"}
+        {
+          "label": "1% 水杨酸",
+          "role": "角质与毛孔护理主轴"
+        },
+        {
+          "label": "尿囊素",
+          "role": "舒缓支持"
+        },
+        {
+          "label": "蘑菇、仙人掌与海藻",
+          "role": "保湿抗氧化线"
+        },
+        {
+          "label": "菊粉 + α-葡聚糖寡糖",
+          "role": "微生态护理线索"
+        }
       ],
       "media": [
-        {"platform": "YouTube", "signal": "中等", "topics": ["敏感泛红人群的温和 BHA", "毛孔观感", "长期使用后是否仍需要"], "doubts": ["长期效果是否递减", "不同 BHA 产品如何选"], "misconceptions": ["1% 仍可能刺激，不等于可无限加频率"], "scenarios": ["初次刷酸", "敏感偏油皮"], "summary": "品牌内容强调温和和毛孔护理，长期用户内容提示皮肤需求会变化。"},
-        {"platform": "知乎", "signal": "中等但产品混杂", "topics": ["建立耐受", "黑头闭口局部使用", "刷酸频率"], "doubts": ["爆皮爆痘", "是否湿敷"], "misconceptions": ["很多讨论对应其他宝拉水杨酸产品"], "scenarios": ["低频逐步使用"], "summary": "国内大量内容是品牌水杨酸泛讨论，可用于风险教育，但不是本款专属体验。"}
+        {
+          "platform": "YouTube",
+          "signal": "中等",
+          "topics": [
+            "敏感泛红人群的温和 BHA",
+            "毛孔观感",
+            "长期使用后是否仍需要"
+          ],
+          "doubts": [
+            "长期效果是否递减",
+            "不同 BHA 产品如何选"
+          ],
+          "misconceptions": [
+            "1% 仍可能刺激，不等于可无限加频率"
+          ],
+          "scenarios": [
+            "初次刷酸",
+            "敏感偏油皮"
+          ],
+          "summary": "品牌内容强调温和和毛孔护理，长期用户内容提示皮肤需求会变化。"
+        },
+        {
+          "platform": "知乎",
+          "signal": "中等但产品混杂",
+          "topics": [
+            "建立耐受",
+            "黑头闭口局部使用",
+            "刷酸频率"
+          ],
+          "doubts": [
+            "爆皮爆痘",
+            "是否湿敷"
+          ],
+          "misconceptions": [
+            "很多讨论对应其他宝拉水杨酸产品"
+          ],
+          "scenarios": [
+            "低频逐步使用"
+          ],
+          "summary": "国内大量内容是品牌水杨酸泛讨论，可用于风险教育，但不是本款专属体验。"
+        }
       ],
       "editorialCards": [
-        {"image": "/assets/products/paulas-choice-1-bha-gel-toner/bubble.svg", "caption": "产品封面与 1% 温和 BHA 定位"},
-        {"image": "/assets/products/paulas-choice-1-bha-gel-toner/cards/02.svg", "caption": "水杨酸、凝胶载体与舒缓结构"}
+        {
+          "image": "/assets/products/paulas-choice-1-bha-gel-toner/bubble.svg",
+          "caption": "产品封面与 1% 温和 BHA 定位"
+        },
+        {
+          "image": "/assets/products/paulas-choice-1-bha-gel-toner/cards/02.svg",
+          "caption": "水杨酸、凝胶载体与舒缓结构"
+        }
       ],
       "evidenceBoundary": "报告中的 21 天水杨酸凝胶研究是配方与使用情境匹配，不是该具体产品临床；国内社媒大量讨论对应品牌其他 BHA。",
-      "audience": {"bestFor": ["想从低浓度 BHA 开始处理黑头闭口和油脂的人", "对 2% BHA 过于刺激并希望更柔润载体的人"], "cautions": ["从低频小面积开始，不建议湿敷或叠加多种去角质", "活动性皮炎或明显屏障受损时谨慎"]},
-      "layout": {"x": 230, "y": 830, "size": 0.88}
+      "audience": {
+        "bestFor": [
+          "想从低浓度 BHA 开始处理黑头闭口和油脂的人",
+          "对 2% BHA 过于刺激并希望更柔润载体的人"
+        ],
+        "cautions": [
+          "从低频小面积开始，不建议湿敷或叠加多种去角质",
+          "活动性皮炎或明显屏障受损时谨慎"
+        ]
+      },
+      "layout": {
+        "x": 230,
+        "y": 830,
+        "size": 0.88
+      }
     },
     {
       "id": "skinceuticals-p-tiox-serum",
@@ -284,27 +772,107 @@
       "bubbleFocal": "50% 50%",
       "summary": "以乙酰基六肽-8、蛇毒三肽样二肽、葡糖酸内酯、烟酰胺和海藻提取物形成明确配方指纹，并已有两篇高度匹配论文。",
       "technologies": [
-        {"label": "双神经肽组合", "summary": "乙酰基六肽-8 与二肽二氨基丁酰苄基酰胺二乙酸盐承担表情纹调节叙事。"},
-        {"label": "PHA + 烟酰胺肤质线", "summary": "葡糖酸内酯、烟酰胺、水杨酸和植酸用于表面平滑、光泽和毛孔观感。"},
-        {"label": "医美协同研究线", "summary": "现有论文讨论单独使用及与 A 型肉毒毒素联合的表现，但不能理解为替代注射。"}
+        {
+          "label": "双神经肽组合",
+          "summary": "乙酰基六肽-8 与二肽二氨基丁酰苄基酰胺二乙酸盐承担表情纹调节叙事。"
+        },
+        {
+          "label": "PHA + 烟酰胺肤质线",
+          "summary": "葡糖酸内酯、烟酰胺、水杨酸和植酸用于表面平滑、光泽和毛孔观感。"
+        },
+        {
+          "label": "医美协同研究线",
+          "summary": "现有论文讨论单独使用及与 A 型肉毒毒素联合的表现，但不能理解为替代注射。"
+        }
       ],
       "keyIngredients": [
-        {"label": "乙酰基六肽-8", "role": "表情纹护理肽"},
-        {"label": "蛇毒三肽样二肽", "role": "神经肽组合识别点"},
-        {"label": "葡糖酸内酯", "role": "PHA 温和更新"},
-        {"label": "烟酰胺 + 海带提取物", "role": "肤质与光泽护理"}
+        {
+          "label": "乙酰基六肽-8",
+          "role": "表情纹护理肽"
+        },
+        {
+          "label": "蛇毒三肽样二肽",
+          "role": "神经肽组合识别点"
+        },
+        {
+          "label": "葡糖酸内酯",
+          "role": "PHA 温和更新"
+        },
+        {
+          "label": "烟酰胺 + 海带提取物",
+          "role": "肤质与光泽护理"
+        }
       ],
       "media": [
-        {"platform": "YouTube", "signal": "较强", "topics": ["Botox in a bottle", "如何叠加护肤程序", "表情纹调节"], "doubts": ["高价格是否值得", "联盟链接较多"], "misconceptions": ["外用精华不能替代肉毒毒素注射"], "scenarios": ["医美周边护理", "白天轻质精华"], "summary": "瓶装肉毒是主钩子，但边界应明确为表情纹护肤和医美协同，而非针剂替代。"},
-        {"platform": "Reddit/小红书", "signal": "中等", "topics": ["与 Triple Lipid、TNS、AGE 精华搭配", "短期是否有明显结果", "搓泥与刺激"], "doubts": ["新品价格", "程序顺序", "短期不惊艳"], "misconceptions": ["十天体验不能代表长期结论"], "scenarios": ["多精华程序优化"], "summary": "用户更关心昂贵新品如何融入既有程序，以及短期体验是否支撑继续使用。"}
+        {
+          "platform": "YouTube",
+          "signal": "较强",
+          "topics": [
+            "Botox in a bottle",
+            "如何叠加护肤程序",
+            "表情纹调节"
+          ],
+          "doubts": [
+            "高价格是否值得",
+            "联盟链接较多"
+          ],
+          "misconceptions": [
+            "外用精华不能替代肉毒毒素注射"
+          ],
+          "scenarios": [
+            "医美周边护理",
+            "白天轻质精华"
+          ],
+          "summary": "瓶装肉毒是主钩子，但边界应明确为表情纹护肤和医美协同，而非针剂替代。"
+        },
+        {
+          "platform": "Reddit/小红书",
+          "signal": "中等",
+          "topics": [
+            "与 Triple Lipid、TNS、AGE 精华搭配",
+            "短期是否有明显结果",
+            "搓泥与刺激"
+          ],
+          "doubts": [
+            "新品价格",
+            "程序顺序",
+            "短期不惊艳"
+          ],
+          "misconceptions": [
+            "十天体验不能代表长期结论"
+          ],
+          "scenarios": [
+            "多精华程序优化"
+          ],
+          "summary": "用户更关心昂贵新品如何融入既有程序，以及短期体验是否支撑继续使用。"
+        }
       ],
       "editorialCards": [
-        {"image": "/assets/products/skinceuticals-p-tiox-serum/bubble.svg", "caption": "产品封面与配方指纹"},
-        {"image": "/assets/products/skinceuticals-p-tiox-serum/cards/02.svg", "caption": "双神经肽、PHA 与证据等级"}
+        {
+          "image": "/assets/products/skinceuticals-p-tiox-serum/bubble.svg",
+          "caption": "产品封面与配方指纹"
+        },
+        {
+          "image": "/assets/products/skinceuticals-p-tiox-serum/cards/02.svg",
+          "caption": "双神经肽、PHA 与证据等级"
+        }
       ],
       "evidenceBoundary": "两篇论文与产品配方指纹高度匹配，其中 2026 年研究覆盖核心肽、葡糖酸内酯、烟酰胺和海藻组合；瓶装肉毒仍是传播比喻。",
-      "audience": {"bestFor": ["关注动态纹、细纹和肤质光泽并愿意持续使用的人", "希望把胜肽精华纳入医美周边护理的人"], "cautions": ["含变性乙醇、酸类和多活性，敏感肌先测试", "与维 A、强酸和高浓维 C 搭配时根据耐受简化"]},
-      "layout": {"x": 2320, "y": 760, "size": 0.9}
+      "audience": {
+        "bestFor": [
+          "关注动态纹、细纹和肤质光泽并愿意持续使用的人",
+          "希望把胜肽精华纳入医美周边护理的人"
+        ],
+        "cautions": [
+          "含变性乙醇、酸类和多活性，敏感肌先测试",
+          "与维 A、强酸和高浓维 C 搭配时根据耐受简化"
+        ]
+      },
+      "layout": {
+        "x": 2320,
+        "y": 760,
+        "size": 0.9
+      }
     }
   ]
 }
