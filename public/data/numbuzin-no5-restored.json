@@ -1,0 +1,107 @@
+{
+  "id": "numbuzin-no5-vitamin-toner-restored",
+  "slug": "numbuzin-no5-vitamin-toner-restored",
+  "brand": "Numbuzin",
+  "name": "No.5 Vitamin Boosting Essential Toner 200ml",
+  "shortName": "Numbuzin 5号维生素水",
+  "category": "提亮化妆水",
+  "positioning": "多通路提亮与修护打底",
+  "bubbleImage": "/assets/products/numbuzin-no5-restored/bubble.svg?v=20260804-1",
+  "bubbleFocal": "50% 50%",
+  "summary": "以乙基维 C、原型维 C、烟酰胺、熊果苷、谷胱甘肽、多肽和屏障舒缓成分构成多通路提亮化妆水。",
+  "technologies": [
+    {
+      "label": "多通路提亮组合",
+      "summary": "乙基维 C、抗坏血酸、烟酰胺、熊果苷、谷胱甘肽和 Nonapeptide-1 形成提亮主线。"
+    },
+    {
+      "label": "多肽辅助护理",
+      "summary": "Acetyl Hexapeptide-8、Hexapeptide-9 和多种棕榈酰肽补充肤质护理。"
+    },
+    {
+      "label": "屏障舒缓底座",
+      "summary": "神经酰胺 NP、泛醇、积雪草苷、没药醇和卵磷脂帮助平衡耐受。"
+    }
+  ],
+  "keyIngredients": [
+    {
+      "label": "乙基维 C + 原型维 C",
+      "role": "抗氧化与提亮主线"
+    },
+    {
+      "label": "烟酰胺",
+      "role": "肤色与屏障护理"
+    },
+    {
+      "label": "熊果苷 + 谷胱甘肽",
+      "role": "色素与抗氧化线索"
+    },
+    {
+      "label": "神经酰胺 NP + 泛醇",
+      "role": "屏障舒缓支持"
+    }
+  ],
+  "media": [
+    {
+      "platform": "YouTube",
+      "signal": "较强",
+      "topics": [
+        "暗沉与痘印提亮",
+        "精华水质地和叠加",
+        "化妆水还是棉片"
+      ],
+      "doubts": [
+        "与同系列棉片如何选择",
+        "折扣码和联盟链接较多"
+      ],
+      "misconceptions": [
+        "多成分提亮不等于对所有色沉都同样有效"
+      ],
+      "scenarios": [
+        "妆前打底",
+        "痘印护理"
+      ],
+      "summary": "内容普遍把它定位为多活性提亮水，并反复回答化妆水与棉片的选择。"
+    },
+    {
+      "platform": "小红书",
+      "signal": "有限",
+      "topics": [
+        "数字系列按肤质选",
+        "油皮妆前打底"
+      ],
+      "doubts": [
+        "脂溢性皮炎或玫瑰痤疮是否耐受"
+      ],
+      "misconceptions": [
+        "数字系列不需要整套购买"
+      ],
+      "scenarios": [
+        "按需提亮"
+      ],
+      "summary": "国内信号强调按当下肤质选单品，并提醒敏感和炎症状态先测试耐受。"
+    }
+  ],
+  "editorialCards": [
+    {
+      "image": "/assets/products/numbuzin-no5-restored/bubble.svg?v=20260804-1",
+      "caption": "产品原图与多通路提亮定位"
+    }
+  ],
+  "evidenceBoundary": "12 篇均为维 C、烟酰胺、熊果苷和提亮机制背景文献；未检出该具体 SKU 的直接产品临床或明确专利。",
+  "audience": {
+    "bestFor": [
+      "暗沉、痘印和肤色不均并偏好可叠加精华水的人",
+      "希望提亮同时保留修护线的人"
+    ],
+    "cautions": [
+      "多活性叠加时注意刺激",
+      "玫瑰痤疮、脂溢性皮炎或屏障不稳时先测试"
+    ]
+  },
+  "layout": {
+    "x": 1710,
+    "y": 1410,
+    "size": 0.86
+  }
+}
