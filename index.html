@@ -172,7 +172,7 @@
           const pathname = new URL(requestUrl, window.location.href).pathname;
           if (pathname !== '/data/products.json') return nativeFetch(input, init);
 
-          const [baseResponse, overlayResponse, batchResponse, importResponse, secondImportResponse, thirdImportResponse, fourthImportResponse, mediaOverridesResponse] = await Promise.all([
+          const [baseResponse, overlayResponse, batchResponse, importResponse, secondImportResponse, thirdImportResponse, fourthImportResponse, fifthImportResponse, mediaOverridesResponse] = await Promise.all([
             nativeFetch(input, init),
             nativeFetch('/data/products-overlay.json'),
             nativeFetch('/data/products-batch.json'),
@@ -180,9 +180,10 @@
             nativeFetch('/data/products-import-20260727-4b.json'),
             nativeFetch('/data/products-import-20260729-10.json'),
             nativeFetch('/data/products-import-20260730-8.json'),
+            nativeFetch('/data/products-import-20260803-10.json'),
             nativeFetch('/data/media-platform-overrides.json')
           ]);
-          if (!baseResponse.ok || !overlayResponse.ok || !batchResponse.ok || !importResponse.ok || !secondImportResponse.ok || !thirdImportResponse.ok || !fourthImportResponse.ok || !mediaOverridesResponse.ok) return baseResponse;
+          if (!baseResponse.ok || !overlayResponse.ok || !batchResponse.ok || !importResponse.ok || !secondImportResponse.ok || !thirdImportResponse.ok || !fourthImportResponse.ok || !fifthImportResponse.ok || !mediaOverridesResponse.ok) return baseResponse;
 
           const base = await baseResponse.json();
           const overlay = await overlayResponse.json();
@@ -191,6 +192,7 @@
           const importedB = await secondImportResponse.json();
           const importedC = await thirdImportResponse.json();
           const importedD = await fourthImportResponse.json();
+          const importedE = await fifthImportResponse.json();
           const mediaOverrides = await mediaOverridesResponse.json();
           const additions = [
             ...(Array.isArray(overlay.products) ? overlay.products : []),
@@ -198,7 +200,8 @@
             ...(Array.isArray(imported.products) ? imported.products : []),
             ...(Array.isArray(importedB.products) ? importedB.products : []),
             ...(Array.isArray(importedC.products) ? importedC.products : []),
-            ...(Array.isArray(importedD.products) ? importedD.products : [])
+            ...(Array.isArray(importedD.products) ? importedD.products : []),
+            ...(Array.isArray(importedE.products) ? importedE.products : [])
           ];
           const additionIds = new Set(additions.map(product => product.id));
           base.products = [
