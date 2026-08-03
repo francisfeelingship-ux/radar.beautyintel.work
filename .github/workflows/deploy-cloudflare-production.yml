@@ -1,0 +1,112 @@
+name: Deploy Cloudflare production
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - ".deploy-status/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: radar-cloudflare-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: 2a45487848120d65ccb7aa1640f8373e
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Build, deploy, and verify
+        id: deploy
+        shell: bash
+        run: |
+          set +e
+          STATUS="success"
+          DETAIL="deployed and verified"
+          DEPLOY_EXIT=0
+
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            STATUS="failed"
+            DETAIL="missing repository secret CLOUDFLARE_API_TOKEN"
+            DEPLOY_EXIT=2
+          else
+            corepack enable
+            pnpm install --frozen-lockfile
+            INSTALL_EXIT=$?
+            if [ "$INSTALL_EXIT" -ne 0 ]; then
+              STATUS="failed"
+              DETAIL="pnpm install failed with exit code $INSTALL_EXIT"
+              DEPLOY_EXIT=$INSTALL_EXIT
+            fi
+
+            if [ "$DEPLOY_EXIT" -eq 0 ]; then
+              pnpm run build
+              BUILD_EXIT=$?
+              if [ "$BUILD_EXIT" -ne 0 ]; then
+                STATUS="failed"
+                DETAIL="production build failed with exit code $BUILD_EXIT"
+                DEPLOY_EXIT=$BUILD_EXIT
+              fi
+            fi
+
+            if [ "$DEPLOY_EXIT" -eq 0 ]; then
+              pnpm dlx wrangler@4 deploy
+              WRANGLER_EXIT=$?
+              if [ "$WRANGLER_EXIT" -ne 0 ]; then
+                STATUS="failed"
+                DETAIL="wrangler deploy failed with exit code $WRANGLER_EXIT"
+                DEPLOY_EXIT=$WRANGLER_EXIT
+              fi
+            fi
+
+            if [ "$DEPLOY_EXIT" -eq 0 ]; then
+              VERIFIED=0
+              for ATTEMPT in $(seq 1 18); do
+                curl -fsS "https://radar.beautyintel.work/data/products-batch.json?sha=$GITHUB_SHA&attempt=$ATTEMPT" -o /tmp/products-batch.json
+                DATA_EXIT=$?
+                ASSET_CODE=$(curl -sS -o /dev/null -w "%{http_code}" "https://radar.beautyintel.work/assets/products/numbuzin-no5-vitamin-toner/bubble.svg?sha=$GITHUB_SHA&attempt=$ATTEMPT")
+                if [ "$DATA_EXIT" -eq 0 ] \
+                  && ! grep -q "numbuzin-no5-vitamin-boosting-essential-toner" /tmp/products-batch.json \
+                  && ! grep -q "numbuzin-no5-vitamin-toner" /tmp/products-batch.json \
+                  && [ "$ASSET_CODE" = "404" ]; then
+                  VERIFIED=1
+                  break
+                fi
+                sleep 10
+              done
+
+              if [ "$VERIFIED" -ne 1 ]; then
+                STATUS="failed"
+                DETAIL="deployment completed but live verification still found the retired product or asset"
+                DEPLOY_EXIT=3
+              fi
+            fi
+          fi
+
+          mkdir -p .deploy-status
+          {
+            echo "status=$STATUS"
+            echo "detail=$DETAIL"
+            echo "source_sha=$GITHUB_SHA"
+            echo "checked_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          } > .deploy-status/cloudflare-production.txt
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .deploy-status/cloudflare-production.txt
+          git commit -m "Record Cloudflare production deployment status [skip ci]" || true
+          git push origin HEAD:main
+
+          exit "$DEPLOY_EXIT"
