@@ -1,8 +1,15 @@
 {
   "name": "radar-beautyintel-work",
+  "main": "./worker.js",
   "compatibility_date": "2026-08-03",
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/data/products.json",
+      "/data/products-overlay.json",
+      "/data/products-batch.json"
+    ],
     "not_found_handling": "single-page-application"
   },
   "routes": [
