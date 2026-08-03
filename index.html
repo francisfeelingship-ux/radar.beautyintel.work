@@ -207,7 +207,10 @@
           base.products = [
             ...(base.products || []).filter(product => !additionIds.has(product.id)),
             ...additions
-          ].filter(product => product.id !== 'numbuzin-no5-vitamin-toner');
+          ].filter(product => ![
+            'numbuzin-no5-vitamin-toner',
+            'numbuzin-no5-vitamin-boosting-essential-toner'
+          ].includes(product.id) && product.slug !== 'numbuzin-no5-vitamin-boosting-essential-toner' && product.bubbleImage?.split('?')[0] !== '/assets/products/numbuzin-no5-vitamin-toner/bubble.svg');
 
           const mediaByProduct = mediaOverrides?.mediaByProduct || {};
           base.products.forEach(product => {
