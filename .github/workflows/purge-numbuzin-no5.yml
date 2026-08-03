@@ -1,0 +1,87 @@
+name: Purge removed Numbuzin No.5 product
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Remove product records and assets
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+
+          const removedIds = new Set([
+            'numbuzin-no5-vitamin-toner',
+            'numbuzin-no5-vitamin-boosting-essential-toner'
+          ]);
+          const removedSlugs = new Set([
+            'numbuzin-no5-vitamin-toner',
+            'numbuzin-no5-vitamin-boosting-essential-toner'
+          ]);
+          const removedAssetPrefix = '/assets/products/numbuzin-no5-vitamin-toner/';
+
+          function isRemoved(product) {
+            return removedIds.has(product?.id)
+              || removedSlugs.has(product?.slug)
+              || String(product?.bubbleImage || '').split('?')[0].startsWith(removedAssetPrefix)
+              || String(product?.name || '').includes('No.5 Vitamin Boosting Essential Toner')
+              || String(product?.shortName || '').includes('Numbuzin 5号维生素水');
+          }
+
+          const dataDir = path.join(process.cwd(), 'public', 'data');
+          for (const filename of fs.readdirSync(dataDir)) {
+            if (!filename.endsWith('.json')) continue;
+            const filePath = path.join(dataDir, filename);
+            let data;
+            try {
+              data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            } catch {
+              continue;
+            }
+            if (!Array.isArray(data.products)) continue;
+            const before = data.products.length;
+            data.products = data.products.filter(product => !isRemoved(product));
+            if (data.products.length !== before) {
+              fs.writeFileSync(filePath, JSON.stringify(data, null, 2) + '\n');
+              console.log(`Removed ${before - data.products.length} record(s) from ${filename}`);
+            }
+          }
+
+          fs.rmSync(path.join(process.cwd(), 'public', 'assets', 'products', 'numbuzin-no5-vitamin-toner'), {
+            recursive: true,
+            force: true
+          });
+
+          fs.writeFileSync(
+            path.join(process.cwd(), 'public', 'deploy-version.txt'),
+            `beauty-radar source-purge-numbuzin-no5-${Date.now()}\n`
+          );
+          NODE
+
+      - name: Commit physical deletion
+        run: |
+          if git diff --quiet; then
+            echo "No remaining source records."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Physically remove Numbuzin No.5 product from source data"
+          git push
