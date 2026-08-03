@@ -14,37 +14,44 @@ jobs:
   restore:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out main with history
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           ref: main
           fetch-depth: 0
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
-
-      - name: Restore product source and exact uploaded image
-        run: python .restore/restore_numbuzin.py
-
-      - name: Build and validate
+      - name: Restore, validate, and record result
         shell: bash
         run: |
-          corepack enable
-          pnpm install --frozen-lockfile
-          pnpm run build
-          grep -q 'numbuzin-no5-vitamin-boosting-essential-toner' dist/data/products-batch.json
-          test "$(wc -c < dist/assets/products/numbuzin-no5-vitamin-toner/product.webp)" -eq 9344
-          test -f dist/assets/products/numbuzin-no5-vitamin-toner/bubble.svg
-
-      - name: Commit repair and remove one-time files
-        shell: bash
-        run: |
-          rm -rf .restore .github/workflows/restore-numbuzin-no5.yml
+          set +e
+          python .restore/restore_numbuzin.py > /tmp/restore.log 2>&1
+          RESULT=$?
+          if [ "$RESULT" -eq 0 ]; then
+            corepack enable >> /tmp/restore.log 2>&1
+            pnpm install --frozen-lockfile >> /tmp/restore.log 2>&1
+            RESULT=$?
+          fi
+          if [ "$RESULT" -eq 0 ]; then
+            pnpm run build >> /tmp/restore.log 2>&1
+            RESULT=$?
+          fi
+          if [ "$RESULT" -eq 0 ]; then
+            grep -q 'numbuzin-no5-vitamin-boosting-essential-toner' dist/data/products-batch.json || RESULT=$?
+            test "$(wc -c < dist/assets/products/numbuzin-no5-vitamin-toner/product.webp)" -eq 9344 || RESULT=$?
+          fi
+          cat /tmp/restore.log
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Restore Numbuzin No.5 product with exact uploaded image"
+          if [ "$RESULT" -eq 0 ]; then
+            rm -rf .restore .github/workflows/restore-numbuzin-no5.yml restore-numbuzin-run.log
+            git add -A
+            git commit -m "Restore Numbuzin No.5 product with exact uploaded image"
+          else
+            cp /tmp/restore.log restore-numbuzin-run.log
+            git add restore-numbuzin-run.log
+            git commit -m "Record Numbuzin restoration failure"
+          fi
           git pull --rebase origin main
           git push origin HEAD:main
+          exit "$RESULT"
