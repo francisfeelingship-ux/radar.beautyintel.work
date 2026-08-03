@@ -1,4 +1,6 @@
-status=failed
-detail=no Cloudflare API token or deploy hook repository secret was found
-source_sha=9ae37f4d1d70f4604cceb76a0ab980c7e128db26
-checked_at=2026-08-03T18:02:57Z
+status=success
+commit=4376d626acf49d831e00d7a60e5ad57be4c216fd
+method=cloudflare-native-git
+deploy_exit=0
+detail=restored product data and exact uploaded image are live
+checked_at=2026-08-03T18:04:17Z
