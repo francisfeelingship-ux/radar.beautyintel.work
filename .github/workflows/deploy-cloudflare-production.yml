@@ -19,7 +19,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN || secrets.CF_API_TOKEN || secrets.CLOUDFLARE_TOKEN || secrets.CF_TOKEN }}
+      CLOUDFLARE_DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK || secrets.CF_DEPLOY_HOOK || secrets.DEPLOY_HOOK }}
       CLOUDFLARE_ACCOUNT_ID: 2a45487848120d65ccb7aa1640f8373e
     steps:
       - name: Check out main
@@ -36,12 +37,10 @@ jobs:
           STATUS="success"
           DETAIL="deployed and verified"
           DEPLOY_EXIT=0
+          DEPLOY_METHOD=""
 
-          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
-            STATUS="failed"
-            DETAIL="missing repository secret CLOUDFLARE_API_TOKEN"
-            DEPLOY_EXIT=2
-          else
+          if [ -n "$CLOUDFLARE_API_TOKEN" ]; then
+            DEPLOY_METHOD="wrangler"
             corepack enable
             pnpm install --frozen-lockfile
             INSTALL_EXIT=$?
@@ -70,28 +69,43 @@ jobs:
                 DEPLOY_EXIT=$WRANGLER_EXIT
               fi
             fi
+          elif [ -n "$CLOUDFLARE_DEPLOY_HOOK" ]; then
+            DEPLOY_METHOD="deploy-hook"
+            curl -fsS -X POST "$CLOUDFLARE_DEPLOY_HOOK" -o /tmp/deploy-hook-response.txt
+            HOOK_EXIT=$?
+            if [ "$HOOK_EXIT" -ne 0 ]; then
+              STATUS="failed"
+              DETAIL="Cloudflare deploy hook failed with exit code $HOOK_EXIT"
+              DEPLOY_EXIT=$HOOK_EXIT
+            fi
+          else
+            STATUS="failed"
+            DETAIL="no Cloudflare API token or deploy hook repository secret was found"
+            DEPLOY_EXIT=2
+          fi
 
-            if [ "$DEPLOY_EXIT" -eq 0 ]; then
-              VERIFIED=0
-              for ATTEMPT in $(seq 1 18); do
-                curl -fsS "https://radar.beautyintel.work/data/products-batch.json?sha=$GITHUB_SHA&attempt=$ATTEMPT" -o /tmp/products-batch.json
-                DATA_EXIT=$?
-                ASSET_CODE=$(curl -sS -o /dev/null -w "%{http_code}" "https://radar.beautyintel.work/assets/products/numbuzin-no5-vitamin-toner/bubble.svg?sha=$GITHUB_SHA&attempt=$ATTEMPT")
-                if [ "$DATA_EXIT" -eq 0 ] \
-                  && ! grep -q "numbuzin-no5-vitamin-boosting-essential-toner" /tmp/products-batch.json \
-                  && ! grep -q "numbuzin-no5-vitamin-toner" /tmp/products-batch.json \
-                  && [ "$ASSET_CODE" = "404" ]; then
-                  VERIFIED=1
-                  break
-                fi
-                sleep 10
-              done
-
-              if [ "$VERIFIED" -ne 1 ]; then
-                STATUS="failed"
-                DETAIL="deployment completed but live verification still found the retired product or asset"
-                DEPLOY_EXIT=3
+          if [ "$DEPLOY_EXIT" -eq 0 ]; then
+            VERIFIED=0
+            for ATTEMPT in $(seq 1 24); do
+              curl -fsS "https://radar.beautyintel.work/data/products-batch.json?sha=$GITHUB_SHA&attempt=$ATTEMPT" -o /tmp/products-batch.json
+              DATA_EXIT=$?
+              ASSET_CODE=$(curl -sS -o /dev/null -w "%{http_code}" "https://radar.beautyintel.work/assets/products/numbuzin-no5-vitamin-toner/bubble.svg?sha=$GITHUB_SHA&attempt=$ATTEMPT")
+              if [ "$DATA_EXIT" -eq 0 ] \
+                && ! grep -q "numbuzin-no5-vitamin-boosting-essential-toner" /tmp/products-batch.json \
+                && ! grep -q "numbuzin-no5-vitamin-toner" /tmp/products-batch.json \
+                && [ "$ASSET_CODE" = "404" ]; then
+                VERIFIED=1
+                break
               fi
+              sleep 10
+            done
+
+            if [ "$VERIFIED" -ne 1 ]; then
+              STATUS="failed"
+              DETAIL="$DEPLOY_METHOD completed but live verification still found the retired product or asset"
+              DEPLOY_EXIT=3
+            else
+              DETAIL="$DEPLOY_METHOD deployed and live verification passed"
             fi
           fi
 
@@ -105,6 +119,7 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main || true
           git add .deploy-status/cloudflare-production.txt
           git commit -m "Record Cloudflare production deployment status [skip ci]" || true
           git push origin HEAD:main
