@@ -2,9 +2,6 @@ name: Restore Numbuzin No.5 product
 
 on:
   push:
-    branches: [main]
-    paths:
-      - ".github/workflows/restore-numbuzin-no5.yml"
   workflow_dispatch:
 
 permissions:
