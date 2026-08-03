@@ -1,1 +1,1 @@
-beauty-radar numbuzin-no5-cache-bust-20260801-production-trigger
+beauty-radar remove-numbuzin-no5-node-20260803-production-trigger
