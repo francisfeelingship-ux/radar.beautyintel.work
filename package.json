@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/validate-dist.mjs",
+    "build": "vite build && node scripts/remove-retired-products.mjs && node scripts/validate-dist.mjs",
     "preview": "vite preview",
     "check:data": "node scripts/validate-products.mjs"
   },
