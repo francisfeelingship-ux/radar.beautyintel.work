@@ -1,6 +1,6 @@
 status=success
-commit=7b19b71df80160c5f7efc2027b08da88290162d0
+commit=75b38e5b458ea31fd0d859445f697f02d771d50a
 method=cloudflare-native-git
 deploy_exit=0
 detail=restored product data and exact uploaded image are live
-checked_at=2026-08-04T01:24:50Z
+checked_at=2026-08-04T01:26:47Z
