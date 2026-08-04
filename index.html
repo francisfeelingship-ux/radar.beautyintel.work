@@ -43,7 +43,7 @@
             <span><i class="legend-dot detail"></i>展开内容</span>
           </div>
           <div class="view-readout" aria-live="polite">
-            <span id="visibleCount">55</span> 个产品
+            <span id="visibleCount">56</span> 个产品
             <i></i>
             <span id="zoomReadout">100%</span>
           </div>
@@ -75,7 +75,7 @@
 
           <div class="stage-meta top-left" aria-hidden="true">
             <span>LIVE MAP</span>
-            <strong id="mapMeta">55 PRODUCTS · CURATED PUBLIC SIGNALS</strong>
+            <strong id="mapMeta">56 PRODUCTS · CURATED PUBLIC SIGNALS</strong>
           </div>
           <div class="stage-meta bottom-right" aria-hidden="true">
             <span>PUBLIC VIEW</span>
@@ -127,6 +127,17 @@
       (() => {
         const nativeFetch = window.fetch.bind(window);
 
+        async function readOptionalJson(url, fallback = { products: [] }) {
+          try {
+            const response = await nativeFetch(url, { cache: 'no-store' });
+            if (!response.ok) return fallback;
+            return await response.json();
+          } catch (error) {
+            console.warn('Optional product feed failed:', url, error);
+            return fallback;
+          }
+        }
+
         function shuffle(values) {
           const result = [...values];
           for (let index = result.length - 1; index > 0; index -= 1) {
@@ -172,44 +183,42 @@
           const pathname = new URL(requestUrl, window.location.href).pathname;
           if (pathname !== '/data/products.json') return nativeFetch(input, init);
 
-          const [baseResponse, overlayResponse, batchResponse, importResponse, secondImportResponse, thirdImportResponse, fourthImportResponse, fifthImportResponse, restoredResponse, mediaOverridesResponse] = await Promise.all([
-            nativeFetch(input, init),
-            nativeFetch('/data/products-overlay.json'),
-            nativeFetch('/data/products-batch.json'),
-            nativeFetch('/data/products-import-20260727-4.json'),
-            nativeFetch('/data/products-import-20260727-4b.json'),
-            nativeFetch('/data/products-import-20260729-10.json'),
-            nativeFetch('/data/products-import-20260730-8.json'),
-            nativeFetch('/data/products-import-20260803-10.json'),
-            nativeFetch('/data/numbuzin-no5-restored.json?v=20260804-2'),
-            nativeFetch('/data/media-platform-overrides.json')
-          ]);
-          if (!baseResponse.ok || !overlayResponse.ok || !batchResponse.ok || !importResponse.ok || !secondImportResponse.ok || !thirdImportResponse.ok || !fourthImportResponse.ok || !fifthImportResponse.ok || !restoredResponse.ok || !mediaOverridesResponse.ok) return baseResponse;
-
+          const baseResponse = await nativeFetch(input, { ...init, cache: 'no-store' });
+          if (!baseResponse.ok) return baseResponse;
           const base = await baseResponse.json();
-          const overlay = await overlayResponse.json();
-          const batch = await batchResponse.json();
-          const imported = await importResponse.json();
-          const importedB = await secondImportResponse.json();
-          const importedC = await thirdImportResponse.json();
-          const importedD = await fourthImportResponse.json();
-          const importedE = await fifthImportResponse.json();
-          const restoredProduct = await restoredResponse.json();
-          const mediaOverrides = await mediaOverridesResponse.json();
+
+          const [overlay, batch, imported, importedB, importedC, importedD, importedE, restoredProduct, mediaOverrides] = await Promise.all([
+            readOptionalJson('/data/products-overlay.json'),
+            readOptionalJson('/data/products-batch.json'),
+            readOptionalJson('/data/products-import-20260727-4.json'),
+            readOptionalJson('/data/products-import-20260727-4b.json'),
+            readOptionalJson('/data/products-import-20260729-10.json'),
+            readOptionalJson('/data/products-import-20260730-8.json'),
+            readOptionalJson('/data/products-import-20260803-10.json'),
+            readOptionalJson('/data/numbuzin-no5-restored.json?v=20260804-3', null),
+            readOptionalJson('/data/media-platform-overrides.json', { mediaByProduct: {} })
+          ]);
+
           const additions = [
-            ...(Array.isArray(overlay.products) ? overlay.products : []),
-            ...(Array.isArray(batch.products) ? batch.products : []),
-            ...(Array.isArray(imported.products) ? imported.products : []),
-            ...(Array.isArray(importedB.products) ? importedB.products : []),
-            ...(Array.isArray(importedC.products) ? importedC.products : []),
-            ...(Array.isArray(importedD.products) ? importedD.products : []),
-            ...(Array.isArray(importedE.products) ? importedE.products : []),
+            ...(Array.isArray(overlay?.products) ? overlay.products : []),
+            ...(Array.isArray(batch?.products) ? batch.products : []),
+            ...(Array.isArray(imported?.products) ? imported.products : []),
+            ...(Array.isArray(importedB?.products) ? importedB.products : []),
+            ...(Array.isArray(importedC?.products) ? importedC.products : []),
+            ...(Array.isArray(importedD?.products) ? importedD.products : []),
+            ...(Array.isArray(importedE?.products) ? importedE.products : []),
             ...(restoredProduct?.id ? [restoredProduct] : [])
           ];
+
+          const restoredAliases = new Set([
+            'numbuzin-no5-vitamin-toner',
+            'numbuzin-no5-vitamin-boosting-essential-toner',
+            'numbuzin-no5-vitamin-toner-restored'
+          ]);
           const additionIds = new Set(additions.map(product => product.id));
           base.products = [
-            ...(base.products || []).filter(product => !additionIds.has(product.id)),
-            ...additions
+            ...(base.products || []).filter(product => !additionIds.has(product.id) && !restoredAliases.has(product.id)),
+            ...additions.filter(product => product.id === 'numbuzin-no5-vitamin-toner-restored' || !restoredAliases.has(product.id))
           ];
 
           const mediaByProduct = mediaOverrides?.mediaByProduct || {};
@@ -241,7 +250,7 @@
         };
       })();
     </script>
-    <script type="module" src="/src/app.js?v=20260730-1"></script>
+    <script type="module" src="/src/app.js?v=20260804-3"></script>
     <script type="module" src="/src/layout-clouds.js?v=20260729-5"></script>
     <script type="module" src="/src/active-links.js?v=20260730-1"></script>
   </body>
