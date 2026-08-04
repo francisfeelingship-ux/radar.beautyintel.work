@@ -36,6 +36,10 @@ jobs:
           set -e
           node scripts/materialize-numbuzin-no5-image.mjs
           IMAGE_PATH="public/assets/products/numbuzin-no5-restored/product.webp"
+          IMAGE_SIZE=$(wc -c < "$IMAGE_PATH")
+          IMAGE_SHA256=$(sha256sum "$IMAGE_PATH" | cut -d' ' -f1)
+          echo "image_size=$IMAGE_SIZE" >> "$GITHUB_OUTPUT"
+          echo "image_sha256=$IMAGE_SHA256" >> "$GITHUB_OUTPUT"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ -n "$(git status --porcelain -- "$IMAGE_PATH")" ]; then
@@ -75,16 +79,20 @@ jobs:
       - name: Verify restored product and exact WebP on production
         id: verify
         shell: bash
+        env:
+          EXPECTED_SIZE: ${{ steps.materialize.outputs.image_size }}
+          EXPECTED_SHA256: ${{ steps.materialize.outputs.image_sha256 }}
         run: |
           set +e
           VERIFIED=0
-          DETAIL="production did not expose a browser-ready restored product image within the verification window"
+          DETAIL="production did not expose the exact browser-ready product image within the verification window"
           for ATTEMPT in $(seq 1 48); do
             BUST="restore-webp-${GITHUB_RUN_ID}-${ATTEMPT}"
             INDEX_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/radar-index.html -w "%{http_code}" "https://radar.beautyintel.work/?v=${BUST}")
             PRODUCT_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/numbuzin-product.json -w "%{http_code}" "https://radar.beautyintel.work/data/numbuzin-no5-restored.json?v=${BUST}")
             ASSET_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/numbuzin-product.webp -w "%{http_code}" "https://radar.beautyintel.work/assets/products/numbuzin-no5-restored/product.webp?v=${BUST}")
             ASSET_SIZE=$(wc -c < /tmp/numbuzin-product.webp 2>/dev/null || echo 0)
+            ASSET_SHA256=$(sha256sum /tmp/numbuzin-product.webp 2>/dev/null | cut -d' ' -f1)
             ASSET_MAGIC=$(python -c "from pathlib import Path; data=Path('/tmp/numbuzin-product.webp').read_bytes() if Path('/tmp/numbuzin-product.webp').exists() else b''; print('RIFF-WEBP' if len(data) >= 12 and data[:4] == b'RIFF' and data[8:12] == b'WEBP' else 'invalid')")
 
             if [ "$INDEX_CODE" = "200" ] \
@@ -93,14 +101,15 @@ jobs:
               && grep -q 'numbuzin-no5-vitamin-toner-restored' /tmp/numbuzin-product.json \
               && grep -q '/assets/products/numbuzin-no5-restored/product.webp' /tmp/numbuzin-product.json \
               && [ "$ASSET_CODE" = "200" ] \
-              && [ "$ASSET_SIZE" = "9344" ] \
+              && [ "$ASSET_SIZE" = "$EXPECTED_SIZE" ] \
+              && [ "$ASSET_SHA256" = "$EXPECTED_SHA256" ] \
               && [ "$ASSET_MAGIC" = "RIFF-WEBP" ]; then
               VERIFIED=1
-              DETAIL="production serves the restored product and the exact 9344-byte WebP as image/webp"
+              DETAIL="production serves the exact source WebP: ${ASSET_SIZE} bytes, sha256=${ASSET_SHA256}"
               break
             fi
 
-            DETAIL="attempt ${ATTEMPT}: index=${INDEX_CODE} product=${PRODUCT_CODE} asset=${ASSET_CODE} bytes=${ASSET_SIZE} magic=${ASSET_MAGIC}"
+            DETAIL="attempt ${ATTEMPT}: index=${INDEX_CODE} product=${PRODUCT_CODE} asset=${ASSET_CODE} bytes=${ASSET_SIZE}/${EXPECTED_SIZE} sha=${ASSET_SHA256}/${EXPECTED_SHA256} magic=${ASSET_MAGIC}"
             echo "$DETAIL"
             sleep 10
           done
