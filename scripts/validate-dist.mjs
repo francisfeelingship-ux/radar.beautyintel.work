@@ -50,9 +50,19 @@ for (const product of products) {
 }
 
 try {
-  const image = await readFile(path.join(dist, 'assets/products/numbuzin-no5-restored/product.webp'));
-  if (image.length !== 9344 || image.subarray(0, 4).toString('ascii') !== 'RIFF' || image.subarray(8, 12).toString('ascii') !== 'WEBP') {
-    errors.push(`numbuzin-no5-vitamin-toner-restored: invalid built WebP (${image.length} bytes)`);
+  const sourceSvg = await readFile(path.join(root, 'public/assets/products/numbuzin-no5-restored/bubble.svg'), 'utf8');
+  const marker = 'data:image/webp;base64,';
+  const markerIndex = sourceSvg.indexOf(marker);
+  const payloadStart = markerIndex + marker.length;
+  const payloadEnd = markerIndex >= 0 ? sourceSvg.indexOf('"', payloadStart) : -1;
+  if (markerIndex < 0 || payloadEnd < payloadStart) {
+    errors.push('numbuzin-no5-vitamin-toner-restored: embedded source WebP is missing');
+  } else {
+    const expected = Buffer.from(sourceSvg.slice(payloadStart, payloadEnd).replace(/\s+/g, ''), 'base64');
+    const image = await readFile(path.join(dist, 'assets/products/numbuzin-no5-restored/product.webp'));
+    if (!image.equals(expected) || image.subarray(0, 4).toString('ascii') !== 'RIFF' || image.subarray(8, 12).toString('ascii') !== 'WEBP') {
+      errors.push(`numbuzin-no5-vitamin-toner-restored: built WebP differs from source (${image.length} vs ${expected.length} bytes)`);
+    }
   }
 } catch {
   // The missing-file error is already recorded above.
