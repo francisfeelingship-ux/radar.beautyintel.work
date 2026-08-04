@@ -1,6 +1,6 @@
 status=success
-commit=3710f8a3b6a7879b871942f1f09b992c710d8210
+commit=c64da940e374a2ff78915423b9c86aafd329c9bb
 method=cloudflare-native-git
 deploy_exit=0
 detail=production index loads the restored product JSON and the exact uploaded image asset
-checked_at=2026-08-04T01:27:17Z
+checked_at=2026-08-04T01:39:32Z
