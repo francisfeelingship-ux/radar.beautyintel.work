@@ -6,6 +6,7 @@ on:
       - main
     paths-ignore:
       - ".deploy-status/**"
+      - "public/assets/products/numbuzin-no5-restored/product.webp"
   workflow_dispatch:
 
 permissions:
@@ -27,6 +28,25 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+
+      - name: Materialize and commit the exact uploaded WebP
+        id: materialize
+        shell: bash
+        run: |
+          set -e
+          node scripts/materialize-numbuzin-no5-image.mjs
+          IMAGE_PATH="public/assets/products/numbuzin-no5-restored/product.webp"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain -- "$IMAGE_PATH")" ]; then
+            git add -f "$IMAGE_PATH"
+            git commit -m "Materialize exact Numbuzin No.5 WebP"
+            git push origin HEAD:main
+            echo "committed=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "committed=0" >> "$GITHUB_OUTPUT"
+          fi
+          echo "image_commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Build and deploy when credentials are available
         id: deploy
@@ -59,7 +79,7 @@ jobs:
           set +e
           VERIFIED=0
           DETAIL="production did not expose a browser-ready restored product image within the verification window"
-          for ATTEMPT in $(seq 1 36); do
+          for ATTEMPT in $(seq 1 48); do
             BUST="restore-webp-${GITHUB_RUN_ID}-${ATTEMPT}"
             INDEX_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/radar-index.html -w "%{http_code}" "https://radar.beautyintel.work/?v=${BUST}")
             PRODUCT_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/numbuzin-product.json -w "%{http_code}" "https://radar.beautyintel.work/data/numbuzin-no5-restored.json?v=${BUST}")
@@ -99,7 +119,7 @@ jobs:
           fi
           cat > .deploy-status/cloudflare-production.txt <<EOF
           status=$STATUS
-          commit=$GITHUB_SHA
+          commit=${{ steps.materialize.outputs.image_commit || github.sha }}
           method=${{ steps.deploy.outputs.method }}
           deploy_exit=${{ steps.deploy.outputs.deploy_exit }}
           detail=${{ steps.verify.outputs.detail }}
