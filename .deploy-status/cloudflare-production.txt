@@ -1,6 +1,6 @@
 status=failed
-commit=b2ad09772f12595fbfd5ba92a7b7d6beaef53dc5
-method=cloudflare-native-git
-deploy_exit=0
-detail=attempt 36: index=200 product=200 asset=200 bytes=12956 magic=invalid
-checked_at=2026-08-04T02:11:24Z
+commit=6bd8ef7eceb68bb6df3548e1a2a85f15d1967a9c
+method=
+deploy_exit=
+detail=
+checked_at=2026-08-04T02:12:56Z
