@@ -1,6 +1,6 @@
-status=failed
-commit=704adf9fbd8d272699b841c96a3c9b9a216b7dac
-method=
-deploy_exit=
-detail=
-checked_at=2026-08-04T02:14:35Z
+status=success
+commit=c8b92fb479b686a5d2ba97d729504e2d500033a8
+method=cloudflare-native-git
+deploy_exit=0
+detail=production serves the exact source WebP: 9207 bytes, sha256=add252851f927460d881f9b201cf13995056b6bffc017fee96a68a1a9e849fc8
+checked_at=2026-08-04T02:17:26Z
