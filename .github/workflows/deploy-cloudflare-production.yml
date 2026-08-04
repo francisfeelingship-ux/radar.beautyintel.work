@@ -52,31 +52,41 @@ jobs:
           echo "method=$METHOD" >> "$GITHUB_OUTPUT"
           echo "deploy_exit=$DEPLOY_EXIT" >> "$GITHUB_OUTPUT"
 
-      - name: Verify restored product on the actual production website
+      - name: Verify restored product and exact WebP on production
         id: verify
         shell: bash
         run: |
           set +e
           VERIFIED=0
-          DETAIL="production did not expose the restored product within the verification window"
+          DETAIL="production did not expose a browser-ready restored product image within the verification window"
           for ATTEMPT in $(seq 1 36); do
-            BUST="restore-${GITHUB_RUN_ID}-${ATTEMPT}"
+            BUST="restore-webp-${GITHUB_RUN_ID}-${ATTEMPT}"
             INDEX_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/radar-index.html -w "%{http_code}" "https://radar.beautyintel.work/?v=${BUST}")
             PRODUCT_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/numbuzin-product.json -w "%{http_code}" "https://radar.beautyintel.work/data/numbuzin-no5-restored.json?v=${BUST}")
-            ASSET_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/numbuzin-bubble.svg -w "%{http_code}" "https://radar.beautyintel.work/assets/products/numbuzin-no5-restored/bubble.svg?v=${BUST}")
+            ASSET_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/numbuzin-product.webp -w "%{http_code}" "https://radar.beautyintel.work/assets/products/numbuzin-no5-restored/product.webp?v=${BUST}")
+            ASSET_SIZE=$(wc -c < /tmp/numbuzin-product.webp 2>/dev/null || echo 0)
+            ASSET_MAGIC=$(python - <<'PY'
+from pathlib import Path
+path = Path('/tmp/numbuzin-product.webp')
+data = path.read_bytes() if path.exists() else b''
+print('RIFF-WEBP' if len(data) >= 12 and data[:4] == b'RIFF' and data[8:12] == b'WEBP' else 'invalid')
+PY
+)
 
             if [ "$INDEX_CODE" = "200" ] \
               && grep -q 'numbuzin-no5-restored.json' /tmp/radar-index.html \
               && [ "$PRODUCT_CODE" = "200" ] \
               && grep -q 'numbuzin-no5-vitamin-toner-restored' /tmp/numbuzin-product.json \
+              && grep -q '/assets/products/numbuzin-no5-restored/product.webp' /tmp/numbuzin-product.json \
               && [ "$ASSET_CODE" = "200" ] \
-              && grep -q 'data:image/webp;base64,UklGRngkAABXRUJQ' /tmp/numbuzin-bubble.svg; then
+              && [ "$ASSET_SIZE" = "9344" ] \
+              && [ "$ASSET_MAGIC" = "RIFF-WEBP" ]; then
               VERIFIED=1
-              DETAIL="production index loads the restored product JSON and the exact uploaded image asset"
+              DETAIL="production serves the restored product and the exact 9344-byte WebP as image/webp"
               break
             fi
 
-            DETAIL="attempt ${ATTEMPT}: index=${INDEX_CODE} product=${PRODUCT_CODE} asset=${ASSET_CODE}"
+            DETAIL="attempt ${ATTEMPT}: index=${INDEX_CODE} product=${PRODUCT_CODE} asset=${ASSET_CODE} bytes=${ASSET_SIZE} magic=${ASSET_MAGIC}"
             echo "$DETAIL"
             sleep 10
           done
