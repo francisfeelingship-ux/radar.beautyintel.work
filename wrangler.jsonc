@@ -9,7 +9,8 @@
       "/data/products.json",
       "/data/products-overlay.json",
       "/data/products-batch.json",
-      "/assets/products/numbuzin-no5-vitamin-toner/*"
+      "/assets/products/numbuzin-no5-vitamin-toner/*",
+      "/assets/products/numbuzin-no5-restored/*"
     ],
     "not_found_handling": "single-page-application"
   },
