@@ -9,7 +9,14 @@ const removedProductIds = new Set([
   'numbuzin-no5-vitamin-boosting-essential-toner'
 ]);
 
-for (const required of ['index.html', 'data/products.json', 'data/products-overlay.json', 'data/products-batch.json']) {
+for (const required of [
+  'index.html',
+  'data/products.json',
+  'data/products-overlay.json',
+  'data/products-batch.json',
+  'data/numbuzin-no5-restored.json',
+  'assets/products/numbuzin-no5-restored/product.webp'
+]) {
   try { await access(path.join(dist, required)); }
   catch { errors.push(`missing dist/${required}`); }
 }
@@ -21,9 +28,11 @@ const load = async name => {
 const base = await load('products.json');
 const overlay = await load('products-overlay.json');
 const batch = await load('products-batch.json');
+const restored = await load('numbuzin-no5-restored.json');
 const additions = [
   ...(Array.isArray(overlay.products) ? overlay.products : []),
-  ...(Array.isArray(batch.products) ? batch.products : [])
+  ...(Array.isArray(batch.products) ? batch.products : []),
+  ...(restored?.id ? [restored] : [])
 ];
 const additionIds = new Set(additions.map(product => product.id));
 const products = [
@@ -34,9 +43,19 @@ const products = [
 for (const product of products) {
   const assets = [product.bubbleImage, ...product.editorialCards.map(card => card.image)];
   for (const asset of assets) {
-    try { await access(path.join(dist, asset.replace(/^\//, ''))); }
-    catch { errors.push(`${product.id}: missing built asset ${asset}`); }
+    const assetPath = asset.split('?')[0].replace(/^\//, '');
+    try { await access(path.join(dist, assetPath)); }
+    catch { errors.push(`${product.id}: missing built asset ${assetPath}`); }
   }
+}
+
+try {
+  const image = await readFile(path.join(dist, 'assets/products/numbuzin-no5-restored/product.webp'));
+  if (image.length !== 9344 || image.subarray(0, 4).toString('ascii') !== 'RIFF' || image.subarray(8, 12).toString('ascii') !== 'WEBP') {
+    errors.push(`numbuzin-no5-vitamin-toner-restored: invalid built WebP (${image.length} bytes)`);
+  }
+} catch {
+  // The missing-file error is already recorded above.
 }
 
 if (errors.length) {
@@ -44,4 +63,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Validated deploy artifact with ${products.length} products.`);
+console.log(`Validated deploy artifact with ${products.length} products and exact Numbuzin WebP.`);
