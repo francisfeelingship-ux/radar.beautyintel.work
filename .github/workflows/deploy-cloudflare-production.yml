@@ -52,28 +52,32 @@ jobs:
           echo "method=$METHOD" >> "$GITHUB_OUTPUT"
           echo "deploy_exit=$DEPLOY_EXIT" >> "$GITHUB_OUTPUT"
 
-      - name: Verify restored product on production
+      - name: Verify restored product on the actual production website
         id: verify
         shell: bash
         run: |
           set +e
           VERIFIED=0
-          DETAIL=""
-          for ATTEMPT in $(seq 1 30); do
-            DATA_URL="https://radar.beautyintel.work/data/products-batch.json?restore=20260804-1&attempt=$ATTEMPT"
-            ASSET_URL="https://radar.beautyintel.work/assets/products/numbuzin-no5-restored/bubble.svg?restore=20260804-1&attempt=$ATTEMPT"
-            curl -fsS "$DATA_URL" -o /tmp/products-batch.json
-            DATA_EXIT=$?
-            ASSET_CODE=$(curl -sS -o /tmp/numbuzin-bubble.svg -w "%{http_code}" "$ASSET_URL")
-            if [ "$DATA_EXIT" -eq 0 ] \
-              && grep -q 'numbuzin-no5-vitamin-toner-restored' /tmp/products-batch.json \
+          DETAIL="production did not expose the restored product within the verification window"
+          for ATTEMPT in $(seq 1 36); do
+            BUST="restore-${GITHUB_RUN_ID}-${ATTEMPT}"
+            INDEX_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/radar-index.html -w "%{http_code}" "https://radar.beautyintel.work/?v=${BUST}")
+            PRODUCT_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/numbuzin-product.json -w "%{http_code}" "https://radar.beautyintel.work/data/numbuzin-no5-restored.json?v=${BUST}")
+            ASSET_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/numbuzin-bubble.svg -w "%{http_code}" "https://radar.beautyintel.work/assets/products/numbuzin-no5-restored/bubble.svg?v=${BUST}")
+
+            if [ "$INDEX_CODE" = "200" ] \
+              && grep -q 'numbuzin-no5-restored.json' /tmp/radar-index.html \
+              && [ "$PRODUCT_CODE" = "200" ] \
+              && grep -q 'numbuzin-no5-vitamin-toner-restored' /tmp/numbuzin-product.json \
               && [ "$ASSET_CODE" = "200" ] \
               && grep -q 'data:image/webp;base64,UklGRngkAABXRUJQ' /tmp/numbuzin-bubble.svg; then
               VERIFIED=1
-              DETAIL="restored product data and exact uploaded image are live"
+              DETAIL="production index loads the restored product JSON and the exact uploaded image asset"
               break
             fi
-            DETAIL="attempt $ATTEMPT: data_exit=$DATA_EXIT asset_code=$ASSET_CODE"
+
+            DETAIL="attempt ${ATTEMPT}: index=${INDEX_CODE} product=${PRODUCT_CODE} asset=${ASSET_CODE}"
+            echo "$DETAIL"
             sleep 10
           done
           echo "verified=$VERIFIED" >> "$GITHUB_OUTPUT"
