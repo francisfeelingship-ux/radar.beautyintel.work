@@ -1,0 +1,134 @@
+name: Merge Numbuzin No.5 into live product batch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/merge-numbuzin-no5-into-batch.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: merge-numbuzin-no5-into-batch
+  cancel-in-progress: false
+
+jobs:
+  merge-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Put restored product directly into products-batch.json
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+
+          batch_path = Path('public/data/products-batch.json')
+          product_path = Path('public/data/numbuzin-no5-restored.json')
+          index_path = Path('index.html')
+
+          batch = json.loads(batch_path.read_text(encoding='utf-8'))
+          product = json.loads(product_path.read_text(encoding='utf-8'))
+
+          # Keep the restored product on a new, non-retired identity and asset path.
+          product['id'] = 'numbuzin-no5-vitamin-toner-restored'
+          product['slug'] = 'numbuzin-no5-vitamin-toner-restored'
+          product['bubbleImage'] = '/assets/products/numbuzin-no5-restored/bubble.svg?v=20260804-2'
+          product['editorialCards'] = [{
+              'image': '/assets/products/numbuzin-no5-restored/bubble.svg?v=20260804-2',
+              'caption': '产品原图与多通路提亮定位'
+          }]
+
+          products = batch.get('products') or []
+          retired_ids = {
+              'numbuzin-no5-vitamin-toner',
+              'numbuzin-no5-vitamin-boosting-essential-toner',
+              'numbuzin-no5-vitamin-toner-restored'
+          }
+          products = [
+              item for item in products
+              if item.get('id') not in retired_ids
+              and item.get('slug') not in retired_ids
+          ]
+          products.append(product)
+          batch['products'] = products
+          batch_path.write_text(json.dumps(batch, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          # Remove the historical front-end deletion filter. The old IDs are no longer present,
+          # and keeping a deletion rule here makes future restoration fragile.
+          index = index_path.read_text(encoding='utf-8')
+          old = """          base.products = [
+            ...(base.products || []).filter(product => !additionIds.has(product.id)),
+            ...additions
+          ].filter(product => ![
+            'numbuzin-no5-vitamin-toner',
+            'numbuzin-no5-vitamin-boosting-essential-toner'
+          ].includes(product.id) && product.slug !== 'numbuzin-no5-vitamin-boosting-essential-toner' && product.bubbleImage?.split('?')[0] !== '/assets/products/numbuzin-no5-vitamin-toner/bubble.svg');"""
+          new = """          base.products = [
+            ...(base.products || []).filter(product => !additionIds.has(product.id)),
+            ...additions
+          ];"""
+          if old not in index:
+              raise SystemExit('Expected historical Numbuzin deletion filter was not found in index.html')
+          index_path.write_text(index.replace(old, new, 1), encoding='utf-8')
+
+          assert any(item.get('id') == product['id'] for item in batch['products'])
+          print(f"products-batch now contains {len(batch['products'])} products including {product['id']}")
+          PY
+
+      - name: Commit source fix
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/products-batch.json index.html
+          git commit -m "Restore Numbuzin No.5 directly in product batch"
+          git push origin HEAD:main
+
+      - name: Verify the actual production website
+        id: verify
+        shell: bash
+        run: |
+          set +e
+          VERIFIED=0
+          DETAIL="production did not expose the restored product within the verification window"
+          for ATTEMPT in $(seq 1 36); do
+            BUST="numbuzin-restore-${GITHUB_RUN_ID}-${ATTEMPT}"
+            DATA_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/products-batch-live.json -w "%{http_code}" "https://radar.beautyintel.work/data/products-batch.json?v=${BUST}")
+            ASSET_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/numbuzin-live.svg -w "%{http_code}" "https://radar.beautyintel.work/assets/products/numbuzin-no5-restored/bubble.svg?v=${BUST}")
+            if [ "$DATA_CODE" = "200" ] \
+              && grep -q '"id":"numbuzin-no5-vitamin-toner-restored"\|"id": "numbuzin-no5-vitamin-toner-restored"' /tmp/products-batch-live.json \
+              && [ "$ASSET_CODE" = "200" ] \
+              && grep -q '<svg' /tmp/numbuzin-live.svg; then
+              VERIFIED=1
+              DETAIL="live product batch contains the restored product and the exact image asset returns HTTP 200"
+              break
+            fi
+            echo "attempt=${ATTEMPT} data=${DATA_CODE} asset=${ASSET_CODE}"
+            sleep 10
+          done
+
+          mkdir -p .deploy-status
+          {
+            if [ "$VERIFIED" = "1" ]; then echo "status=success"; else echo "status=failed"; fi
+            echo "detail=${DETAIL}"
+            echo "source_commit=$(git rev-parse HEAD)"
+            echo "checked_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          } > .deploy-status/numbuzin-no5-live.txt
+
+          git pull --rebase origin main || true
+          git add .deploy-status/numbuzin-no5-live.txt
+          git commit -m "Record verified Numbuzin No.5 live status [skip ci]" || true
+          git push origin HEAD:main || true
+
+          if [ "$VERIFIED" != "1" ]; then
+            exit 1
+          fi
