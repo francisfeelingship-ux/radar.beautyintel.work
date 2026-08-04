@@ -172,7 +172,7 @@
           const pathname = new URL(requestUrl, window.location.href).pathname;
           if (pathname !== '/data/products.json') return nativeFetch(input, init);
 
-          const [baseResponse, overlayResponse, batchResponse, importResponse, secondImportResponse, thirdImportResponse, fourthImportResponse, fifthImportResponse, mediaOverridesResponse] = await Promise.all([
+          const [baseResponse, overlayResponse, batchResponse, importResponse, secondImportResponse, thirdImportResponse, fourthImportResponse, fifthImportResponse, restoredResponse, mediaOverridesResponse] = await Promise.all([
             nativeFetch(input, init),
             nativeFetch('/data/products-overlay.json'),
             nativeFetch('/data/products-batch.json'),
@@ -181,9 +181,10 @@
             nativeFetch('/data/products-import-20260729-10.json'),
             nativeFetch('/data/products-import-20260730-8.json'),
             nativeFetch('/data/products-import-20260803-10.json'),
+            nativeFetch('/data/numbuzin-no5-restored.json?v=20260804-2'),
             nativeFetch('/data/media-platform-overrides.json')
           ]);
-          if (!baseResponse.ok || !overlayResponse.ok || !batchResponse.ok || !importResponse.ok || !secondImportResponse.ok || !thirdImportResponse.ok || !fourthImportResponse.ok || !fifthImportResponse.ok || !mediaOverridesResponse.ok) return baseResponse;
+          if (!baseResponse.ok || !overlayResponse.ok || !batchResponse.ok || !importResponse.ok || !secondImportResponse.ok || !thirdImportResponse.ok || !fourthImportResponse.ok || !fifthImportResponse.ok || !restoredResponse.ok || !mediaOverridesResponse.ok) return baseResponse;
 
           const base = await baseResponse.json();
           const overlay = await overlayResponse.json();
@@ -193,6 +194,7 @@
           const importedC = await thirdImportResponse.json();
           const importedD = await fourthImportResponse.json();
           const importedE = await fifthImportResponse.json();
+          const restoredProduct = await restoredResponse.json();
           const mediaOverrides = await mediaOverridesResponse.json();
           const additions = [
             ...(Array.isArray(overlay.products) ? overlay.products : []),
@@ -201,16 +203,14 @@
             ...(Array.isArray(importedB.products) ? importedB.products : []),
             ...(Array.isArray(importedC.products) ? importedC.products : []),
             ...(Array.isArray(importedD.products) ? importedD.products : []),
-            ...(Array.isArray(importedE.products) ? importedE.products : [])
+            ...(Array.isArray(importedE.products) ? importedE.products : []),
+            ...(restoredProduct?.id ? [restoredProduct] : [])
           ];
           const additionIds = new Set(additions.map(product => product.id));
           base.products = [
             ...(base.products || []).filter(product => !additionIds.has(product.id)),
             ...additions
-          ].filter(product => ![
-            'numbuzin-no5-vitamin-toner',
-            'numbuzin-no5-vitamin-boosting-essential-toner'
-          ].includes(product.id) && product.slug !== 'numbuzin-no5-vitamin-boosting-essential-toner' && product.bubbleImage?.split('?')[0] !== '/assets/products/numbuzin-no5-vitamin-toner/bubble.svg');
+          ];
 
           const mediaByProduct = mediaOverrides?.mediaByProduct || {};
           base.products.forEach(product => {
