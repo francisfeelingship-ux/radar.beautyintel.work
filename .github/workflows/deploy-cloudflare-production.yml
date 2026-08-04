@@ -65,13 +65,7 @@ jobs:
             PRODUCT_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/numbuzin-product.json -w "%{http_code}" "https://radar.beautyintel.work/data/numbuzin-no5-restored.json?v=${BUST}")
             ASSET_CODE=$(curl -L -sS --connect-timeout 10 --max-time 30 -o /tmp/numbuzin-product.webp -w "%{http_code}" "https://radar.beautyintel.work/assets/products/numbuzin-no5-restored/product.webp?v=${BUST}")
             ASSET_SIZE=$(wc -c < /tmp/numbuzin-product.webp 2>/dev/null || echo 0)
-            ASSET_MAGIC=$(python - <<'PY'
-from pathlib import Path
-path = Path('/tmp/numbuzin-product.webp')
-data = path.read_bytes() if path.exists() else b''
-print('RIFF-WEBP' if len(data) >= 12 and data[:4] == b'RIFF' and data[8:12] == b'WEBP' else 'invalid')
-PY
-)
+            ASSET_MAGIC=$(python -c "from pathlib import Path; data=Path('/tmp/numbuzin-product.webp').read_bytes() if Path('/tmp/numbuzin-product.webp').exists() else b''; print('RIFF-WEBP' if len(data) >= 12 and data[:4] == b'RIFF' and data[8:12] == b'WEBP' else 'invalid')")
 
             if [ "$INDEX_CODE" = "200" ] \
               && grep -q 'numbuzin-no5-restored.json' /tmp/radar-index.html \
