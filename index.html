@@ -187,7 +187,7 @@
           if (!baseResponse.ok) return baseResponse;
           const base = await baseResponse.json();
 
-          const [overlay, batch, imported, importedB, importedC, importedD, importedE, restoredProduct, mediaOverrides] = await Promise.all([
+          const [overlay, batch, imported, importedB, importedC, importedD, importedE, mediaOverrides] = await Promise.all([
             readOptionalJson('/data/products-overlay.json'),
             readOptionalJson('/data/products-batch.json'),
             readOptionalJson('/data/products-import-20260727-4.json'),
@@ -195,7 +195,6 @@
             readOptionalJson('/data/products-import-20260729-10.json'),
             readOptionalJson('/data/products-import-20260730-8.json'),
             readOptionalJson('/data/products-import-20260803-10.json'),
-            readOptionalJson('/data/numbuzin-no5-restored.json?v=20260804-3', null),
             readOptionalJson('/data/media-platform-overrides.json', { mediaByProduct: {} })
           ]);
 
@@ -206,20 +205,17 @@
             ...(Array.isArray(importedB?.products) ? importedB.products : []),
             ...(Array.isArray(importedC?.products) ? importedC.products : []),
             ...(Array.isArray(importedD?.products) ? importedD.products : []),
-            ...(Array.isArray(importedE?.products) ? importedE.products : []),
-            ...(restoredProduct?.id ? [restoredProduct] : [])
+            ...(Array.isArray(importedE?.products) ? importedE.products : [])
           ];
 
-          const restoredAliases = new Set([
-            'numbuzin-no5-vitamin-toner',
-            'numbuzin-no5-vitamin-boosting-essential-toner',
-            'numbuzin-no5-vitamin-toner-restored'
-          ]);
-          const additionIds = new Set(additions.map(product => product.id));
-          base.products = [
-            ...(base.products || []).filter(product => !additionIds.has(product.id) && !restoredAliases.has(product.id)),
-            ...additions.filter(product => product.id === 'numbuzin-no5-vitamin-toner-restored' || !restoredAliases.has(product.id))
-          ];
+          const productsById = new Map();
+          (base.products || []).forEach(product => {
+            if (product?.id) productsById.set(product.id, product);
+          });
+          additions.forEach(product => {
+            if (product?.id) productsById.set(product.id, product);
+          });
+          base.products = [...productsById.values()];
 
           const mediaByProduct = mediaOverrides?.mediaByProduct || {};
           base.products.forEach(product => {
