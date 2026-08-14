@@ -49,6 +49,9 @@ for (const product of products) {
   const cards = Array.isArray(product.editorialCards) ? product.editorialCards : [];
   const assets = [product.bubbleImage, ...cards.map(card => card.image)].filter(Boolean);
   for (const asset of assets) {
+    if (typeof asset === 'string' && (asset.startsWith('http://') || asset.startsWith('https://'))) {
+      continue;
+    }
     const assetPath = asset.split('?')[0].replace(/^\//, '');
     try {
       await access(path.join(dist, assetPath));
