@@ -32,6 +32,9 @@ for (const product of manifest.products) {
   }
   const assets = [product.bubbleImage, ...product.editorialCards.map(card => card.image)];
   for (const asset of assets) {
+    if (typeof asset === 'string' && (asset.startsWith('http://') || asset.startsWith('https://'))) {
+      continue;
+    }
     try { await access(path.join(publicRoot, asset.replace(/^\//, ''))); }
     catch { errors.push(`${product.id}: missing asset ${asset}`); }
   }
