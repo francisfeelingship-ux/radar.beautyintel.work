@@ -280,18 +280,38 @@ def main() -> None:
 
         final_products.append(prod_obj)
 
+    # Filter out products missing valid product images
+    def is_valid_product_image(product: dict) -> bool:
+        img = product.get("bubbleImage", "")
+        if not img or "placehold.co" in img or "placeholder" in img:
+            return False
+        if img.startswith("./") or img.startswith("/"):
+            rel_path = img.lstrip("./").lstrip("/")
+            local_file = repo_dir / "public" / rel_path
+            return local_file.exists() and local_file.stat().st_size > 0
+        if img.startswith("http://") or img.startswith("https://"):
+            # Exclude product page URLs (ulta.com/p/, lookfantastic.com/p/, cultbeauty.com/p/, etc.)
+            if "/p/" in img and not any(ext in img.lower() for ext in [".jpg", ".jpeg", ".png", ".webp", ".gif", "productimg", "storage.googleapis.com"]):
+                return False
+            return True
+        return False
+
+    valid_final_products = [p for p in final_products if is_valid_product_image(p)]
+    print(f"Filtered out {len(final_products) - len(valid_final_products)} products missing valid product images.")
+    print(f"Remaining valid products with confirmed images: {len(valid_final_products)}")
+
     # Grid layout assignment across 3600 x 2400 canvas
     world_w = 3600
     world_h = 2400
     cols = 25
-    rows = (len(final_products) + cols - 1) // cols
+    rows = (len(valid_final_products) + cols - 1) // cols
 
     margin_x = 180
     margin_y = 180
     step_x = (world_w - margin_x * 2) / (cols - 1)
     step_y = (world_h - margin_y * 2) / max(1, rows - 1)
 
-    for idx, p in enumerate(final_products):
+    for idx, p in enumerate(valid_final_products):
         if p["layout"]["x"] == 200 and p["layout"]["y"] == 200:
             r_idx = idx // cols
             c_idx = idx % cols
@@ -302,7 +322,7 @@ def main() -> None:
     out_data = {
         "version": existing_json.get("version", 1),
         "world": {"width": world_w, "height": world_h},
-        "products": final_products
+        "products": valid_final_products
     }
 
     # Write output to repo products.json
@@ -311,7 +331,7 @@ def main() -> None:
         json.dump(out_data, f, ensure_ascii=False, indent=2)
         f.write("\n")
 
-    print(f"Successfully written {len(final_products)} verified products to {json_path}")
+    print(f"Successfully written {len(valid_final_products)} verified products to {json_path}")
 
     # Copy to standalone v2 directory if present
     if v2_json_path.parent.exists():
