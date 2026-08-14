@@ -181,9 +181,10 @@
         window.fetch = async (input, init) => {
           const requestUrl = typeof input === 'string' ? input : input?.url || '';
           const pathname = new URL(requestUrl, window.location.href).pathname;
-          if (pathname !== '/data/products.json') return nativeFetch(input, init);
+          if (!pathname.endsWith('/data/products.json')) return nativeFetch(input, init);
 
-          const baseResponse = await nativeFetch(input, { ...init, cache: 'no-store' });
+          const cacheBustUrl = requestUrl + (requestUrl.includes('?') ? '&' : '?') + 'cb=' + Date.now();
+          const baseResponse = await nativeFetch(cacheBustUrl, { ...init, cache: 'no-store' });
           if (!baseResponse.ok) return baseResponse;
           const base = await baseResponse.json();
 
